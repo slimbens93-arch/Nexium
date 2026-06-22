@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexium — Réseau RGE Pompes à Chaleur &amp; Électrification</title>
+  <meta name="description" content="Nexium fédère des installateurs RGE certifiés pour la pose de pompes à chaleur en résidentiel. Apport d'affaires, montage MaPrimeRénov'/CEE, valorisation des certificats d'économies d'énergie.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    img { display: block; max-width: 100%; }
+    button, input, select, textarea { font: inherit; }
+
+    /* ── Tokens ── */
+    :root {
+      /* Dark surfaces (logo habitat) */
+      --bg-dark:    #0C100E;
+      --bg-dark-2:  #141A16;
+      --bg-dark-3:  #1B231E;
+      /* Brand green scale */
+      --brand:      #74C79A;   /* sage mint — logo green, used on dark */
+      --brand-bright:#90D7B0;
+      --green-deep: #15663C;   /* CTA / text on light (WCAG AA) */
+      --green-deep-h:#0F5230;
+      --green-50:   #ECF6F0;
+      --green-100:  #D6ECDF;
+      --green-700:  #115232;
+      /* Warm-stone neutrals */
+      --ink:        #0E1411;
+      --ink-soft:   #1B221D;
+      --stone-700:  #2C322B;
+      --stone-600:  #454B43;
+      --stone-500:  #5E645A;
+      --stone-400:  #878D82;
+      --stone-300:  #B7BCB1;
+      --stone-200:  #DEDFD7;
+      --stone-100:  #ECECE5;
+      --stone-50:   #F7F7F2;
+      --paper:      #F7F7F2;
+      --white:      #FFFFFF;
+      /* shape */
+      --r:          12px;
+      --r-sm:       8px;
+      --r-lg:       16px;
+      --r-xl:       20px;
+      --shadow:     0 1px 3px rgba(14,20,17,.06), 0 4px 16px rgba(14,20,17,.06);
+      --shadow-md:  0 4px 6px rgba(14,20,17,.05), 0 14px 38px rgba(14,20,17,.1);
+      --t:          .2s ease;
+    }
+
+    /* ── Base ── */
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ── Typography ── */
+    .display { font-family: 'Syne', sans-serif; font-weight: 800; line-height: 1.08; letter-spacing: -.02em; }
+    h2 { font-weight: 700; line-height: 1.2; letter-spacing: -.015em; }
+    h3 { font-weight: 600; line-height: 1.3; }
+    .eyebrow {
+      display: inline-block;
+      font-size: .6875rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--green-deep);
+      margin-bottom: .875rem;
+    }
+    .eyebrow--light { color: var(--brand); }
+    .text-muted { color: var(--stone-500); }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .75rem 1.375rem;
+      border-radius: var(--r-sm);
+      font-size: .9375rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all var(--t);
+      text-decoration: none;
+      white-space: nowrap;
+      line-height: 1;
+    }
+    .btn:active { transform: translateY(1px) !important; }
+    /* deep green on light */
+    .btn-primary { background: var(--green-deep); color: var(--white); }
+    .btn-primary:hover { background: var(--green-deep-h); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(21,102,60,.28); }
+    /* vivid sage on dark, near-black text = electric */
+    .btn-spark { background: var(--brand); color: #07140D; font-weight: 700; }
+    .btn-spark:hover { background: var(--brand-bright); transform: translateY(-1px); box-shadow: 0 8px 28px rgba(116,199,154,.34); }
+    .btn-ghost { background: rgba(255,255,255,.06); color: var(--white); border: 1.5px solid rgba(255,255,255,.22); }
+    .btn-ghost:hover { background: rgba(255,255,255,.12); border-color: rgba(144,215,176,.6); }
+    .btn-outline { background: transparent; color: var(--green-deep); border: 1.5px solid var(--stone-200); }
+    .btn-outline:hover { border-color: var(--green-deep); }
+    .btn-lg { padding: 1rem 1.875rem; font-size: 1rem; }
+    .btn-full { width: 100%; justify-content: center; }
+
+    /* ── Focus visibility (a11y) ── */
+    a:focus-visible, button:focus-visible, input:focus-visible,
+    select:focus-visible, textarea:focus-visible, .filter-pill:focus-visible {
+      outline: 2px solid var(--brand);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    /* ── Brand mark ── */
+    .brand { display: inline-flex; align-items: center; gap: .625rem; text-decoration: none; }
+    .brand-mark { width: 34px; height: 34px; flex-shrink: 0; color: var(--brand); }
+    .brand-text { display: flex; flex-direction: column; line-height: 1; }
+    .brand-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1875rem;
+      letter-spacing: .04em;
+      color: var(--white);
+    }
+    .brand-sub {
+      font-size: .5rem;
+      font-weight: 600;
+      letter-spacing: .34em;
+      color: var(--brand);
+      margin-top: 3px;
+      text-transform: uppercase;
+    }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
+      transition: background var(--t), box-shadow var(--t);
+    }
+    .nav.scrolled {
+      background: rgba(12,16,14,.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 rgba(144,215,176,.1);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-links { display: flex; align-items: center; gap: .125rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,.66);
+      text-decoration: none;
+      font-size: .9375rem;
+      font-weight: 500;
+      padding: .5rem .875rem;
+      border-radius: 6px;
+      transition: color var(--t), background var(--t);
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); background: rgba(255,255,255,.07); }
+    .nav-right { display: flex; align-items: center; gap: .75rem; }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: .5rem;
+    }
+    .hamburger span { display: block; width: 22px; height: 2px; background: white; border-radius: 2px; transition: all .3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 76px; left: 0; right: 0;
+      background: var(--bg-dark-2);
+      padding: 1rem 1.5rem 2rem;
+      z-index: 199;
+      border-top: 1px solid rgba(255,255,255,.07);
+      animation: slideDown .25s ease;
+    }
+    @keyframes slideDown { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
+    .mobile-nav.open { display: block; }
+    .mobile-nav a {
+      display: block; color: rgba(255,255,255,.78); text-decoration: none;
+      padding: .875rem 0; border-bottom: 1px solid rgba(255,255,255,.06);
+      font-weight: 500; font-size: 1rem;
+    }
+    .mobile-nav a:last-of-type { border-bottom: none; }
+    .mobile-ctas { display: flex; flex-direction: column; gap: .75rem; margin-top: 1.25rem; }
+
+    /* ── Pages ── */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--bg-dark);
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      padding: 9rem 1.5rem 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 68% 32%, rgba(116,199,154,.16) 0%, transparent 64%),
+        radial-gradient(ellipse 45% 45% at 14% 88%, rgba(116,199,154,.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, #000 30%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, #000 30%, transparent 80%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(116,199,154,.1);
+      border: 1px solid rgba(116,199,154,.26);
+      border-radius: 100px; padding: .4rem 1rem;
+      font-size: .8125rem; font-weight: 500; color: rgba(255,255,255,.82);
+      margin-bottom: 1.5rem;
+    }
+    .hero-badge .dot {
+      width: 6px; height: 6px; background: var(--brand); border-radius: 50%;
+      flex-shrink: 0; box-shadow: 0 0 8px var(--brand);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+    .hero h1 {
+      font-size: clamp(2.5rem, 5.5vw, 4rem);
+      color: var(--white); margin-bottom: 1.25rem;
+    }
+    .hero h1 .hl { color: var(--brand); }
+    .hero-sub {
+      color: rgba(255,255,255,.6); font-size: 1.125rem; line-height: 1.75;
+      margin-bottom: 2rem; max-width: 480px;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-bottom: 3.5rem; }
+    .hero-trust {
+      display: flex; align-items: center; gap: .75rem;
+      color: rgba(255,255,255,.42); font-size: .8125rem;
+    }
+    .hero-trust::before {
+      content: ''; display: block; width: 24px; height: 1px;
+      background: rgba(255,255,255,.22); flex-shrink: 0;
+    }
+
+    .hero-stats { display: flex; flex-direction: column; gap: 1rem; }
+    .stat-card {
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--r-lg); padding: 1.5rem 1.75rem;
+      transition: background var(--t), border-color var(--t);
+    }
+    .stat-card:hover { background: rgba(255,255,255,.06); border-color: rgba(144,215,176,.28); }
+    .stat-card .stat-value {
+      font-family: 'Syne', sans-serif; font-size: 2.25rem; font-weight: 800;
+      color: var(--white); line-height: 1; margin-bottom: .25rem;
+    }
+    .stat-card .stat-value .unit { color: var(--brand); font-size: 1.5rem; }
+    .stat-card .stat-label { font-size: .875rem; color: rgba(255,255,255,.48); line-height: 1.4; }
+    .stat-card.featured { background: rgba(116,199,154,.1); border-color: rgba(116,199,154,.26); }
+    .stat-card.featured .stat-label { color: rgba(255,255,255,.62); }
+
+    /* ── Steps ── */
+    .steps { background: var(--white); padding: 6rem 1.5rem; }
+    .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; margin-top: 1rem; }
+    .steps-line {
+      position: absolute; top: 2.25rem;
+      left: calc(12.5% + 2rem); right: calc(12.5% + 2rem); height: 2px;
+      background: linear-gradient(to right, transparent, var(--green-100), var(--brand), var(--green-100), transparent);
+    }
+    .step { padding: 0 1.25rem; text-align: center; }
+    .step-icon {
+      width: 4.5rem; height: 4.5rem; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem; position: relative; z-index: 1;
+      box-shadow: 0 0 0 6px var(--green-50), 0 0 0 9px var(--green-100);
+      font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.25rem; color: var(--white);
+    }
+    .step:nth-child(2) .step-icon { background: var(--brand); color: #07140D; }
+    .step:nth-child(3) .step-icon { background: #3DA06A; }
+    .step:nth-child(4) .step-icon { background: var(--green-deep); }
+    .step:nth-child(5) .step-icon { background: var(--ink); }
+    .step h3 { font-size: 1.0625rem; margin-bottom: .625rem; color: var(--ink); }
+    .step p { font-size: .9rem; color: var(--stone-500); line-height: 1.65; }
+    .step-tag {
+      display: inline-block; font-size: .6875rem; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; padding: .25rem .625rem; border-radius: 4px;
+      background: var(--green-50); color: var(--green-deep); margin-bottom: .875rem;
+    }
+
+    /* ── Bénéfices propriétaires ── */
+    .benefits-owners { background: var(--paper); padding: 6rem 1.5rem; }
+    .benefits-split { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .benefits-visual {
+      background: var(--bg-dark); border-radius: var(--r-xl); padding: 2.5rem;
+      position: relative; overflow: hidden;
+    }
+    .benefits-visual::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 30% 25%, rgba(116,199,154,.2) 0%, transparent 64%);
+    }
+    .savings-display { position: relative; z-index: 1; }
+    .savings-label { font-size: .8125rem; font-weight: 600; color: rgba(255,255,255,.48); letter-spacing: .06em; text-transform: uppercase; margin-bottom: .75rem; }
+    .savings-amount { font-family: 'Syne', sans-serif; font-size: 3.5rem; font-weight: 800; color: var(--white); line-height: 1; margin-bottom: .375rem; }
+    .savings-amount span { color: var(--brand); }
+    .savings-sub { font-size: .9375rem; color: rgba(255,255,255,.52); margin-bottom: 2rem; }
+    .savings-bars { display: flex; flex-direction: column; gap: .875rem; }
+    .sbar-label { display: flex; justify-content: space-between; font-size: .8125rem; color: rgba(255,255,255,.58); margin-bottom: .375rem; }
+    .sbar-track { height: 6px; background: rgba(255,255,255,.1); border-radius: 3px; overflow: hidden; }
+    .sbar-fill { height: 100%; border-radius: 3px; width: 0; transition: width 1.2s cubic-bezier(.4,0,.2,1); }
+    .sbar-fill.deep  { background: var(--green-deep); }
+    .sbar-fill.sage  { background: var(--brand); }
+    .sbar-fill.light { background: var(--brand-bright); }
+    .sbar-value { font-size: .8125rem; font-weight: 600; color: rgba(255,255,255,.7); margin-top: .375rem; }
+
+    .benefits-list { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2.5rem; }
+    .benefit-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .benefit-icon {
+      width: 2.5rem; height: 2.5rem; border-radius: 10px; background: var(--green-50);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--green-deep);
+    }
+    .benefit-text h4 { font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: .25rem; }
+    .benefit-text p { font-size: .9rem; color: var(--stone-500); line-height: 1.6; }
+
+    /* ── Bénéfices installateurs ── */
+    .benefits-installers { background: var(--white); padding: 6rem 1.5rem; }
+    .installers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 1rem; }
+    .installer-card {
+      background: var(--stone-50); border: 1px solid var(--stone-100); border-radius: var(--r-lg);
+      padding: 1.75rem; transition: border-color var(--t), box-shadow var(--t), transform var(--t);
+    }
+    .installer-card:hover { border-color: var(--green-100); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .installer-card .ic-icon {
+      width: 3rem; height: 3rem; border-radius: var(--r-sm); background: var(--green-deep);
+      display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; color: var(--white);
+    }
+    .installer-card h3 { font-size: 1.0625rem; margin-bottom: .625rem; }
+    .installer-card p { font-size: .9rem; color: var(--stone-500); line-height: 1.65; }
+
+    /* ── CEE / Électrification ── */
+    .cee-section { background: var(--bg-dark); padding: 6rem 1.5rem; position: relative; overflow: hidden; }
+    .cee-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 82% 50%, rgba(116,199,154,.13) 0%, transparent 64%);
+      pointer-events: none;
+    }
+    .cee-inner {
+      position: relative; z-index: 1; max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+    }
+    .cee-content h2 { font-size: clamp(1.75rem,3.5vw,2.5rem); color: var(--white); margin-bottom: 1.25rem; }
+    .cee-content p { color: rgba(255,255,255,.6); font-size: 1.0625rem; line-height: 1.75; margin-bottom: 1.25rem; }
+    .cee-cards { display: flex; flex-direction: column; gap: 1rem; }
+    .cee-card {
+      background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.08); border-radius: var(--r);
+      padding: 1.5rem; display: flex; gap: 1rem; align-items: flex-start; transition: background var(--t);
+    }
+    .cee-card:hover { background: rgba(255,255,255,.075); }
+    .cee-card .cee-num {
+      font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: var(--brand);
+      line-height: 1; flex-shrink: 0; min-width: 3rem;
+    }
+    .cee-card h4 { font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: .375rem; }
+    .cee-card p { font-size: .9rem; color: rgba(255,255,255,.52); line-height: 1.6; }
+
+    /* ── Form ── */
+    .form-section { background: var(--paper); padding: 6rem 1.5rem; }
+    .form-wrapper {
+      max-width: 720px; margin: 0 auto; background: var(--white); border-radius: var(--r-xl);
+      box-shadow: 0 4px 6px rgba(14,20,17,.04), 0 22px 60px rgba(14,20,17,.09); overflow: hidden;
+    }
+    .form-tabs { display: grid; grid-template-columns: 1fr 1fr; background: var(--stone-100); }
+    .form-tab {
+      padding: 1.125rem; text-align: center; font-weight: 600; font-size: .9375rem;
+      cursor: pointer; border: none; background: transparent; color: var(--stone-500);
+      transition: all var(--t); position: relative;
+    }
+    .form-tab.active { background: var(--white); color: var(--ink); }
+    .form-tab.active::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--green-deep); }
+    .form-body { padding: 2.5rem; }
+    .form-panel { display: none; }
+    .form-panel.active { display: block; }
+    .form-intro { margin-bottom: 1.75rem; }
+    .form-intro h3 { font-size: 1.375rem; font-weight: 700; margin-bottom: .5rem; }
+    .form-intro p { color: var(--stone-500); font-size: .9375rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-full { grid-column: 1 / -1; }
+    .field { display: flex; flex-direction: column; gap: .4375rem; }
+    .field label { font-size: .875rem; font-weight: 600; color: var(--stone-700); }
+    .field input, .field select, .field textarea {
+      padding: .6875rem .875rem; border: 1.5px solid var(--stone-200); border-radius: var(--r-sm);
+      font-size: .9375rem; color: var(--ink); background: var(--white);
+      transition: border-color var(--t), box-shadow var(--t); outline: none; width: 100%;
+    }
+    .field input::placeholder, .field textarea::placeholder { color: var(--stone-400); }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: var(--green-deep); box-shadow: 0 0 0 3px rgba(21,102,60,.12);
+    }
+    .field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23878D82'%3E%3Cpath fill-rule='evenodd' d='M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right .875rem center; background-size: 1.125rem; padding-right: 2.5rem; }
+    .field textarea { resize: vertical; min-height: 100px; }
+    .form-submit-area { margin-top: 1.75rem; }
+    .form-disclaimer { font-size: .8125rem; color: var(--stone-400); margin-top: .875rem; line-height: 1.5; }
+    .form-disclaimer a { color: var(--green-deep); }
+    .form-success { display: none; text-align: center; padding: 3rem 2rem; }
+    .form-success .success-icon {
+      width: 4rem; height: 4rem; border-radius: 50%; background: var(--green-50);
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; color: var(--green-deep);
+    }
+    .form-success h3 { font-size: 1.375rem; margin-bottom: .625rem; }
+    .form-success p { color: var(--stone-500); }
+
+    /* ── News page ── */
+    .news-hero { background: var(--bg-dark); padding: 9rem 1.5rem 4rem; position: relative; overflow: hidden; }
+    .news-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 70% at 85% 30%, rgba(116,199,154,.12) 0%, transparent 62%);
+    }
+    .news-hero > .container { position: relative; z-index: 1; }
+    .news-hero h1 { font-size: clamp(2rem,4vw,3rem); color: var(--white); margin-bottom: .75rem; }
+    .news-hero p { color: rgba(255,255,255,.52); font-size: 1.0625rem; max-width: 620px; }
+    .news-meta-row { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; margin-top: 1.25rem; }
+    .news-update {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .8125rem; color: rgba(255,255,255,.4);
+    }
+    .news-update .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 8px var(--brand); animation: pulse 2s ease-in-out infinite; }
+    .news-new-count {
+      display: inline-flex; align-items: center; gap: .375rem;
+      background: rgba(116,199,154,.12); border: 1px solid rgba(116,199,154,.28);
+      color: var(--brand-bright); font-size: .8125rem; font-weight: 600;
+      padding: .3rem .75rem; border-radius: 100px;
+    }
+    .news-filters-bar { background: var(--white); border-bottom: 1px solid var(--stone-100); padding: 1rem 1.5rem; position: sticky; top: 76px; z-index: 50; }
+    .news-filters { max-width: 1200px; margin: 0 auto; display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; }
+    .filter-pill {
+      padding: .4375rem 1rem; border-radius: 100px; font-size: .875rem; font-weight: 500;
+      cursor: pointer; border: 1.5px solid var(--stone-200); background: transparent; color: var(--stone-600);
+      transition: all var(--t); white-space: nowrap;
+    }
+    .filter-pill:hover { border-color: var(--green-deep); color: var(--green-deep); }
+    .filter-pill.active { background: var(--green-deep); border-color: var(--green-deep); color: var(--white); }
+    .news-body { padding: 3rem 1.5rem 5rem; }
+    .news-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
+    .article-card {
+      background: var(--white); border: 1px solid var(--stone-100); border-radius: var(--r-lg);
+      overflow: hidden; transition: box-shadow var(--t), transform var(--t); cursor: pointer;
+    }
+    .article-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .article-card.featured { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
+    .article-thumb { aspect-ratio: 16/9; overflow: hidden; position: relative; }
+    .article-card.featured .article-thumb { aspect-ratio: auto; min-height: 280px; }
+    .article-thumb-bg {
+      width: 100%; height: 100%; transition: transform .4s ease;
+      display: flex; align-items: center; justify-content: center; position: relative;
+    }
+    .article-thumb-bg svg { width: 30%; height: 30%; opacity: .9; }
+    .article-card:hover .article-thumb-bg { transform: scale(1.04); }
+    .article-thumb-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 26px 26px;
+    }
+    .article-content { padding: 1.5rem; }
+    .article-card.featured .article-content { padding: 2rem 2.5rem; display: flex; flex-direction: column; justify-content: center; }
+    .article-meta { display: flex; align-items: center; gap: .625rem; margin-bottom: .875rem; flex-wrap: wrap; }
+    .tag { display: inline-block; font-size: .6875rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: .25rem .625rem; border-radius: 4px; }
+    .tag-cee   { background: var(--green-deep); color: var(--white); }
+    .tag-pac   { background: var(--green-50); color: var(--green-deep); }
+    .tag-elec  { background: transparent; color: var(--green-deep); box-shadow: inset 0 0 0 1.5px var(--green-100); }
+    .tag-reg   { background: var(--stone-100); color: var(--stone-600); }
+    .tag-marche{ background: var(--stone-700); color: var(--stone-100); }
+    .tag-new {
+      display: inline-flex; align-items: center; gap: .3rem;
+      background: rgba(116,199,154,.16); color: var(--green-deep);
+    }
+    .tag-new::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--brand); animation: pulse 1.8s ease-in-out infinite; }
+    .article-date { font-size: .8125rem; color: var(--stone-400); }
+    .article-read { font-size: .8125rem; color: var(--stone-400); }
+    .article-card h3 { font-size: 1.0625rem; font-weight: 700; color: var(--ink); margin-bottom: .625rem; line-height: 1.4; }
+    .article-card.featured h3 { font-size: 1.375rem; margin-bottom: .875rem; }
+    .article-card p { font-size: .9rem; color: var(--stone-500); line-height: 1.65; }
+    .news-empty { text-align: center; padding: 4rem 2rem; color: var(--stone-400); display: none; }
+    .news-empty.visible { display: block; }
+
+    /* ── Footer ── */
+    .footer { background: var(--bg-dark); padding: 4rem 1.5rem 2rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.07); }
+    .footer-brand .brand { margin-bottom: 1rem; }
+    .footer-brand p { font-size: .9rem; color: rgba(255,255,255,.42); line-height: 1.7; max-width: 300px; }
+    .footer-brand .footer-contact { margin-top: 1.25rem; font-size: .875rem; color: rgba(255,255,255,.52); }
+    .footer-brand .footer-contact a { color: rgba(255,255,255,.78); text-decoration: none; }
+    .footer-brand .footer-contact a:hover { color: var(--brand); }
+    .footer-col h4 { font-size: .8125rem; font-weight: 700; color: var(--white); margin-bottom: 1rem; letter-spacing: .04em; text-transform: uppercase; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .625rem; }
+    .footer-col ul li a { color: rgba(255,255,255,.46); text-decoration: none; font-size: .9rem; transition: color var(--t); }
+    .footer-col ul li a:hover { color: var(--brand); }
+    .footer-bottom { padding-top: 1.75rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .footer-bottom p { font-size: .8125rem; color: rgba(255,255,255,.32); }
+    .footer-legal { display: flex; gap: 1.5rem; }
+    .footer-legal a { font-size: .8125rem; color: rgba(255,255,255,.32); text-decoration: none; }
+    .footer-legal a:hover { color: rgba(255,255,255,.6); }
+
+    /* ── Animations ── */
+    .fade-up { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up-delay-1 { transition-delay: .1s; }
+    .fade-up-delay-2 { transition-delay: .2s; }
+    .fade-up-delay-3 { transition-delay: .3s; }
+
+    /* ── Section headers ── */
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-header h2 { font-size: clamp(1.75rem,3.5vw,2.5rem); margin-bottom: .875rem; }
+    .section-header p { color: var(--stone-500); font-size: 1.0625rem; max-width: 560px; margin: 0 auto; line-height: 1.7; }
+    .section-header.left { text-align: left; }
+    .section-header.left p { margin: 0; }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .hero { min-height: auto; padding: 9rem 1.5rem 5rem; align-items: flex-start; }
+      .hero-stats { flex-direction: row; flex-wrap: wrap; }
+      .stat-card { flex: 1; min-width: 200px; }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+      .steps-line { display: none; }
+      .step { padding: 0; }
+      .benefits-split { grid-template-columns: 1fr; gap: 3rem; }
+      .installers-grid { grid-template-columns: repeat(2, 1fr); }
+      .cee-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .news-grid { grid-template-columns: repeat(2, 1fr); }
+      .article-card.featured { grid-column: 1 / -1; grid-template-columns: 1fr; }
+      .article-card.featured .article-thumb { min-height: 200px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-right { display: none; }
+      .hamburger { display: flex; }
+      .hero h1 { font-size: 2.25rem; }
+      .hero-sub { font-size: 1rem; }
+      .steps-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .installers-grid { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-body { padding: 1.75rem; }
+      .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .news-grid { grid-template-columns: 1fr; }
+      .article-card.featured { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+      .hero-stats { flex-direction: column; }
+      .stat-card { min-width: unset; }
+    }
+
+    /* ── Reduced motion (a11y) ── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+      .fade-up { opacity: 1; transform: none; }
+    }
+
+    /* ── Utility ── */
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+    .mt-3 { margin-top: 1.5rem; }
+  </style>
+</head>
+<body>
+
+<!-- Reusable inline logo (defs) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="nexium-logo">
+      <path d="M30 16 L23 28.1 L9 28.1 L2 16 L9 3.9 L23 3.9 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M13 2 L3 14 H12 L11 22 L21 10 H12 L13 2 Z" fill="currentColor" transform="translate(16 16) scale(0.82) translate(-12 -12)"/>
+    </g>
+  </defs>
+</svg>
+
+<!-- ════════════════════════════════════ NAVIGATION ════════════════════════════════════ -->
+<header class="nav" id="nav" role="banner">
+  <div class="nav-inner">
+    <a href="#" class="brand" onclick="showPage('home', this)" aria-label="Nexium Électrification — Accueil">
+      <svg class="brand-mark" viewBox="0 0 32 32" role="img" aria-hidden="true"><use href="#nexium-logo"/></svg>
+      <span class="brand-text">
+        <span class="brand-name">NEXIUM</span>
+        <span class="brand-sub">Électrification</span>
+      </span>
+    </a>
+    <nav aria-label="Navigation principale">
+      <ul class="nav-links" role="list">
+        <li><a href="#" onclick="showPage('home', this); document.getElementById('section-model').scrollIntoView({behavior:'smooth'}); return false;">Notre modèle</a></li>
+        <li><a href="#" onclick="showPage('home', this); document.getElementById('section-installers').scrollIntoView({behavior:'smooth'}); return false;">Installateurs</a></li>
+        <li><a href="#" onclick="showPage('home', this); document.getElementById('section-cee').scrollIntoView({behavior:'smooth'}); return false;">CEE</a></li>
+        <li><a href="#" onclick="showPage('news', this)" class="nav-news">Actualités</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <a href="#contact" class="btn btn-spark" style="font-size:.875rem;padding:.55rem 1.1rem;" onclick="setFormTab('installer')">Rejoindre le réseau</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav" role="navigation" aria-label="Menu mobile">
+  <a href="#" onclick="closeMobileNav(); showPage('home')">Accueil</a>
+  <a href="#" onclick="closeMobileNav(); showPage('home'); setTimeout(()=>document.getElementById('section-model').scrollIntoView({behavior:'smooth'}),100)">Notre modèle</a>
+  <a href="#" onclick="closeMobileNav(); showPage('home'); setTimeout(()=>document.getElementById('section-installers').scrollIntoView({behavior:'smooth'}),100)">Installateurs RGE</a>
+  <a href="#" onclick="closeMobileNav(); showPage('home'); setTimeout(()=>document.getElementById('section-cee').scrollIntoView({behavior:'smooth'}),100)">Les CEE</a>
+  <a href="#" onclick="closeMobileNav(); showPage('news')">Actualités</a>
+  <div class="mobile-ctas">
+    <a href="#contact" class="btn btn-spark btn-full" onclick="closeMobileNav(); setFormTab('installer')">Rejoindre le réseau</a>
+    <a href="#contact" class="btn btn-ghost btn-full" onclick="closeMobileNav(); setFormTab('owner')">Je suis propriétaire</a>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════ PAGE: ACCUEIL ════════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Réseau national d'installateurs RGE certifiés
+        </div>
+        <h1 class="display" id="hero-heading">
+          Divisez par 3 votre<br>facture de chauffage.<br><span class="hl">Sans avancer la paperasse.</span>
+        </h1>
+        <p class="hero-sub">
+          Nexium sélectionne un installateur RGE qualifié près de chez vous, monte votre dossier MaPrimeRénov' et maximise vos primes CEE. Vous remplacez votre chaudière par une pompe à chaleur, on s'occupe de tout le reste.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-spark btn-lg" onclick="setFormTab('owner')">
+            Estimer mes économies
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#contact" class="btn btn-ghost btn-lg" onclick="setFormTab('installer')">Rejoindre le réseau RGE</a>
+        </div>
+        <p class="hero-trust">Éligibilité vérifiée en 48&nbsp;h · Dossiers d'aides pris en charge à 100&nbsp;%</p>
+      </div>
+
+      <div class="hero-stats" role="region" aria-label="Chiffres clés">
+        <div class="stat-card featured">
+          <div class="stat-value"><span class="unit">jusqu'à </span>70<span class="unit">&nbsp;%</span></div>
+          <div class="stat-label">d'aides sur le coût total de la pompe à chaleur<br><small style="color:rgba(255,255,255,.38)">MaPrimeRénov' + prime CEE cumulées</small></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">3 200<span class="unit">&nbsp;€</span></div>
+          <div class="stat-label">d'économies annuelles moyennes sur une maison chauffée au fioul</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">+240</div>
+          <div class="stat-label">installateurs RGE partenaires en France métropolitaine</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 STEPS MODEL -->
+  <section class="steps" id="section-model" aria-labelledby="steps-heading">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="eyebrow">Notre modèle</span>
+        <h2 id="steps-heading">Un circuit court, de l'apport à la valorisation</h2>
+        <p>Nexium orchestre toute la chaîne : de l'identification du prospect jusqu'à l'encaissement des CEE, sans fuite de valeur pour l'installateur.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="steps-line" aria-hidden="true"></div>
+
+        <div class="step fade-up">
+          <div class="step-icon" aria-hidden="true">1</div>
+          <span class="step-tag">Apport d'affaires</span>
+          <h3>Prospects qualifiés livrés</h3>
+          <p>Nexium identifie et pré-qualifie des propriétaires en projet PAC dans votre zone. Vous recevez un chantier prêt à signer, pas un contact froid.</p>
+        </div>
+
+        <div class="step fade-up fade-up-delay-1">
+          <div class="step-icon" aria-hidden="true">2</div>
+          <span class="step-tag">Pose PAC</span>
+          <h3>Intervention RGE sur site</h3>
+          <p>Votre équipe certifiée réalise la pose selon les protocoles QualiPAC. Nexium assure la coordination logistique et le contrôle qualité.</p>
+        </div>
+
+        <div class="step fade-up fade-up-delay-2">
+          <div class="step-icon" aria-hidden="true">3</div>
+          <span class="step-tag">Dossiers d'aides</span>
+          <h3>Instruction MaPrimeRénov' + CEE</h3>
+          <p>Nos experts réglementaires montent et déposent l'intégralité des dossiers : MaPrimeRénov', CEE, Éco-PTZ. Zéro démarche administrative pour l'installateur.</p>
+        </div>
+
+        <div class="step fade-up fade-up-delay-3">
+          <div class="step-icon" aria-hidden="true">4</div>
+          <span class="step-tag">Valorisation CEE</span>
+          <h3>Optimisation sur le marché</h3>
+          <p>Nexium agrège et valorise les CEE sur le marché de gré à gré. La prime est reversée directement à votre client pour réduire son reste à charge.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BÉNÉFICES PROPRIÉTAIRES -->
+  <section class="benefits-owners" aria-labelledby="owners-heading">
+    <div class="container">
+      <div class="benefits-split">
+        <div class="benefits-visual fade-up" aria-hidden="true">
+          <div class="savings-display">
+            <div class="savings-label">Économies annuelles estimées</div>
+            <div class="savings-amount"><span>3 200</span>&nbsp;€</div>
+            <div class="savings-sub">maison de 120&nbsp;m² · remplacement chaudière fioul → PAC air/eau</div>
+            <div class="savings-bars" role="img" aria-label="Répartition des économies et aides">
+              <div>
+                <div class="sbar-label"><span>Baisse de la facture de chauffage</span></div>
+                <div class="sbar-track"><div class="sbar-fill deep" data-width="78"></div></div>
+                <div class="sbar-value">jusqu'à −78&nbsp;% vs fioul</div>
+              </div>
+              <div>
+                <div class="sbar-label"><span>Aide MaPrimeRénov'</span></div>
+                <div class="sbar-track"><div class="sbar-fill sage" data-width="65"></div></div>
+                <div class="sbar-value">jusqu'à 65&nbsp;% du coût de l'équipement</div>
+              </div>
+              <div>
+                <div class="sbar-label"><span>Prime CEE</span></div>
+                <div class="sbar-track"><div class="sbar-fill light" data-width="42"></div></div>
+                <div class="sbar-value">déduite directement du devis</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-header left fade-up">
+            <span class="eyebrow">Pour les propriétaires</span>
+            <h2 id="owners-heading">Passez à la pompe à chaleur sans la paperasse</h2>
+            <p>Vous avez un projet de remplacement de chauffage. Nexium prend en charge tout ce qui rend le projet complexe.</p>
+          </div>
+
+          <ul class="benefits-list" role="list">
+            <li class="benefit-item fade-up fade-up-delay-1">
+              <div class="benefit-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><path d="M12 3c-1.2 0-2.4.6-3 1.7A3.6 3.6 0 0 0 4.6 9c-1 .6-1.7 1.8-1.7 3s.7 2.4 1.7 3c-.3 1.2.1 2.5 1 3.4.9.9 2.2 1.3 3.4 1 .6 1 1.8 1.7 3 1.7s2.4-.7 3-1.7c1.2.3 2.5-.1 3.4-1 .9-.9 1.3-2.2 1-3.4 1-.6 1.7-1.8 1.7-3s-.7-2.4-1.7-3c.3-1.2-.1-2.5-1-3.4-.9-.9-2.2-1.3-3.4-1-.6-1.1-1.8-1.7-3-1.7Z"/></svg>
+              </div>
+              <div class="benefit-text">
+                <h4>Un installateur RGE certifié, pas un sous-traitant anonyme</h4>
+                <p>Nexium sélectionne ses partenaires sur leurs certifications QualiPAC, leur taux de satisfaction client et leur réactivité. Chaque pose est couverte par une assurance décennale.</p>
+              </div>
+            </li>
+            <li class="benefit-item fade-up fade-up-delay-2">
+              <div class="benefit-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.8 9A2 2 0 0 0 13 8h-2a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4h-2a2 2 0 0 1-1.8-1"/><path d="M12 6v2m0 8v2"/></svg>
+              </div>
+              <div class="benefit-text">
+                <h4>Aides maximisées, reste à charge minimisé</h4>
+                <p>Nos experts instruisent MaPrimeRénov', CEE et Éco-PTZ simultanément pour optimiser le cumul d'aides applicable à votre situation et votre niveau de revenus.</p>
+              </div>
+            </li>
+            <li class="benefit-item fade-up fade-up-delay-3">
+              <div class="benefit-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="m9 15 2 2 4-4"/></svg>
+              </div>
+              <div class="benefit-text">
+                <h4>Zéro démarche administrative</h4>
+                <p>Dépôt des dossiers, suivi des demandes, relances ANAH : Nexium gère tout. Vous signez le devis, vous réglez le reste à charge, vous profitez du confort.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BÉNÉFICES INSTALLATEURS -->
+  <section class="benefits-installers" id="section-installers" aria-labelledby="installers-heading">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="eyebrow">Pour les installateurs RGE</span>
+        <h2 id="installers-heading">Concentrez-vous sur la pose.<br>On gère le reste.</h2>
+        <p>Nexium prend en charge l'acquisition, l'administratif et la valorisation des CEE. Vous gagnez en volume de chantiers sans investir en prospection.</p>
+      </div>
+
+      <div class="installers-grid">
+        <div class="installer-card fade-up">
+          <div class="ic-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Leads qualifiés sans prospection</h3>
+          <p>Vous recevez des chantiers confirmés dans votre zone de chalandise : propriétaires déjà engagés, éligibilité vérifiée. Pas de démarchage à froid.</p>
+        </div>
+
+        <div class="installer-card fade-up fade-up-delay-1">
+          <div class="ic-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h3>Dossiers intégralement pris en charge</h3>
+          <p>MaPrimeRénov', CEE, Éco-PTZ : nos équipes instruisent chaque dossier. Vous ne remplissez plus un seul formulaire ANAH.</p>
+        </div>
+
+        <div class="installer-card fade-up fade-up-delay-2">
+          <div class="ic-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <h3>Valorisation CEE optimisée</h3>
+          <p>Nexium agrège vos opérations et les valorise en volume sur le marché des CEE. La prime obtenue dépasse systématiquement la négociation unitaire.</p>
+        </div>
+
+        <div class="installer-card fade-up fade-up-delay-3">
+          <div class="ic-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 2"/></svg>
+          </div>
+          <h3>Paiement accéléré</h3>
+          <p>Avance de trésorerie sur les primes CEE et règlement sous 15 jours après réception des factures. Fini l'attente ANAH à 3 mois.</p>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:3rem;" class="fade-up">
+        <a href="#contact" class="btn btn-primary btn-lg" onclick="setFormTab('installer')">
+          Candidater en tant qu'installateur RGE
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CEE EXPLAINER -->
+  <section class="cee-section" id="section-cee" aria-labelledby="cee-heading">
+    <div class="cee-inner">
+      <div class="cee-content fade-up">
+        <span class="eyebrow eyebrow--light">Les CEE expliqués</span>
+        <h2 id="cee-heading">Les Certificats d'Économies d'Énergie : de quoi s'agit-il ?</h2>
+        <p>
+          Les fournisseurs d'énergie (EDF, Engie, TotalEnergies…) ont l'obligation légale de financer des travaux d'économies d'énergie chez les particuliers. Chaque pompe à chaleur installée génère un volume de certificats, valorisable sur un marché dédié.
+        </p>
+        <p>
+          Nexium récupère ces CEE pour le compte de ses installateurs partenaires, les agrège et les revend en volume aux obligés. Résultat : une prime systématiquement plus élevée, reversée en déduction directe du devis du client final.
+        </p>
+        <a href="#contact" class="btn btn-ghost mt-3" onclick="setFormTab('owner')">
+          Calculer ma prime CEE
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="cee-cards fade-up fade-up-delay-1">
+        <div class="cee-card">
+          <div class="cee-num" aria-hidden="true">01</div>
+          <div>
+            <h4>Obligation légale des fournisseurs</h4>
+            <p>Les obligés du dispositif doivent prouver qu'ils ont financé des économies d'énergie, ou racheter des CEE sur le marché pour s'acquitter de leur quota.</p>
+          </div>
+        </div>
+        <div class="cee-card">
+          <div class="cee-num" aria-hidden="true">02</div>
+          <div>
+            <h4>Génération par l'opération PAC</h4>
+            <p>Chaque installation réalisée par un installateur RGE génère un volume de CEE calculé selon les fiches standardisées (fiche BAR-TH-171 pour les PAC air/eau).</p>
+          </div>
+        </div>
+        <div class="cee-card">
+          <div class="cee-num" aria-hidden="true">03</div>
+          <div>
+            <h4>Valorisation et redistribution</h4>
+            <p>Nexium vend les certificats agrégés aux obligés, puis reverse la prime au propriétaire sous forme de remise sur devis, réduisant directement son reste à charge.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULAIRES -->
+  <section class="form-section" id="contact" aria-labelledby="form-heading">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="eyebrow">Contact</span>
+        <h2 id="form-heading">Rejoignez Nexium</h2>
+        <p>Propriétaire ou installateur RGE, remplissez le formulaire correspondant. Notre équipe vous répond sous 24&nbsp;h ouvrées.</p>
+      </div>
+
+      <div class="form-wrapper fade-up" id="form-wrapper">
+        <div class="form-tabs" role="tablist" aria-label="Type de demande">
+          <button class="form-tab active" id="tab-owner" role="tab" aria-selected="true" aria-controls="panel-owner" onclick="switchFormTab('owner')">Je suis propriétaire</button>
+          <button class="form-tab" id="tab-installer" role="tab" aria-selected="false" aria-controls="panel-installer" onclick="switchFormTab('installer')">Je suis installateur RGE</button>
+        </div>
+
+        <div class="form-body">
+          <!-- PANEL PROPRIÉTAIRE -->
+          <div class="form-panel active" id="panel-owner" role="tabpanel" aria-labelledby="tab-owner">
+            <div class="form-intro">
+              <h3>Demande d'information — Propriétaire</h3>
+              <p>Estimez vos aides et trouvez un installateur RGE certifié près de chez vous.</p>
+            </div>
+            <form id="form-owner" novalidate>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="o-prenom">Prénom <span aria-hidden="true">*</span></label>
+                  <input type="text" id="o-prenom" name="prenom" required autocomplete="given-name" placeholder="Marie">
+                </div>
+                <div class="field">
+                  <label for="o-nom">Nom <span aria-hidden="true">*</span></label>
+                  <input type="text" id="o-nom" name="nom" required autocomplete="family-name" placeholder="Dupont">
+                </div>
+                <div class="field">
+                  <label for="o-email">Email <span aria-hidden="true">*</span></label>
+                  <input type="email" id="o-email" name="email" required autocomplete="email" placeholder="marie.dupont@email.com">
+                </div>
+                <div class="field">
+                  <label for="o-tel">Téléphone <span aria-hidden="true">*</span></label>
+                  <input type="tel" id="o-tel" name="telephone" required autocomplete="tel" placeholder="06 XX XX XX XX">
+                </div>
+                <div class="field">
+                  <label for="o-logement">Type de logement <span aria-hidden="true">*</span></label>
+                  <select id="o-logement" name="logement" required>
+                    <option value="">Sélectionnez…</option>
+                    <option value="maison">Maison individuelle</option>
+                    <option value="appartement">Appartement</option>
+                    <option value="autre">Autre</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="o-surface">Surface habitable (m²)</label>
+                  <input type="number" id="o-surface" name="surface" min="20" max="1000" placeholder="120">
+                </div>
+                <div class="field form-full">
+                  <label for="o-chauffage">Système de chauffage actuel <span aria-hidden="true">*</span></label>
+                  <select id="o-chauffage" name="chauffage" required>
+                    <option value="">Sélectionnez…</option>
+                    <option value="gaz">Chaudière gaz</option>
+                    <option value="fioul">Chaudière fioul</option>
+                    <option value="electrique">Chauffage électrique (convecteurs)</option>
+                    <option value="bois">Poêle / insert bois</option>
+                    <option value="autre">Autre</option>
+                  </select>
+                </div>
+                <div class="field form-full">
+                  <label for="o-code-postal">Code postal <span aria-hidden="true">*</span></label>
+                  <input type="text" id="o-code-postal" name="code_postal" required placeholder="75001" maxlength="5" inputmode="numeric" pattern="[0-9]{5}">
+                </div>
+                <div class="field form-full">
+                  <label for="o-message">Message (optionnel)</label>
+                  <textarea id="o-message" name="message" placeholder="Précisez votre projet, vos questions…"></textarea>
+                </div>
+              </div>
+              <div class="form-submit-area">
+                <button type="submit" class="btn btn-primary btn-lg btn-full">
+                  Envoyer ma demande
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+                <p class="form-disclaimer">En soumettant ce formulaire, vous acceptez d'être recontacté par Nexium dans le cadre de votre projet de rénovation. Aucune transmission à des tiers. <a href="mailto:info@nexiumfr.com">info@nexiumfr.com</a></p>
+              </div>
+            </form>
+          </div>
+
+          <!-- PANEL INSTALLATEUR -->
+          <div class="form-panel" id="panel-installer" role="tabpanel" aria-labelledby="tab-installer">
+            <div class="form-intro">
+              <h3>Candidature — Installateur RGE</h3>
+              <p>Rejoignez notre réseau de partenaires et accédez à des chantiers PAC qualifiés dans votre zone.</p>
+            </div>
+            <form id="form-installer" novalidate>
+              <div class="form-grid">
+                <div class="field form-full">
+                  <label for="i-raison">Raison sociale <span aria-hidden="true">*</span></label>
+                  <input type="text" id="i-raison" name="raison_sociale" required autocomplete="organization" placeholder="Chauffage Pro SAS">
+                </div>
+                <div class="field">
+                  <label for="i-prenom">Prénom du contact <span aria-hidden="true">*</span></label>
+                  <input type="text" id="i-prenom" name="prenom" required autocomplete="given-name" placeholder="Jean">
+                </div>
+                <div class="field">
+                  <label for="i-nom">Nom <span aria-hidden="true">*</span></label>
+                  <input type="text" id="i-nom" name="nom" required autocomplete="family-name" placeholder="Martin">
+                </div>
+                <div class="field">
+                  <label for="i-email">Email professionnel <span aria-hidden="true">*</span></label>
+                  <input type="email" id="i-email" name="email" required autocomplete="email" placeholder="contact@chauffagepro.fr">
+                </div>
+                <div class="field">
+                  <label for="i-tel">Téléphone <span aria-hidden="true">*</span></label>
+                  <input type="tel" id="i-tel" name="telephone" required autocomplete="tel" placeholder="06 XX XX XX XX">
+                </div>
+                <div class="field form-full">
+                  <label for="i-zone">Département(s) d'intervention <span aria-hidden="true">*</span></label>
+                  <input type="text" id="i-zone" name="zone" required placeholder="ex : 75, 92, 93, 94 — Île-de-France">
+                </div>
+                <div class="field form-full">
+                  <label for="i-certif">Certification(s) RGE <span aria-hidden="true">*</span></label>
+                  <select id="i-certif" name="certifications" required>
+                    <option value="">Sélectionnez…</option>
+                    <option value="qualipac">QualiPAC</option>
+                    <option value="qualibat">Qualibat RGE</option>
+                    <option value="qualibat_qualipac">QualiPAC + Qualibat</option>
+                    <option value="autre">Autre certification RGE</option>
+                  </select>
+                </div>
+                <div class="field form-full">
+                  <label for="i-volume">Volume annuel de poses PAC (estimation)</label>
+                  <select id="i-volume" name="volume">
+                    <option value="">Sélectionnez…</option>
+                    <option value="moins10">Moins de 10 poses/an</option>
+                    <option value="10-30">10 à 30 poses/an</option>
+                    <option value="30-80">30 à 80 poses/an</option>
+                    <option value="plus80">Plus de 80 poses/an</option>
+                  </select>
+                </div>
+                <div class="field form-full">
+                  <label for="i-message">Informations complémentaires</label>
+                  <textarea id="i-message" name="message" placeholder="Types de PAC installés, équipements, effectifs…"></textarea>
+                </div>
+              </div>
+              <div class="form-submit-area">
+                <button type="submit" class="btn btn-primary btn-lg btn-full">
+                  Soumettre ma candidature
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+                <p class="form-disclaimer">Votre candidature sera étudiée par notre équipe sous 48&nbsp;h ouvrées. Toutes les certifications RGE sont les bienvenues. <a href="mailto:info@nexiumfr.com">info@nexiumfr.com</a></p>
+              </div>
+            </form>
+          </div>
+
+          <div class="form-success" id="form-success" aria-live="polite">
+            <div class="success-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <h3 id="success-title">Votre demande a bien été envoyée</h3>
+            <p id="success-body">Notre équipe reviendra vers vous sous 24&nbsp;h ouvrées à l'adresse que vous avez indiquée.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-home -->
+
+
+<!-- ════════════════════════════════════ PAGE: ACTUALITÉS ════════════════════════════════════ -->
+<div id="page-news" class="page">
+
+  <div class="news-hero">
+    <div class="container">
+      <span class="eyebrow eyebrow--light">Veille Nexium</span>
+      <h1 class="display">L'électrification des usages,<br>décryptée chaque jour</h1>
+      <p>Pompes à chaleur, certificats d'économies d'énergie, MaPrimeRénov', tarifs de l'électricité : notre veille quotidienne sur tout ce qui fait bouger la rénovation énergétique résidentielle.</p>
+      <div class="news-meta-row">
+        <span class="news-update"><span class="live-dot"></span><span id="news-update-time"></span></span>
+        <span class="news-new-count" id="news-new-count" hidden></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="news-filters-bar">
+    <div class="news-filters" role="group" aria-label="Filtres par catégorie">
+      <button class="filter-pill active" onclick="filterNews('all', this)" aria-pressed="true">Tous</button>
+      <button class="filter-pill" onclick="filterNews('cee', this)" aria-pressed="false">CEE &amp; aides</button>
+      <button class="filter-pill" onclick="filterNews('pac', this)" aria-pressed="false">Pompes à chaleur</button>
+      <button class="filter-pill" onclick="filterNews('elec', this)" aria-pressed="false">Électrification</button>
+      <button class="filter-pill" onclick="filterNews('reg', this)" aria-pressed="false">Réglementation</button>
+      <button class="filter-pill" onclick="filterNews('marche', this)" aria-pressed="false">Marché</button>
+    </div>
+  </div>
+
+  <div class="news-body">
+    <div class="news-grid" id="news-grid"><!-- injecté par JS --></div>
+    <div class="news-empty" id="news-empty" aria-live="polite"><p>Aucun article dans cette catégorie pour le moment.</p></div>
+  </div>
+
+</div><!-- /page-news -->
+
+
+<!-- ════════════════════════════════════ FOOTER ════════════════════════════════════ -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="brand" onclick="showPage('home')" aria-label="Nexium Électrification — Accueil">
+          <svg class="brand-mark" viewBox="0 0 32 32" role="img" aria-hidden="true"><use href="#nexium-logo"/></svg>
+          <span class="brand-text">
+            <span class="brand-name">NEXIUM</span>
+            <span class="brand-sub">Électrification</span>
+          </span>
+        </a>
+        <p>Nexium fédère des installateurs RGE pour la pose de pompes à chaleur en résidentiel. Nous gérons l'apport d'affaires, le montage des dossiers MaPrimeRénov'/CEE et la valorisation des certificats.</p>
+        <div class="footer-contact"><a href="mailto:info@nexiumfr.com">info@nexiumfr.com</a></div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Propriétaires</h4>
+        <ul>
+          <li><a href="#contact" onclick="setFormTab('owner')">Demande d'information</a></li>
+          <li><a href="#" onclick="showPage('home');setTimeout(()=>document.getElementById('section-cee').scrollIntoView({behavior:'smooth'}),100)">Comprendre les CEE</a></li>
+          <li><a href="#" onclick="showPage('home');setTimeout(()=>document.getElementById('section-model').scrollIntoView({behavior:'smooth'}),100)">Notre modèle</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Installateurs</h4>
+        <ul>
+          <li><a href="#contact" onclick="setFormTab('installer')">Rejoindre le réseau</a></li>
+          <li><a href="#" onclick="showPage('home');setTimeout(()=>document.getElementById('section-installers').scrollIntoView({behavior:'smooth'}),100)">Nos engagements</a></li>
+          <li><a href="mailto:info@nexiumfr.com">Partenariat</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Ressources</h4>
+        <ul>
+          <li><a href="#" onclick="showPage('news')">Actualités</a></li>
+          <li><a href="mailto:info@nexiumfr.com">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© <span id="footer-year"></span> Nexium SAS · Tous droits réservés</p>
+      <div class="footer-legal">
+        <a href="#">Mentions légales</a>
+        <a href="#">Confidentialité</a>
+        <a href="mailto:info@nexiumfr.com">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ════════════════════════════════════ JAVASCRIPT ════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  /* ── Page routing ── */
+  function showPage(id, linkEl) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    if (linkEl && linkEl.classList.contains('nav-news')) linkEl.classList.add('active');
+    setTimeout(observeFadeUps, 50);
+  }
+  window.showPage = showPage;
+
+  /* ── Nav scroll effect ── */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  /* ── Mobile nav ── */
+  window.toggleMobileNav = function() {
+    const btn = document.getElementById('hamburger');
+    const menu = document.getElementById('mobileNav');
+    const open = menu.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', String(open));
+  };
+  window.closeMobileNav = function() {
+    document.getElementById('mobileNav').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
+  };
+
+  /* ── Form tabs ── */
+  window.switchFormTab = function(tab) {
+    ['owner', 'installer'].forEach(t => {
+      document.getElementById('tab-' + t).classList.toggle('active', t === tab);
+      document.getElementById('panel-' + t).classList.toggle('active', t === tab);
+      document.getElementById('tab-' + t).setAttribute('aria-selected', String(t === tab));
+    });
+    document.getElementById('form-success').style.display = 'none';
+    document.querySelectorAll('.form-panel form').forEach(f => f.style.display = '');
+  };
+  window.setFormTab = function(tab) {
+    showPage('home');
+    setTimeout(() => {
+      switchFormTab(tab);
+      document.getElementById('form-wrapper').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 120);
+  };
+
+  /* ── Form submission (mailto fallback for static hosting) ── */
+  function handleSubmit(formId, type) {
+    const form = document.getElementById(formId);
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      const data = new FormData(form);
+      const subject = type === 'owner' ? 'Nexium — Demande propriétaire' : 'Nexium — Candidature installateur RGE';
+      let body = '';
+      data.forEach((v, k) => { body += k + ': ' + v + '\n'; });
+      const mailto = 'mailto:info@nexiumfr.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+
+      form.style.display = 'none';
+      const success = document.getElementById('form-success');
+      success.style.display = 'block';
+      if (type === 'owner') {
+        document.getElementById('success-title').textContent = 'Demande envoyée — merci !';
+        document.getElementById('success-body').textContent = 'Nous vous recontactons sous 24 h ouvrées pour étudier votre éligibilité et vous mettre en relation avec un installateur RGE certifié dans votre secteur.';
+      } else {
+        document.getElementById('success-title').textContent = 'Candidature reçue — merci !';
+        document.getElementById('success-body').textContent = 'Notre équipe Partenariats étudie votre dossier et vous contacte sous 48 h ouvrées. Si votre profil correspond à nos critères, un rendez-vous vous sera proposé.';
+      }
+      window.location.href = mailto;
+    });
+  }
+  handleSubmit('form-owner', 'owner');
+  handleSubmit('form-installer', 'installer');
+
+  /* ── Scroll animations ── */
+  function observeFadeUps() {
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
+      return;
+    }
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-up:not(.visible)').forEach(el => obs.observe(el));
+  }
+  observeFadeUps();
+
+  /* ── Savings bars animation ── */
+  const barsObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.sbar-fill').forEach(bar => {
+          const w = bar.getAttribute('data-width');
+          requestAnimationFrame(() => { bar.style.width = w + '%'; });
+        });
+        barsObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.savings-bars').forEach(el => barsObs.observe(el));
+
+  /* ════════════════ NEWS ENGINE ════════════════ */
+  const DAY_MS = 86400000;
+  const now = new Date();
+
+  function publishDate(daysAgo) {
+    const d = new Date(now);
+    d.setHours(8, 0, 0, 0);
+    d.setDate(d.getDate() - daysAgo);
+    return d;
+  }
+  function formatDate(d) {
+    return d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+  function dayOfYear(d) {
+    return Math.floor((d - new Date(d.getFullYear(), 0, 0)) / DAY_MS);
+  }
+
+  /* Thumbnail backgrounds + inline electric/energy icons (no nature clichés) */
+  const THUMBS = {
+    cee:    { bg: 'var(--bg-dark)',  fg: 'var(--brand)',
+              icon: '<path d="M3 3v18h18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 15l4-5 3 3 5-7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' },
+    pac:    { bg: '#10231A',          fg: 'var(--brand)',
+              icon: '<rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none"/><path d="M7 9v6M12 9v6M17 9v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>' },
+    elec:   { bg: 'var(--bg-dark)',  fg: 'var(--brand-bright)',
+              icon: '<path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/>' },
+    reg:    { bg: '#161B17',          fg: 'var(--brand)',
+              icon: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/><path d="M14 2v6h6M9 13h6M9 17h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>' },
+    marche: { bg: '#10231A',          fg: 'var(--brand)',
+              icon: '<path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 7v6M21 7h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' }
+  };
+  const CATS = {
+    cee:    { label: 'CEE & aides',     tag: 'tag-cee' },
+    pac:    { label: 'Pompes à chaleur', tag: 'tag-pac' },
+    elec:   { label: 'Électrification',  tag: 'tag-elec' },
+    reg:    { label: 'Réglementation',   tag: 'tag-reg' },
+    marche: { label: 'Marché',           tag: 'tag-marche' }
+  };
+
+  /* Article pool — headlines dated to 2026, anchored to "today" so they stay fresh.
+     A daily rotation surfaces a different lead story every 24 h. */
+  const POOL = [
+    { cat:'cee',    read:'4 min', title:'CEE : la 6ᵉ période rehausse de 9 % le forfait de la fiche BAR-TH-171 pour les PAC air/eau',
+      excerpt:'Publié au Journal officiel, l\'arrêté du printemps 2026 revalorise le forfait CEE des pompes à chaleur air/eau en résidentiel existant. Une bonne nouvelle pour les installateurs RGE et leurs clients.' },
+    { cat:'marche', read:'5 min', title:'Prix des CEE : le cours du MWh cumac se stabilise autour de 9,2 € après un hiver tendu',
+      excerpt:'Après la volatilité de l\'hiver 2025-2026, le marché de gré à gré des certificats retrouve un palier. Analyse des facteurs d\'offre et de demande pour le second semestre.' },
+    { cat:'pac',    read:'5 min', title:'Le parc français de PAC air/eau dépasse 1,4 million d\'unités installées',
+      excerpt:'Selon les dernières données Uniclima, la France a franchi un nouveau cap en 2025, porté par les aides publiques et l\'interdiction progressive des chaudières fioul.' },
+    { cat:'reg',    read:'6 min', title:'MaPrimeRénov\' 2026 : ce qui change dans les forfaits et les plafonds de ressources',
+      excerpt:'Le décret de janvier 2026 ajuste les barèmes par profil de revenus et recentre les aides sur les rénovations de chauffage performantes. Détail des nouveaux montants applicables.' },
+    { cat:'elec',   read:'7 min', title:'Électrification des usages : la part de l\'électricité dans le chauffage résidentiel atteint 41 %',
+      excerpt:'Le bilan RTE-ADEME 2026 montre une bascule continue du gaz et du fioul vers les solutions électriques performantes. Les PAC tirent la dynamique, le fioul recule sous 9 % du parc.' },
+    { cat:'reg',    read:'5 min', title:'Fin des chaudières fioul : le régime dérogatoire de remplacement d\'urgence précisé',
+      excerpt:'L\'installation de nouvelles chaudières fioul est interdite depuis 2026. L\'administration clarifie les rares cas de remplacement d\'urgence et leurs conditions strictes.' },
+    { cat:'cee',    read:'9 min', title:'Cumul MaPrimeRénov\' + CEE + Éco-PTZ : le guide pratique des aides 2026 pour une PAC',
+      excerpt:'Quelles aides peut-on réellement cumuler pour une pompe à chaleur en résidence principale ? Tableau récapitulatif, conditions de ressources et plafonds mis à jour pour 2026.' },
+    { cat:'pac',    read:'8 min', title:'COP en conditions réelles : l\'étude 2026 mesure 3,1 de moyenne sur 1 500 installations',
+      excerpt:'Une vaste campagne de mesure sur le terrain confirme l\'écart entre COP nominal constructeur et performance réelle en saison de chauffe. Les enseignements pour bien dimensionner.' },
+    { cat:'elec',   read:'6 min', title:'Baisse du tarif réglementé : quel impact sur le temps de retour d\'une PAC en 2026 ?',
+      excerpt:'La révision tarifaire de février 2026 améliore le ROI des pompes à chaleur face au gaz et au fioul. Calculs comparatifs pour trois profils de logements et de consommation.' },
+    { cat:'marche', read:'4 min', title:'Certifications QualiPAC : +21 % d\'entreprises RGE qualifiées en un an',
+      excerpt:'Qualit\'EnR publie ses statistiques annuelles : la tension sur la main-d\'œuvre qualifiée reste vive dans les métropoles, malgré une forte progression des certifications.' },
+    { cat:'reg',    read:'5 min', title:'DPE et passoires thermiques : le calendrier d\'interdiction locative jusqu\'en 2028',
+      excerpt:'Les logements classés F sont concernés à partir de 2028. Rappel du calendrier progressif et de l\'effet d\'entraînement attendu sur la demande de rénovation du chauffage.' },
+    { cat:'elec',   read:'5 min', title:'Chauffe-eau thermodynamique : un marché en hausse de 28 %, dopé par les CEE',
+      excerpt:'Le CET bénéficie lui aussi des fiches CEE et de MaPrimeRénov\'. Analyse du marché et complémentarité avec la PAC pour l\'eau chaude sanitaire en logement collectif.' },
+    { cat:'cee',    read:'6 min', title:'Contrôles CEE renforcés : ce que les installateurs doivent documenter en 2026',
+      excerpt:'Le pôle national des CEE durcit ses exigences de preuve. Photos horodatées, attestations sur l\'honneur, fiches techniques : la check-list pour sécuriser chaque dossier.' },
+    { cat:'pac',    read:'5 min', title:'PAC et réseau électrique : le pilotage tarifaire heures creuses se généralise',
+      excerpt:'Les nouvelles offres effacement permettent de chauffer aux heures les moins chères et de soulager le réseau. Un levier d\'économies supplémentaire pour les propriétaires équipés.' },
+    { cat:'marche', read:'6 min', title:'Réseaux d\'apporteurs d\'affaires : comment se structure la pose de PAC en 2026',
+      excerpt:'Entre plateformes de mise en relation et réseaux intégrés, le marché de l\'apport d\'affaires se professionnalise. Panorama des modèles et de leurs effets sur la marge installateur.' },
+    { cat:'elec',   read:'7 min', title:'Électrification : les pompes à chaleur évitent 6 Mt de CO₂ par an en France',
+      excerpt:'Au-delà de la facture, le basculement vers l\'électricité décarbonée pèse sur le bilan carbone national. Les chiffres clés de la contribution des PAC résidentielles.' }
+  ];
+
+  /* Daily rotation: a different lead story each day, dates re-anchored to today */
+  const offset = dayOfYear(now) % POOL.length;
+  const rotated = POOL.slice(offset).concat(POOL.slice(0, offset));
+  const gaps = [0, 1, 2, 4, 5, 7, 9, 11, 14, 17, 20, 24, 28, 33, 38, 44];
+  const articles = rotated.map((a, i) => {
+    const d = publishDate(gaps[i] !== undefined ? gaps[i] : 44 + i);
+    return Object.assign({}, a, { date: d, daysAgo: gaps[i] !== undefined ? gaps[i] : 44 + i });
+  });
+
+  function renderNews(filter) {
+    const grid = document.getElementById('news-grid');
+    const empty = document.getElementById('news-empty');
+    const list = filter === 'all' ? articles : articles.filter(a => a.cat === filter);
+    grid.innerHTML = '';
+    if (list.length === 0) { empty.classList.add('visible'); return; }
+    empty.classList.remove('visible');
+
+    list.forEach((art, idx) => {
+      const isNew = art.daysAgo <= 1;
+      const isFeatured = filter === 'all' && idx === 0;
+      const cat = CATS[art.cat];
+      const thumb = THUMBS[art.cat];
+      const card = document.createElement('article');
+      card.className = 'article-card fade-up' + (isFeatured ? ' featured' : '');
+      card.setAttribute('data-cat', art.cat);
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-label', art.title);
+      if (idx > 0) card.style.transitionDelay = Math.min(idx * 0.05, 0.4) + 's';
+
+      card.innerHTML =
+        '<div class="article-thumb" style="background:' + thumb.bg + '">' +
+          '<div class="article-thumb-bg" style="background:' + thumb.bg + ';color:' + thumb.fg + '">' +
+            '<div class="article-thumb-grid"></div>' +
+            '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">' + thumb.icon + '</svg>' +
+          '</div>' +
+        '</div>' +
+        '<div class="article-content">' +
+          '<div class="article-meta">' +
+            '<span class="tag ' + cat.tag + '">' + cat.label + '</span>' +
+            (isNew ? '<span class="tag tag-new">Nouveau</span>' : '') +
+            '<span class="article-date">' + formatDate(art.date) + '</span>' +
+            '<span class="article-read">· ' + art.read + ' de lecture</span>' +
+          '</div>' +
+          '<h3>' + art.title + '</h3>' +
+          '<p>' + art.excerpt + '</p>' +
+        '</div>';
+      grid.appendChild(card);
+    });
+    observeFadeUps();
+  }
+
+  window.filterNews = function(cat, btn) {
+    document.querySelectorAll('.filter-pill').forEach(p => { p.classList.remove('active'); p.setAttribute('aria-pressed', 'false'); });
+    btn.classList.add('active');
+    btn.setAttribute('aria-pressed', 'true');
+    renderNews(cat);
+  };
+
+  /* Update timestamp + "nouveaux depuis votre dernière visite" */
+  function newsMeta() {
+    const el = document.getElementById('news-update-time');
+    const lastUpdate = publishDate(0);
+    el.textContent = 'Mise à jour quotidienne · dernière actualisation le ' + formatDate(lastUpdate) + ' à 08:00';
+
+    const KEY = 'nexium_last_visit';
+    const last = localStorage.getItem(KEY);
+    const badge = document.getElementById('news-new-count');
+    if (last) {
+      const lastDate = new Date(last);
+      const fresh = articles.filter(a => a.date > lastDate).length;
+      if (fresh > 0) {
+        badge.hidden = false;
+        badge.textContent = fresh + (fresh > 1 ? ' nouveaux articles' : ' nouvel article') + ' depuis votre dernière visite';
+      }
+    }
+    localStorage.setItem(KEY, now.toISOString());
+  }
+
+  /* Init */
+  document.getElementById('footer-year').textContent = now.getFullYear();
+  renderNews('all');
+  newsMeta();
+
+})();
+</script>
+
+</body>
+</html>
