@@ -543,6 +543,104 @@
     .section-header.left { text-align: left; }
     .section-header.left p { margin: 0; }
 
+    /* ── Nav dropdown ── */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a { display: inline-flex; align-items: center; gap: .3rem; }
+    .nav-dropdown > a .caret { transition: transform var(--t); opacity: .7; }
+    .nav-dropdown:hover > a .caret { transform: rotate(180deg); }
+    .nav-dropdown-menu {
+      position: absolute; top: 100%; left: 0; min-width: 250px;
+      background: var(--bg-dark-2); border: 1px solid rgba(255,255,255,.09);
+      border-radius: var(--r); padding: .5rem; list-style: none;
+      box-shadow: 0 16px 44px rgba(0,0,0,.45);
+      opacity: 0; visibility: hidden; transform: translateY(-6px);
+      transition: opacity var(--t), transform var(--t), visibility var(--t);
+    }
+    .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown-menu li a { display: block; padding: .6rem .75rem; border-radius: 7px; color: rgba(255,255,255,.74); font-weight: 600; font-size: .9rem; }
+    .nav-dropdown-menu li a:hover { background: rgba(255,255,255,.07); color: #fff; }
+    .nav-dropdown-menu li a small { display: block; font-weight: 400; font-size: .73rem; color: rgba(255,255,255,.42); margin-top: 2px; }
+
+    /* ── Content pages ── */
+    .page-hero { background: var(--bg-dark); padding: 9rem 1.5rem 4rem; position: relative; overflow: hidden; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 50% 70% at 82% 25%, rgba(116,199,154,.13) 0%, transparent 62%); }
+    .page-hero > .container { position: relative; z-index: 1; }
+    .page-hero .crumb { font-size: .8125rem; color: rgba(255,255,255,.4); margin-bottom: 1rem; }
+    .page-hero .crumb a { color: var(--brand); text-decoration: none; cursor: pointer; }
+    .page-hero h1 { font-size: clamp(2rem,4vw,2.85rem); color: var(--white); margin-bottom: .9rem; max-width: 22ch; }
+    .page-hero p { color: rgba(255,255,255,.6); font-size: 1.0625rem; max-width: 640px; line-height: 1.7; }
+
+    .content-section { padding: 4.5rem 1.5rem; }
+    .content-section.alt { background: var(--white); }
+    .content-section.paper { background: var(--paper); }
+    .content-head { max-width: 720px; margin: 0 auto 3rem; text-align: center; }
+    .content-head h2 { font-size: clamp(1.6rem,3vw,2.2rem); margin-bottom: .875rem; }
+    .content-head p { color: var(--stone-500); font-size: 1.0625rem; line-height: 1.7; }
+
+    .info-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .info-grid.cols-2 { grid-template-columns: repeat(2, 1fr); max-width: 920px; }
+    .info-card { background: var(--white); border: 1px solid var(--stone-100); border-radius: var(--r-lg); padding: 1.75rem; transition: box-shadow var(--t), transform var(--t), border-color var(--t); }
+    .content-section.alt .info-card { background: var(--stone-50); }
+    .info-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); border-color: var(--green-100); }
+    .info-card .ic { width: 3rem; height: 3rem; border-radius: var(--r-sm); background: var(--green-50); color: var(--green-deep); display: flex; align-items: center; justify-content: center; margin-bottom: 1.1rem; }
+    .info-card h3 { font-size: 1.0625rem; margin-bottom: .5rem; }
+    .info-card p { font-size: .9rem; color: var(--stone-500); line-height: 1.65; }
+
+    .aid-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .aid-card { background: var(--white); border: 1px solid var(--stone-200); border-radius: var(--r-lg); padding: 1.75rem; position: relative; }
+    .content-section.paper .aid-card { background: var(--white); }
+    .aid-card .amount { font-family: 'Syne', sans-serif; font-size: 1.9rem; font-weight: 800; color: var(--green-deep); line-height: 1; margin-bottom: .45rem; }
+    .aid-card .amount small { font-size: .85rem; color: var(--stone-500); font-weight: 600; }
+    .aid-card h3 { font-size: 1.0625rem; margin-bottom: .5rem; }
+    .aid-card p { font-size: .9rem; color: var(--stone-500); line-height: 1.6; }
+    .aid-card .pill { position: absolute; top: 1.35rem; right: 1.35rem; font-size: .6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding: .25rem .55rem; border-radius: 5px; background: var(--green-50); color: var(--green-deep); }
+
+    .aid-table-wrap { max-width: 880px; margin: 0 auto; overflow-x: auto; border: 1px solid var(--stone-200); border-radius: var(--r-lg); }
+    table.aid-table { width: 100%; border-collapse: collapse; font-size: .9375rem; min-width: 520px; }
+    table.aid-table th, table.aid-table td { padding: .9rem 1.15rem; text-align: left; }
+    table.aid-table thead th { background: var(--ink); color: #fff; font-weight: 600; font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; }
+    table.aid-table tbody tr { border-top: 1px solid var(--stone-100); }
+    table.aid-table tbody tr:nth-child(even) { background: var(--stone-50); }
+    table.aid-table .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: .5rem; vertical-align: middle; }
+    table.aid-table .amt { font-weight: 700; color: var(--green-deep); font-family: 'Syne', sans-serif; }
+
+    .checklist { max-width: 780px; margin: 0 auto; list-style: none; display: grid; gap: .75rem; }
+    .checklist li { display: flex; gap: .85rem; align-items: flex-start; background: var(--white); border: 1px solid var(--stone-100); border-radius: var(--r); padding: 1rem 1.25rem; }
+    .content-section.alt .checklist li { background: var(--stone-50); }
+    .checklist li .chk { flex-shrink: 0; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--green-50); color: var(--green-deep); display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+    .checklist li span { font-size: .9375rem; color: var(--stone-600); line-height: 1.55; }
+    .checklist li strong { color: var(--ink); font-weight: 600; }
+
+    .faq { max-width: 780px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--stone-200); }
+    .faq-q { width: 100%; text-align: left; background: none; border: none; cursor: pointer; padding: 1.25rem 0; display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-size: 1.03rem; font-weight: 600; color: var(--ink); }
+    .faq-q .fic { flex-shrink: 0; transition: transform var(--t); color: var(--green-deep); }
+    .faq-item.open .faq-q .fic { transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+    .faq-item.open .faq-a { max-height: 600px; }
+    .faq-a p { padding: 0 0 1.25rem; color: var(--stone-500); font-size: .9375rem; line-height: 1.7; }
+
+    .prose { max-width: 780px; margin: 0 auto; }
+    .prose p { color: var(--stone-600); font-size: 1rem; line-height: 1.78; margin-bottom: 1.1rem; }
+    .prose strong { color: var(--ink); }
+    .note-box { max-width: 780px; margin: 1.75rem auto 0; background: var(--green-50); border: 1px solid var(--green-100); border-left: 3px solid var(--green-deep); border-radius: var(--r); padding: 1.1rem 1.35rem; font-size: .9rem; color: var(--stone-700); line-height: 1.6; }
+    .disclaimer { max-width: 780px; margin: 2.5rem auto 0; font-size: .8125rem; color: var(--stone-400); line-height: 1.6; border-top: 1px solid var(--stone-200); padding-top: 1.25rem; }
+    .disclaimer a { color: var(--green-deep); }
+
+    .cta-banner { background: var(--bg-dark); padding: 4rem 1.5rem; text-align: center; position: relative; overflow: hidden; }
+    .cta-banner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 50% 30%, rgba(116,199,154,.14) 0%, transparent 62%); }
+    .cta-banner > .container { position: relative; z-index: 1; }
+    .cta-banner h2 { font-size: clamp(1.6rem,3vw,2.2rem); color: #fff; margin-bottom: .75rem; }
+    .cta-banner p { color: rgba(255,255,255,.6); font-size: 1.0625rem; max-width: 540px; margin: 0 auto 1.75rem; }
+
+    @media (max-width: 900px) {
+      .info-grid { grid-template-columns: repeat(2, 1fr); }
+      .aid-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .info-grid, .info-grid.cols-2 { grid-template-columns: 1fr; }
+    }
+
     /* ── Responsive ── */
     @media (max-width: 1024px) {
       .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
@@ -618,6 +716,17 @@
       <ul class="nav-links" role="list">
         <li><a href="#" onclick="showPage('home', this); document.getElementById('section-model').scrollIntoView({behavior:'smooth'}); return false;">Notre modèle</a></li>
         <li><a href="#" onclick="showPage('home', this); document.getElementById('section-installers').scrollIntoView({behavior:'smooth'}); return false;">Installateurs</a></li>
+        <li class="nav-dropdown">
+          <a href="#" onclick="return false;" aria-haspopup="true">Conseils &amp; Aides
+            <svg class="caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </a>
+          <ul class="nav-dropdown-menu" role="menu">
+            <li><a href="#" onclick="showPage('aides', this)">Aides financières<small>MaPrimeRénov', CEE, Éco-PTZ, TVA</small></a></li>
+            <li><a href="#" onclick="showPage('adapt', this)">Ma Prime Adapt'<small>Adapter son logement</small></a></li>
+            <li><a href="#" onclick="showPage('conseils', this)">Conseils chauffage<small>Bien choisir sa pompe à chaleur</small></a></li>
+            <li><a href="#" onclick="showPage('depannage', this)">Dépannage &amp; entretien<small>Entretien obligatoire, pannes</small></a></li>
+          </ul>
+        </li>
         <li><a href="#" onclick="showPage('home', this); document.getElementById('section-cee').scrollIntoView({behavior:'smooth'}); return false;">CEE</a></li>
         <li><a href="#" onclick="showPage('news', this)" class="nav-news">Actualités</a></li>
       </ul>
@@ -636,6 +745,10 @@
   <a href="#" onclick="closeMobileNav(); showPage('home'); setTimeout(()=>document.getElementById('section-model').scrollIntoView({behavior:'smooth'}),100)">Notre modèle</a>
   <a href="#" onclick="closeMobileNav(); showPage('home'); setTimeout(()=>document.getElementById('section-installers').scrollIntoView({behavior:'smooth'}),100)">Installateurs RGE</a>
   <a href="#" onclick="closeMobileNav(); showPage('home'); setTimeout(()=>document.getElementById('section-cee').scrollIntoView({behavior:'smooth'}),100)">Les CEE</a>
+  <a href="#" onclick="closeMobileNav(); showPage('aides')">Aides financières</a>
+  <a href="#" onclick="closeMobileNav(); showPage('adapt')">Ma Prime Adapt'</a>
+  <a href="#" onclick="closeMobileNav(); showPage('conseils')">Conseils chauffage</a>
+  <a href="#" onclick="closeMobileNav(); showPage('depannage')">Dépannage &amp; entretien</a>
   <a href="#" onclick="closeMobileNav(); showPage('news')">Actualités</a>
   <div class="mobile-ctas">
     <a href="#contact" class="btn btn-spark btn-full" onclick="closeMobileNav(); setFormTab('installer')">Rejoindre le réseau</a>
@@ -1096,6 +1209,238 @@
 </div><!-- /page-news -->
 
 
+<!-- ════════════════════════════════════ PAGE: AIDES FINANCIÈRES ════════════════════════════════════ -->
+<div id="page-aides" class="page">
+  <div class="page-hero">
+    <div class="container">
+      <div class="crumb"><a onclick="showPage('home')">Accueil</a> · Conseils &amp; Aides · Aides financières</div>
+      <h1 class="display">Aides financières 2026 : jusqu'à 70 % de votre pompe à chaleur financée</h1>
+      <p>MaPrimeRénov', prime CEE, Éco-PTZ, TVA à 5,5 %… Nexium identifie toutes les aides auxquelles vous avez droit, les cumule au mieux et monte les dossiers à votre place.</p>
+    </div>
+  </div>
+
+  <section class="content-section alt">
+    <div class="content-head"><span class="eyebrow">Les dispositifs</span><h2>4 aides cumulables pour votre PAC</h2><p>En les combinant, le reste à charge fond. Nexium calcule le montage optimal selon votre situation.</p></div>
+    <div class="aid-grid">
+      <div class="aid-card"><span class="pill">État · ANAH</span><div class="amount">3 000 – 5 000 €</div><h3>MaPrimeRénov'</h3><p>Aide de l'État versée par l'ANAH selon vos revenus : jusqu'à 5 000 € pour une PAC air/eau (ménages très modestes). Plafond de travaux pris en compte : 12 000 €.</p></div>
+      <div class="aid-card"><span class="pill">Fournisseurs</span><div class="amount">3 000 – 5 000 €</div><h3>Prime CEE / Coup de pouce</h3><p>Financée par les fournisseurs d'énergie. Nexium agrège et valorise les certificats en volume pour obtenir une prime plus élevée, déduite directement de votre devis.</p></div>
+      <div class="aid-card"><span class="pill">0 % d'intérêt</span><div class="amount">jusqu'à 50 000 €</div><h3>Éco-PTZ</h3><p>Prêt à taux zéro remboursable sur 20 ans pour financer le reste à charge, sans condition de ressources et cumulable avec les autres aides.</p></div>
+      <div class="aid-card"><span class="pill">Automatique</span><div class="amount">5,5 %<small> de TVA</small></div><h3>TVA réduite</h3><p>Taux réduit à 5,5 % appliqué directement sur l'équipement et la pose par votre installateur RGE, au lieu de 20 %.</p></div>
+    </div>
+  </section>
+
+  <section class="content-section paper">
+    <div class="content-head"><span class="eyebrow">Barème officiel</span><h2>MaPrimeRénov' 2026 — PAC air/eau</h2><p>Le montant dépend de votre profil de revenus (revenu fiscal de référence 2025).</p></div>
+    <div class="aid-table-wrap">
+      <table class="aid-table">
+        <thead><tr><th>Profil de revenus</th><th>Catégorie</th><th>Aide PAC air/eau</th></tr></thead>
+        <tbody>
+          <tr><td><span class="swatch" style="background:#2563EB"></span>Bleu</td><td>Très modestes</td><td class="amt">5 000 €</td></tr>
+          <tr><td><span class="swatch" style="background:#F59E0B"></span>Jaune</td><td>Modestes</td><td class="amt">4 000 €</td></tr>
+          <tr><td><span class="swatch" style="background:#7C3AED"></span>Violet</td><td>Intermédiaires</td><td class="amt">3 000 €</td></tr>
+          <tr><td><span class="swatch" style="background:#EC4899"></span>Rose</td><td>Supérieurs</td><td>Parcours par geste non éligible (rénovation d'ampleur uniquement)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note-box">Votre profil est déterminé par votre revenu fiscal de référence 2025 et la composition du foyer. Barème exact à vérifier sur <a href="https://france-renov.gouv.fr" target="_blank" rel="noopener">france-renov.gouv.fr</a>.</div>
+  </section>
+
+  <section class="content-section alt">
+    <div class="content-head"><span class="eyebrow">Cumul des aides</span><h2>Jusqu'où peut-on cumuler ?</h2><p>Le total des aides publiques et privées est plafonné en pourcentage du coût TTC des travaux, selon vos revenus.</p></div>
+    <ul class="checklist">
+      <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><strong>Très modestes :</strong> jusqu'à 90 % du coût TTC des travaux pris en charge.</span></li>
+      <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><strong>Modestes :</strong> jusqu'à 75 %.</span></li>
+      <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><strong>Intermédiaires :</strong> jusqu'à 60 %.</span></li>
+      <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><strong>Supérieurs :</strong> jusqu'à 40 %.</span></li>
+    </ul>
+  </section>
+
+  <section class="content-section paper">
+    <div class="content-head"><span class="eyebrow">Questions fréquentes</span><h2>Vos questions sur les aides</h2></div>
+    <div class="faq">
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Suis-je éligible aux aides ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>L'aide concerne les résidences principales de plus de 15 ans, avec une PAC posée par un installateur RGE (Nexium s'en charge). Le montant dépend de vos revenus selon le barème. Nous vérifions votre éligibilité gratuitement sous 48 h.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Dois-je avancer l'argent ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>La prime CEE est déduite directement de votre devis. MaPrimeRénov' est versée après les travaux. L'Éco-PTZ (0 %) permet de financer le reste à charge sans avance. Nous optimisons le montage pour limiter ce que vous sortez de votre poche.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Puis-je cumuler MaPrimeRénov' et la prime CEE ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Oui. MaPrimeRénov', la prime CEE, l'Éco-PTZ et la TVA à 5,5 % sont cumulables, dans la limite des plafonds de cumul indiqués plus haut.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Combien de temps pour obtenir les aides ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Nexium dépose et suit l'intégralité des dossiers. La prime CEE apparaît dès le devis ; MaPrimeRénov' est généralement versée quelques semaines après la fin des travaux et le dépôt des justificatifs.</p></div></div>
+    </div>
+    <p class="disclaimer">Montants et barèmes indicatifs pour 2026, susceptibles d'évoluer et dépendant de votre situation. Sources : <a href="https://www.economie.gouv.fr" target="_blank" rel="noopener">economie.gouv.fr</a>, <a href="https://france-renov.gouv.fr" target="_blank" rel="noopener">france-renov.gouv.fr</a>.</p>
+  </section>
+
+  <div class="cta-banner"><div class="container"><h2>Découvrez vos aides en 48 h</h2><p>Dites-nous où vous en êtes : on calcule vos aides et votre reste à charge, sans engagement.</p><a href="#contact" class="btn btn-spark btn-lg" onclick="setFormTab('owner')">Estimer mes économies</a></div></div>
+</div><!-- /page-aides -->
+
+
+<!-- ════════════════════════════════════ PAGE: MA PRIME ADAPT' ════════════════════════════════════ -->
+<div id="page-adapt" class="page">
+  <div class="page-hero">
+    <div class="container">
+      <div class="crumb"><a onclick="showPage('home')">Accueil</a> · Conseils &amp; Aides · Ma Prime Adapt'</div>
+      <h1 class="display">Ma Prime Adapt' : adaptez votre logement au vieillissement et au handicap</h1>
+      <p>Une aide de l'État (ANAH) qui finance jusqu'à 70 % des travaux pour continuer à vivre chez soi en sécurité. Voici l'essentiel à connaître.</p>
+    </div>
+  </div>
+
+  <section class="content-section alt">
+    <div class="content-head"><span class="eyebrow">Le dispositif</span><h2>Qu'est-ce que Ma Prime Adapt' ?</h2></div>
+    <div class="prose">
+      <p>Lancée en 2024 et gérée par l'<strong>ANAH</strong> (Agence nationale de l'habitat), <strong>Ma Prime Adapt'</strong> regroupe en une seule aide les anciens dispositifs d'adaptation du logement. Elle finance les travaux qui permettent de <strong>rester chez soi en sécurité</strong> malgré l'âge, une perte d'autonomie ou un handicap.</p>
+      <p>L'objectif : prévenir les chutes et faciliter le quotidien, plutôt que de devoir déménager ou entrer en établissement spécialisé.</p>
+    </div>
+  </section>
+
+  <section class="content-section paper">
+    <div class="content-head"><span class="eyebrow">Bénéficiaires</span><h2>Pour qui ?</h2><p>Logement = résidence principale. Conditions de revenus modestes ou très modestes.</p></div>
+    <div class="info-grid">
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a8 8 0 0 1 13 0"/></svg></div><h3>70 ans et plus</h3><p>Sans condition de perte d'autonomie : l'âge suffit pour être éligible.</p></div>
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg></div><h3>60 à 69 ans</h3><p>En situation de perte d'autonomie avérée (selon évaluation), sous conditions.</p></div>
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8h14M7 21h10"/></svg></div><h3>En situation de handicap</h3><p>Taux d'incapacité d'au moins 50 % ou bénéficiaire de la PCH, sans limite d'âge.</p></div>
+    </div>
+  </section>
+
+  <section class="content-section alt">
+    <div class="content-head"><span class="eyebrow">Montant</span><h2>Combien ça finance ?</h2><p>Jusqu'à 70 % des travaux, dans la limite d'un plafond de 22 000 € HT.</p></div>
+    <div class="aid-grid">
+      <div class="aid-card"><span class="pill">Très modestes</span><div class="amount">70 %<small> des travaux HT</small></div><h3>Revenus très modestes</h3><p>Prise en charge jusqu'à 70 % du montant des travaux d'adaptation, plafond de travaux 22 000 € HT.</p></div>
+      <div class="aid-card"><span class="pill">Modestes</span><div class="amount">50 %<small> des travaux HT</small></div><h3>Revenus modestes</h3><p>Prise en charge jusqu'à 50 % du montant des travaux d'adaptation, plafond de travaux 22 000 € HT.</p></div>
+    </div>
+    <div class="note-box">Cumulable avec l'<strong>APA</strong> (Allocation personnalisée d'autonomie) et la <strong>PCH</strong> (Prestation de compensation du handicap), dans la limite du coût total des travaux.</div>
+  </section>
+
+  <section class="content-section paper">
+    <div class="content-head"><span class="eyebrow">Travaux éligibles</span><h2>Ce qui peut être financé</h2></div>
+    <ul class="checklist">
+      <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Remplacement d'une baignoire par une <strong>douche de plain-pied</strong> antidérapante</span></li>
+      <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Installation de <strong>barres d'appui</strong> et de mains courantes (couloirs, salle d'eau, escaliers)</span></li>
+      <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><strong>Monte-escalier</strong> ou plateforme élévatrice</span></li>
+      <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Élargissement des portes, suppression des seuils, WC adaptés, sol antidérapant</span></li>
+      <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Volets roulants électriques, éclairage automatique, motorisations facilitant l'autonomie</span></li>
+    </ul>
+  </section>
+
+  <section class="content-section alt">
+    <div class="content-head"><span class="eyebrow">Le rôle de Nexium</span><h2>Pourquoi on vous en parle</h2></div>
+    <div class="prose">
+      <p>Nexium est spécialisé dans la <strong>pompe à chaleur</strong>, pas dans l'adaptation du logement. Mais Ma Prime Adapt' concerne souvent les mêmes foyers que ceux qui rénovent leur chauffage — alors autant que vous connaissiez vos droits.</p>
+      <p>Si ce dispositif vous intéresse, nous pouvons vous <strong>orienter vers un Assistant à maîtrise d'ouvrage (AMO) agréé</strong>, l'interlocuteur qui évalue vos besoins et monte le dossier Ma Prime Adapt'.</p>
+    </div>
+    <div class="faq" style="margin-top:2.5rem">
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Faut-il être propriétaire ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>L'aide s'adresse aux propriétaires occupants, ainsi qu'aux locataires (avec l'accord du propriétaire) pour leur résidence principale.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Est-ce cumulable avec l'APA ou la PCH ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Oui, le cumul est possible, à condition que le total des aides ne dépasse pas le coût total des travaux engagés.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Qui monte le dossier ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Un Assistant à maîtrise d'ouvrage (AMO) accompagne obligatoirement la démarche : il évalue le logement, propose les travaux et constitue le dossier auprès de l'ANAH.</p></div></div>
+    </div>
+    <p class="disclaimer">Informations indicatives pour 2026, susceptibles d'évoluer. Sources : <a href="https://www.economie.gouv.fr" target="_blank" rel="noopener">economie.gouv.fr</a>, <a href="https://www.service-public.gouv.fr" target="_blank" rel="noopener">service-public.gouv.fr</a>, ANAH.</p>
+  </section>
+
+  <div class="cta-banner"><div class="container"><h2>Une question sur les aides ?</h2><p>Que ce soit pour une pompe à chaleur ou l'adaptation de votre logement, on vous oriente vers le bon interlocuteur.</p><a href="#contact" class="btn btn-spark btn-lg" onclick="setFormTab('owner')">Nous contacter</a></div></div>
+</div><!-- /page-adapt -->
+
+
+<!-- ════════════════════════════════════ PAGE: CONSEILS ════════════════════════════════════ -->
+<div id="page-conseils" class="page">
+  <div class="page-hero">
+    <div class="container">
+      <div class="crumb"><a onclick="showPage('home')">Accueil</a> · Conseils &amp; Aides · Conseils chauffage</div>
+      <h1 class="display">Bien choisir et réussir votre pompe à chaleur</h1>
+      <p>Type de PAC, dimensionnement, isolation, COP… Les repères essentiels avant de vous lancer, expliqués simplement.</p>
+    </div>
+  </div>
+
+  <section class="content-section alt">
+    <div class="content-head"><span class="eyebrow">Choisir</span><h2>Quel type de pompe à chaleur ?</h2><p>Le bon choix dépend de votre logement, de votre chauffage actuel et de vos usages.</p></div>
+    <div class="info-grid">
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-7 4 14 2-7h4"/></svg></div><h3>PAC air/eau</h3><p>La plus installée. Récupère les calories de l'air extérieur pour chauffer l'eau de vos radiateurs ou planchers chauffants. Idéale en remplacement d'une chaudière gaz ou fioul, et éligible à MaPrimeRénov'.</p></div>
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="9" rx="2"/><path d="M7 19h10"/></svg></div><h3>PAC air/air</h3><p>Chauffe l'air directement via des unités intérieures (split). Moins coûteuse, mais elle n'alimente pas l'eau chaude sanitaire et n'ouvre pas droit à MaPrimeRénov'.</p></div>
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v8m0 0 3-3m-3 3-3-3M4 14h16l-2 8H6z"/></svg></div><h3>PAC géothermique</h3><p>Puise la chaleur dans le sol. Rendement très élevé et stable toute l'année, mais coût et travaux de captage plus importants. Aides renforcées.</p></div>
+    </div>
+  </section>
+
+  <section class="content-section paper">
+    <div class="content-head"><span class="eyebrow">Réussir</span><h2>4 points clés pour un projet réussi</h2></div>
+    <ul class="checklist">
+      <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><strong>Bien dimensionner :</strong> une puissance adaptée aux déperditions du logement. Surdimensionner use l'appareil et augmente la facture.</span></li>
+      <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><strong>Soigner l'isolation :</strong> une PAC donne le meilleur d'elle-même dans un logement correctement isolé.</span></li>
+      <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><strong>Viser un bon COP :</strong> le coefficient de performance. Un COP de 3 signifie 1 kWh d'électricité pour 3 kWh de chaleur. Regardez le COP réel en saison de chauffe, pas seulement la valeur constructeur.</span></li>
+      <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><strong>Choisir un installateur RGE QualiPAC :</strong> obligatoire pour bénéficier des aides, et gage de qualité de pose. C'est précisément ce que Nexium garantit.</span></li>
+    </ul>
+  </section>
+
+  <section class="content-section alt">
+    <div class="content-head"><span class="eyebrow">Le bon moment</span><h2>PAC ou chaudière : quand franchir le pas ?</h2></div>
+    <div class="prose">
+      <p>Le passage à la pompe à chaleur devient intéressant quand votre <strong>chaudière a plus de 15 ans</strong>, que les pannes se multiplient, ou que votre facture de gaz ou de fioul grimpe d'année en année.</p>
+      <p>L'<strong>interdiction d'installer de nouvelles chaudières fioul</strong> accélère le mouvement, tout comme l'amélioration du DPE qu'apporte une PAC — un vrai atout à la revente ou à la location.</p>
+    </div>
+  </section>
+
+  <section class="content-section paper">
+    <div class="content-head"><span class="eyebrow">Questions fréquentes</span><h2>Vos questions sur la PAC</h2></div>
+    <div class="faq">
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">La PAC fonctionne-t-elle par grand froid ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Oui, les modèles récents fonctionnent jusqu'à −15 à −20 °C. Le COP baisse par grand froid et un appoint électrique peut prendre le relais. Un bon dimensionnement est déterminant.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Faut-il changer ses radiateurs ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Pas toujours. Beaucoup de radiateurs existants restent compatibles. Les radiateurs basse température ou un plancher chauffant optimisent toutefois le rendement de la PAC.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Une PAC, est-ce bruyant ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>L'unité extérieure émet environ 45 à 55 dB. Un bon emplacement et un modèle récent limitent la gêne. Les règles de voisinage (nuisances sonores) sont à respecter à l'installation.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Quelle est la durée de vie d'une PAC ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Comptez 15 à 20 ans avec un entretien régulier. Un entretien suivi préserve les performances et la garantie constructeur.</p></div></div>
+    </div>
+  </section>
+
+  <div class="cta-banner"><div class="container"><h2>Prêt à passer à la pompe à chaleur ?</h2><p>On vous met en relation avec un installateur RGE qualifié près de chez vous, dossiers d'aides inclus.</p><a href="#contact" class="btn btn-spark btn-lg" onclick="setFormTab('owner')">Estimer mes économies</a></div></div>
+</div><!-- /page-conseils -->
+
+
+<!-- ════════════════════════════════════ PAGE: DÉPANNAGE & ENTRETIEN ════════════════════════════════════ -->
+<div id="page-depannage" class="page">
+  <div class="page-hero">
+    <div class="container">
+      <div class="crumb"><a onclick="showPage('home')">Accueil</a> · Conseils &amp; Aides · Dépannage &amp; entretien</div>
+      <h1 class="display">Dépannage &amp; entretien : gardez votre pompe à chaleur performante</h1>
+      <p>Entretien obligatoire, fréquence, coût, pannes fréquentes… Le guide pour faire durer votre installation et préserver ses performances.</p>
+    </div>
+  </div>
+
+  <section class="content-section alt">
+    <div class="content-head"><span class="eyebrow">Obligation légale</span><h2>L'entretien est-il obligatoire ?</h2><p>Oui. Depuis le décret n°2020-912, l'entretien d'une pompe à chaleur est encadré par la loi.</p></div>
+    <ul class="checklist">
+      <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><strong>Tous les 2 ans</strong> pour les PAC de 4 à 70 kW — la grande majorité des installations résidentielles.</span></li>
+      <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><strong>Tous les 5 ans</strong> pour les PAC de plus de 70 kW.</span></li>
+      <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><strong>Tous les ans</strong> pour les PAC réversibles d'au moins 12 kW (qui font aussi climatisation).</span></li>
+    </ul>
+    <div class="note-box">Aucune sanction directe n'est prévue, mais le fabricant peut conditionner la garantie à un entretien annuel. En location, l'entretien courant incombe au <strong>locataire</strong> (décret n°87-712), comme pour une chaudière.</div>
+  </section>
+
+  <section class="content-section paper">
+    <div class="content-head"><span class="eyebrow">L'intervention</span><h2>Ce que comprend un entretien</h2><p>Comptez en moyenne 200 à 350 € par an pour un contrat d'entretien.</p></div>
+    <ul class="checklist">
+      <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Contrôle de l'étanchéité du circuit frigorifique et vérification du fluide frigorigène</span></li>
+      <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Vérification des pressions et du bon fonctionnement du compresseur</span></li>
+      <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Nettoyage des unités intérieure/extérieure et des filtres</span></li>
+      <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Contrôle des performances, de la régulation et des organes de sécurité électrique</span></li>
+    </ul>
+  </section>
+
+  <section class="content-section alt">
+    <div class="content-head"><span class="eyebrow">Dépannage</span><h2>Pannes fréquentes : que faire ?</h2><p>Quelques réflexes simples avant d'appeler un professionnel.</p></div>
+    <div class="info-grid">
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg></div><h3>La PAC ne chauffe plus</h3><p>Vérifiez le disjoncteur, le thermostat et le mode sélectionné. Si tout est correct, contactez un professionnel.</p></div>
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6M3 18a3 3 0 0 0 6 0M15 18a3 3 0 0 0 6 0"/></svg></div><h3>Bruit anormal</h3><p>Vibrations, ventilateur ou compresseur bruyant : à faire diagnostiquer, souvent un point de fixation ou une pièce d'usure.</p></div>
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M5 5l14 14M19 5 5 19"/></svg></div><h3>Givre sur l'unité extérieure</h3><p>Du givre en hiver est normal (cycle de dégivrage automatique). S'il persiste ou s'épaissit, il y a une anomalie.</p></div>
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.3a2 2 0 0 1 3.4 0l7.9 13.6a2 2 0 0 1-1.7 3H4.1a2 2 0 0 1-1.7-3z"/><path d="M12 9v4M12 17h.01"/></svg></div><h3>Code erreur affiché</h3><p>Notez le code, consultez la notice, et transmettez-le au technicien : il accélère le diagnostic.</p></div>
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18M7 14l4-4 3 3 5-6"/></svg></div><h3>Surconsommation électrique</h3><p>Souvent liée à un mauvais réglage, un appoint trop sollicité ou un dimensionnement inadapté. Un entretien permet de l'identifier.</p></div>
+    </div>
+  </section>
+
+  <section class="content-section paper">
+    <div class="content-head"><span class="eyebrow">Questions fréquentes</span><h2>Vos questions sur l'entretien</h2></div>
+    <div class="faq">
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Puis-je faire l'entretien moi-même ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Le nettoyage des filtres et le dépoussiérage de l'unité extérieure, oui. En revanche, le contrôle du fluide frigorigène est réservé à un professionnel certifié (manipulation réglementée).</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Un contrat d'entretien est-il obligatoire ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>L'entretien périodique est obligatoire, mais souscrire un contrat ne l'est pas. Le contrat reste recommandé : il assure le suivi, planifie les visites et préserve la garantie constructeur.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Qui paie l'entretien en location ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>L'entretien courant est à la charge du locataire (décret n°87-712 sur les réparations locatives), au même titre que l'entretien d'une chaudière.</p></div></div>
+    </div>
+    <p class="disclaimer">Informations indicatives pour 2026. Cadre légal : décret n°2020-912 (entretien des PAC) et décret n°87-712 (réparations locatives). Sources : <a href="https://www.service-public.gouv.fr" target="_blank" rel="noopener">service-public.gouv.fr</a>, ADEME.</p>
+  </section>
+
+  <div class="cta-banner"><div class="container"><h2>Un projet ou une question ?</h2><p>Installation, conseils, mise en relation avec un installateur RGE : on vous répond sous 24 h.</p><a href="#contact" class="btn btn-spark btn-lg" onclick="setFormTab('owner')">Nous contacter</a></div></div>
+</div><!-- /page-depannage -->
+
+
 <!-- ════════════════════════════════════ FOOTER ════════════════════════════════════ -->
 <footer class="footer" role="contentinfo">
   <div class="footer-inner">
@@ -1131,10 +1476,13 @@
       </div>
 
       <div class="footer-col">
-        <h4>Ressources</h4>
+        <h4>Conseils &amp; Aides</h4>
         <ul>
+          <li><a href="#" onclick="showPage('aides')">Aides financières</a></li>
+          <li><a href="#" onclick="showPage('adapt')">Ma Prime Adapt'</a></li>
+          <li><a href="#" onclick="showPage('conseils')">Conseils chauffage</a></li>
+          <li><a href="#" onclick="showPage('depannage')">Dépannage &amp; entretien</a></li>
           <li><a href="#" onclick="showPage('news')">Actualités</a></li>
-          <li><a href="mailto:info@nexiumfr.com">Contact</a></li>
         </ul>
       </div>
     </div>
@@ -1166,6 +1514,9 @@
     setTimeout(observeFadeUps, 50);
   }
   window.showPage = showPage;
+
+  /* ── FAQ accordion ── */
+  window.toggleFaq = function(btn) { btn.closest('.faq-item').classList.toggle('open'); };
 
   /* ── Nav scroll effect ── */
   const nav = document.getElementById('nav');
