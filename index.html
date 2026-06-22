@@ -1033,6 +1033,7 @@
               <p>Estimez vos aides et trouvez un installateur RGE certifié près de chez vous.</p>
             </div>
             <form id="form-owner" novalidate>
+              <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:0;height:0;opacity:0">
               <div class="form-grid">
                 <div class="field">
                   <label for="o-prenom">Prénom <span aria-hidden="true">*</span></label>
@@ -1088,7 +1089,7 @@
                   Envoyer ma demande
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </button>
-                <p class="form-disclaimer">En soumettant ce formulaire, vous acceptez d'être recontacté par Nexium dans le cadre de votre projet de rénovation. Aucune transmission à des tiers. <a href="mailto:info@nexiumfr.com">info@nexiumfr.com</a></p>
+                <p class="form-disclaimer">En soumettant ce formulaire, vous acceptez d'être recontacté par Nexium dans le cadre de votre projet de rénovation. Vos données ne servent qu'au traitement de votre demande. <a href="mailto:info@nexiumfr.com">info@nexiumfr.com</a></p>
               </div>
             </form>
           </div>
@@ -1100,6 +1101,7 @@
               <p>Rejoignez notre réseau de partenaires et accédez à des chantiers PAC qualifiés dans votre zone.</p>
             </div>
             <form id="form-installer" novalidate>
+              <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:0;height:0;opacity:0">
               <div class="form-grid">
                 <div class="field form-full">
                   <label for="i-raison">Raison sociale <span aria-hidden="true">*</span></label>
@@ -1556,7 +1558,35 @@
     }, 120);
   };
 
-  /* ── Form submission (mailto fallback for static hosting) ── */
+  /* ── Form submission (envoi direct par email via FormSubmit, sans serveur) ── */
+  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/info@nexiumfr.com';
+
+  function showFormSuccess(type) {
+    document.getElementById('form-owner').style.display = 'none';
+    document.getElementById('form-installer').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+    if (type === 'owner') {
+      document.getElementById('success-title').textContent = 'Demande envoyée — merci !';
+      document.getElementById('success-body').textContent = 'Nous vous recontactons sous 24 h ouvrées pour étudier votre éligibilité et vous mettre en relation avec un installateur RGE certifié dans votre secteur.';
+    } else {
+      document.getElementById('success-title').textContent = 'Candidature reçue — merci !';
+      document.getElementById('success-body').textContent = 'Notre équipe Partenariats étudie votre dossier et vous contacte sous 48 h ouvrées. Si votre profil correspond à nos critères, un rendez-vous vous sera proposé.';
+    }
+  }
+
+  function showFormError(form, btn, original) {
+    if (btn) { btn.disabled = false; btn.innerHTML = original; }
+    var note = form.querySelector('.form-error');
+    if (!note) {
+      note = document.createElement('p');
+      note.className = 'form-error';
+      note.setAttribute('role', 'alert');
+      note.style.cssText = 'color:#B91C1C;font-size:.875rem;margin-top:.75rem;line-height:1.5;';
+      form.querySelector('.form-submit-area').appendChild(note);
+    }
+    note.textContent = "L'envoi a échoué. Vérifiez votre connexion et réessayez, ou écrivez-nous directement à info@nexiumfr.com.";
+  }
+
   function handleSubmit(formId, type) {
     const form = document.getElementById(formId);
     if (!form) return;
@@ -1564,23 +1594,21 @@
       e.preventDefault();
       if (!form.checkValidity()) { form.reportValidity(); return; }
 
-      const data = new FormData(form);
-      const subject = type === 'owner' ? 'Nexium — Demande propriétaire' : 'Nexium — Candidature installateur RGE';
-      let body = '';
-      data.forEach((v, k) => { body += k + ': ' + v + '\n'; });
-      const mailto = 'mailto:info@nexiumfr.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      const btn = form.querySelector('button[type="submit"]');
+      const original = btn ? btn.innerHTML : '';
+      if (btn) { btn.disabled = true; btn.innerHTML = 'Envoi en cours…'; }
 
-      form.style.display = 'none';
-      const success = document.getElementById('form-success');
-      success.style.display = 'block';
-      if (type === 'owner') {
-        document.getElementById('success-title').textContent = 'Demande envoyée — merci !';
-        document.getElementById('success-body').textContent = 'Nous vous recontactons sous 24 h ouvrées pour étudier votre éligibilité et vous mettre en relation avec un installateur RGE certifié dans votre secteur.';
-      } else {
-        document.getElementById('success-title').textContent = 'Candidature reçue — merci !';
-        document.getElementById('success-body').textContent = 'Notre équipe Partenariats étudie votre dossier et vous contacte sous 48 h ouvrées. Si votre profil correspond à nos critères, un rendez-vous vous sera proposé.';
-      }
-      window.location.href = mailto;
+      const data = new FormData(form);
+      data.append('_subject', type === 'owner'
+        ? 'Nouvelle demande propriétaire — site Nexium'
+        : 'Nouvelle candidature installateur RGE — site Nexium');
+      data.append('_template', 'table');
+      data.append('_captcha', 'false');
+
+      fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Accept': 'application/json' }, body: data })
+        .then(function(res) { if (!res.ok) throw new Error('http ' + res.status); return res.json().catch(function() { return {}; }); })
+        .then(function() { showFormSuccess(type); })
+        .catch(function() { showFormError(form, btn, original); });
     });
   }
   handleSubmit('form-owner', 'owner');
