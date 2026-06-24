@@ -714,8 +714,7 @@
     </a>
     <nav aria-label="Navigation principale">
       <ul class="nav-links" role="list">
-        <li><a href="#" onclick="showPage('home', this); document.getElementById('section-model').scrollIntoView({behavior:'smooth'}); return false;">Notre modèle</a></li>
-        <li><a href="#" onclick="showPage('home', this); document.getElementById('section-installers').scrollIntoView({behavior:'smooth'}); return false;">Installateurs</a></li>
+        <li><a href="#" onclick="showPage('installateurs', this)" class="nav-page">Installateurs</a></li>
         <li class="nav-dropdown">
           <a href="#" onclick="return false;" aria-haspopup="true">Conseils &amp; Aides
             <svg class="caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -732,7 +731,7 @@
       </ul>
     </nav>
     <div class="nav-right">
-      <a href="#contact" class="btn btn-spark" style="font-size:.875rem;padding:.55rem 1.1rem;" onclick="setFormTab('installer')">Rejoindre le réseau</a>
+      <a href="#contact" class="btn btn-spark" style="font-size:.875rem;padding:.55rem 1.1rem;" onclick="setFormTab('owner')">Estimer mes économies</a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" onclick="toggleMobileNav()">
       <span></span><span></span><span></span>
@@ -742,8 +741,7 @@
 
 <div class="mobile-nav" id="mobileNav" role="navigation" aria-label="Menu mobile">
   <a href="#" onclick="closeMobileNav(); showPage('home')">Accueil</a>
-  <a href="#" onclick="closeMobileNav(); showPage('home'); setTimeout(()=>document.getElementById('section-model').scrollIntoView({behavior:'smooth'}),100)">Notre modèle</a>
-  <a href="#" onclick="closeMobileNav(); showPage('home'); setTimeout(()=>document.getElementById('section-installers').scrollIntoView({behavior:'smooth'}),100)">Installateurs RGE</a>
+  <a href="#" onclick="closeMobileNav(); showPage('installateurs')">Installateurs</a>
   <a href="#" onclick="closeMobileNav(); showPage('home'); setTimeout(()=>document.getElementById('section-cee').scrollIntoView({behavior:'smooth'}),100)">Les CEE</a>
   <a href="#" onclick="closeMobileNav(); showPage('aides')">Aides financières</a>
   <a href="#" onclick="closeMobileNav(); showPage('adapt')">Ma Prime Adapt'</a>
@@ -751,8 +749,8 @@
   <a href="#" onclick="closeMobileNav(); showPage('depannage')">Dépannage &amp; entretien</a>
   <a href="#" onclick="closeMobileNav(); showPage('news')">Actualités</a>
   <div class="mobile-ctas">
-    <a href="#contact" class="btn btn-spark btn-full" onclick="closeMobileNav(); setFormTab('installer')">Rejoindre le réseau</a>
-    <a href="#contact" class="btn btn-ghost btn-full" onclick="closeMobileNav(); setFormTab('owner')">Je suis propriétaire</a>
+    <a href="#contact" class="btn btn-spark btn-full" onclick="closeMobileNav(); setFormTab('owner')">Estimer mes économies</a>
+    <a href="#" class="btn btn-ghost btn-full" onclick="closeMobileNav(); showPage('installateurs')">Espace installateurs</a>
   </div>
 </div>
 
@@ -779,7 +777,7 @@
             Estimer mes économies
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <a href="#contact" class="btn btn-ghost btn-lg" onclick="setFormTab('installer')">Rejoindre le réseau RGE</a>
+          <a href="#" class="btn btn-ghost btn-lg" onclick="showPage('installateurs'); return false;">Espace installateurs</a>
         </div>
         <p class="hero-trust">Éligibilité vérifiée en 48&nbsp;h · Dossiers d'aides pris en charge à 100&nbsp;%</p>
       </div>
@@ -801,46 +799,35 @@
     </div>
   </section>
 
-  <!-- 4 STEPS MODEL -->
-  <section class="steps" id="section-model" aria-labelledby="steps-heading">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="eyebrow">Notre modèle</span>
-        <h2 id="steps-heading">Un circuit court, de l'apport à la valorisation</h2>
-        <p>Nexium orchestre toute la chaîne : de l'identification du prospect jusqu'à l'encaissement des CEE, sans fuite de valeur pour l'installateur.</p>
+  <!-- POURQUOI ÉLECTRIFIER (propriétaires) -->
+  <section class="content-section alt" aria-labelledby="why-heading">
+    <div class="content-head fade-up">
+      <span class="eyebrow">Pour les propriétaires</span>
+      <h2 id="why-heading">Et si votre maison passait enfin à la vitesse supérieure ?</h2>
+      <p>Vous avez bâti, rénové, entretenu votre logement avec soin. L'électrification de vos usages — à commencer par la pompe à chaleur — en est la suite naturelle : plus de confort au quotidien, une facture qui se dégonfle, et un bien qui prend de la valeur. Nexium rend ce passage simple, accompagné, et sans paperasse.</p>
+    </div>
+    <div class="info-grid">
+      <div class="info-card fade-up">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/></svg></div>
+        <h3>Un confort enfin constant</h3>
+        <p>Une chaleur douce et homogène, pièce par pièce, sans à-coups. Fini les radiateurs qui peinent les matins d'hiver — et, avec une PAC réversible, la fraîcheur en prime l'été.</p>
       </div>
-
-      <div class="steps-grid">
-        <div class="steps-line" aria-hidden="true"></div>
-
-        <div class="step fade-up">
-          <div class="step-icon" aria-hidden="true">1</div>
-          <span class="step-tag">Apport d'affaires</span>
-          <h3>Prospects qualifiés livrés</h3>
-          <p>Nexium identifie et pré-qualifie des propriétaires en projet PAC dans votre zone. Vous recevez un chantier prêt à signer, pas un contact froid.</p>
-        </div>
-
-        <div class="step fade-up fade-up-delay-1">
-          <div class="step-icon" aria-hidden="true">2</div>
-          <span class="step-tag">Pose PAC</span>
-          <h3>Intervention RGE sur site</h3>
-          <p>Votre équipe certifiée réalise la pose selon les protocoles QualiPAC. Nexium assure la coordination logistique et le contrôle qualité.</p>
-        </div>
-
-        <div class="step fade-up fade-up-delay-2">
-          <div class="step-icon" aria-hidden="true">3</div>
-          <span class="step-tag">Dossiers d'aides</span>
-          <h3>Instruction MaPrimeRénov' + CEE</h3>
-          <p>Nos experts réglementaires montent et déposent l'intégralité des dossiers : MaPrimeRénov', CEE, Éco-PTZ. Zéro démarche administrative pour l'installateur.</p>
-        </div>
-
-        <div class="step fade-up fade-up-delay-3">
-          <div class="step-icon" aria-hidden="true">4</div>
-          <span class="step-tag">Valorisation CEE</span>
-          <h3>Optimisation sur le marché</h3>
-          <p>Nexium agrège et valorise les CEE sur le marché de gré à gré. La prime est reversée directement à votre client pour réduire son reste à charge.</p>
-        </div>
+      <div class="info-card fade-up fade-up-delay-1">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.8 9A2 2 0 0 0 13 8h-2a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4h-2a2 2 0 0 1-1.8-1"/><path d="M12 6v2m0 8v2"/></svg></div>
+        <h3>Une facture qui se dégonfle</h3>
+        <p>En remplaçant le fioul ou le gaz, vous pouvez réduire jusqu'à 60 % votre dépense de chauffage. Chaque kWh d'électricité vous en restitue trois à quatre en chaleur : c'est mécanique.</p>
       </div>
+      <div class="info-card fade-up fade-up-delay-2">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M16 6l4 3-2 2"/></svg></div>
+        <h3>Un bien qui prend de la valeur</h3>
+        <p>Un meilleur DPE, c'est un logement plus recherché, plus facile à louer ou à revendre, et déjà conforme aux exigences de demain. Vous investissez, vous ne dépensez pas.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:3rem;" class="fade-up">
+      <a href="#contact" class="btn btn-primary btn-lg" onclick="setFormTab('owner')">
+        Estimer mes économies
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
   </section>
 
@@ -910,58 +897,6 @@
             </li>
           </ul>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BÉNÉFICES INSTALLATEURS -->
-  <section class="benefits-installers" id="section-installers" aria-labelledby="installers-heading">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="eyebrow">Pour les installateurs RGE</span>
-        <h2 id="installers-heading">Concentrez-vous sur la pose.<br>On gère le reste.</h2>
-        <p>Nexium prend en charge l'acquisition, l'administratif et la valorisation des CEE. Vous gagnez en volume de chantiers sans investir en prospection.</p>
-      </div>
-
-      <div class="installers-grid">
-        <div class="installer-card fade-up">
-          <div class="ic-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <h3>Leads qualifiés sans prospection</h3>
-          <p>Vous recevez des chantiers confirmés dans votre zone de chalandise : propriétaires déjà engagés, éligibilité vérifiée. Pas de démarchage à froid.</p>
-        </div>
-
-        <div class="installer-card fade-up fade-up-delay-1">
-          <div class="ic-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-          </div>
-          <h3>Dossiers intégralement pris en charge</h3>
-          <p>MaPrimeRénov', CEE, Éco-PTZ : nos équipes instruisent chaque dossier. Vous ne remplissez plus un seul formulaire ANAH.</p>
-        </div>
-
-        <div class="installer-card fade-up fade-up-delay-2">
-          <div class="ic-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-          </div>
-          <h3>Valorisation CEE optimisée</h3>
-          <p>Nexium agrège vos opérations et les valorise en volume sur le marché des CEE. La prime obtenue dépasse systématiquement la négociation unitaire.</p>
-        </div>
-
-        <div class="installer-card fade-up fade-up-delay-3">
-          <div class="ic-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 2"/></svg>
-          </div>
-          <h3>Paiement accéléré</h3>
-          <p>Avance de trésorerie sur les primes CEE et règlement sous 15 jours après réception des factures. Fini l'attente ANAH à 3 mois.</p>
-        </div>
-      </div>
-
-      <div style="text-align:center;margin-top:3rem;" class="fade-up">
-        <a href="#contact" class="btn btn-primary btn-lg" onclick="setFormTab('installer')">
-          Candidater en tant qu'installateur RGE
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
       </div>
     </div>
   </section>
@@ -1209,6 +1144,103 @@
   </div>
 
 </div><!-- /page-news -->
+
+
+<!-- ════════════════════════════════════ PAGE: INSTALLATEURS ════════════════════════════════════ -->
+<div id="page-installateurs" class="page">
+  <div class="page-hero">
+    <div class="container">
+      <div class="crumb"><a onclick="showPage('home')">Accueil</a> · Installateurs</div>
+      <h1 class="display">Votre savoir-faire mérite mieux que de la paperasse.</h1>
+      <p>Vous posez des pompes à chaleur dans les règles de l'art. Nexium s'occupe des chantiers, des dossiers d'aides et de la valorisation de vos CEE — pour que vous restiez là où vous êtes le meilleur : sur le terrain.</p>
+      <div style="margin-top:2rem">
+        <a href="#contact" class="btn btn-spark btn-lg" onclick="setFormTab('installer')">
+          Devenir installateur partenaire
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <section class="content-section alt">
+    <div class="content-head"><span class="eyebrow">Le constat</span><h2>Le meilleur artisan passe son temps sur le terrain, pas devant un formulaire</h2></div>
+    <div class="prose">
+      <p>Vous avez décroché votre qualification RGE à la force du poignet. Vous posez des pompes à chaleur dans les règles de l'art, vos clients vous recommandent, et pourtant une partie de votre énergie part ailleurs : chercher des chantiers, monter des dossiers d'aides, courir après les pièces justificatives.</p>
+      <p>Chez Nexium, on pense que le meilleur artisan est celui qui passe son temps sur le terrain, <strong>pas devant un formulaire.</strong></p>
+    </div>
+  </section>
+
+  <section class="content-section paper">
+    <div class="content-head"><span class="eyebrow">Le partenariat Nexium</span><h2>Vous installez, on s'occupe de tout le reste</h2><p>Nous fédérons les installateurs RGE les plus sérieux d'Alsace autour d'un principe simple.</p></div>
+    <ul class="benefits-list" role="list" style="max-width:800px">
+      <li class="benefit-item">
+        <div class="benefit-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1"/></svg></div>
+        <div class="benefit-text"><h4>Des chantiers qualifiés, prêts à poser</h4><p>Nous vous adressons des particuliers dont le projet est déjà cadré et le financement vérifié. Plus de prospection à froid, plus de devis dans le vide.</p></div>
+      </li>
+      <li class="benefit-item">
+        <div class="benefit-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="m9 15 2 2 4-4"/></svg></div>
+        <div class="benefit-text"><h4>Zéro administratif</h4><p>Nous montons l'intégralité des dossiers MaPrimeRénov' et CEE (fiches BAR-TH-171 et 172), de la première pièce à la validation finale. Vous n'avez plus à vous battre avec les justificatifs ni avec les délais.</p></div>
+      </li>
+      <li class="benefit-item">
+        <div class="benefit-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <div class="benefit-text"><h4>Vos CEE valorisés au meilleur prix</h4><p>En tant que délégataire, nous transformons vos certificats d'économies d'énergie en revenu réel, sans intermédiaire qui rogne au passage.</p></div>
+      </li>
+      <li class="benefit-item">
+        <div class="benefit-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <div class="benefit-text"><h4>Un paiement rapide</h4><p>Avance de trésorerie sur les primes CEE et règlement sous 15 jours après réception des factures. Fini l'attente ANAH à 3 mois.</p></div>
+      </li>
+      <li class="benefit-item">
+        <div class="benefit-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M5.5 21a7 7 0 0 1 13 0"/></svg></div>
+        <div class="benefit-text"><h4>Vous restez maître de votre métier</h4><p>Vous gardez votre identité, vos équipes, votre façon de travailler. Nexium est un partenaire, pas un donneur d'ordre.</p></div>
+      </li>
+      <li class="benefit-item">
+        <div class="benefit-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <div class="benefit-text"><h4>Un réseau ancré localement</h4><p>Nous connaissons l'Alsace, ses particuliers, ses contraintes. On parle le même langage que vous.</p></div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 4 STEPS MODEL (déplacé depuis l'accueil) -->
+  <section class="steps" id="section-model" aria-labelledby="steps-heading">
+    <div class="container">
+      <div class="content-head"><span class="eyebrow">Notre modèle</span><h2 id="steps-heading">Un circuit court, de l'apport à la valorisation</h2><p>Nexium orchestre toute la chaîne : de l'identification du prospect jusqu'à l'encaissement des CEE, sans fuite de valeur pour l'installateur.</p></div>
+
+      <div class="steps-grid">
+        <div class="steps-line" aria-hidden="true"></div>
+
+        <div class="step fade-up">
+          <div class="step-icon" aria-hidden="true">1</div>
+          <span class="step-tag">Apport d'affaires</span>
+          <h3>Prospects qualifiés livrés</h3>
+          <p>Nexium identifie et pré-qualifie des propriétaires en projet PAC dans votre zone. Vous recevez un chantier prêt à signer, pas un contact froid.</p>
+        </div>
+
+        <div class="step fade-up fade-up-delay-1">
+          <div class="step-icon" aria-hidden="true">2</div>
+          <span class="step-tag">Pose PAC</span>
+          <h3>Intervention RGE sur site</h3>
+          <p>Votre équipe certifiée réalise la pose selon les protocoles QualiPAC. Nexium assure la coordination logistique et le contrôle qualité.</p>
+        </div>
+
+        <div class="step fade-up fade-up-delay-2">
+          <div class="step-icon" aria-hidden="true">3</div>
+          <span class="step-tag">Dossiers d'aides</span>
+          <h3>Instruction MaPrimeRénov' + CEE</h3>
+          <p>Nos experts réglementaires montent et déposent l'intégralité des dossiers : MaPrimeRénov', CEE, Éco-PTZ. Zéro démarche administrative pour l'installateur.</p>
+        </div>
+
+        <div class="step fade-up fade-up-delay-3">
+          <div class="step-icon" aria-hidden="true">4</div>
+          <span class="step-tag">Valorisation CEE</span>
+          <h3>Optimisation sur le marché</h3>
+          <p>Nexium agrège et valorise les CEE sur le marché de gré à gré. La prime est reversée directement à votre client pour réduire son reste à charge.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-banner"><div class="container"><h2>Rejoignez le réseau Nexium</h2><p>Concentrez-vous sur ce que vous faites de mieux : installer. On s'occupe du reste.</p><a href="#contact" class="btn btn-spark btn-lg" onclick="setFormTab('installer')">Devenir installateur partenaire <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div>
+</div><!-- /page-installateurs -->
 
 
 <!-- ════════════════════════════════════ PAGE: AIDES FINANCIÈRES ════════════════════════════════════ -->
@@ -1463,17 +1495,17 @@
         <h4>Propriétaires</h4>
         <ul>
           <li><a href="#contact" onclick="setFormTab('owner')">Demande d'information</a></li>
+          <li><a href="#" onclick="showPage('aides')">Aides financières</a></li>
           <li><a href="#" onclick="showPage('home');setTimeout(()=>document.getElementById('section-cee').scrollIntoView({behavior:'smooth'}),100)">Comprendre les CEE</a></li>
-          <li><a href="#" onclick="showPage('home');setTimeout(()=>document.getElementById('section-model').scrollIntoView({behavior:'smooth'}),100)">Notre modèle</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h4>Installateurs</h4>
         <ul>
-          <li><a href="#contact" onclick="setFormTab('installer')">Rejoindre le réseau</a></li>
-          <li><a href="#" onclick="showPage('home');setTimeout(()=>document.getElementById('section-installers').scrollIntoView({behavior:'smooth'}),100)">Nos engagements</a></li>
-          <li><a href="mailto:info@nexiumfr.com">Partenariat</a></li>
+          <li><a href="#" onclick="showPage('installateurs')">Espace installateurs</a></li>
+          <li><a href="#" onclick="showPage('installateurs')">Le partenariat</a></li>
+          <li><a href="#contact" onclick="setFormTab('installer')">Devenir partenaire</a></li>
         </ul>
       </div>
 
@@ -1512,7 +1544,7 @@
     document.getElementById('page-' + id).classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
     document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-    if (linkEl && linkEl.classList.contains('nav-news')) linkEl.classList.add('active');
+    if (linkEl && (linkEl.classList.contains('nav-news') || linkEl.classList.contains('nav-page'))) linkEl.classList.add('active');
     setTimeout(observeFadeUps, 50);
   }
   window.showPage = showPage;
