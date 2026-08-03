@@ -641,6 +641,38 @@
       .info-grid, .info-grid.cols-2 { grid-template-columns: 1fr; }
     }
 
+    /* ── Hero photo plein écran (façon Effy) ── */
+    .hero-photo { position: relative; min-height: 100dvh; display: flex; align-items: center; padding: 9rem 1.5rem 5rem; background-color: #0C100E; background-size: cover; background-position: center; background-repeat: no-repeat; overflow: hidden; }
+    .hero-photo-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,12,10,.9) 0%, rgba(8,12,10,.64) 46%, rgba(8,12,10,.22) 100%), linear-gradient(0deg, rgba(8,12,10,.55), transparent 42%); }
+    .hero-photo-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; width: 100%; }
+    .hero-photo h1 { font-size: clamp(2.5rem, 6vw, 4.25rem); color: #fff; max-width: 16ch; margin-bottom: 1.25rem; line-height: 1.06; }
+    .hero-photo-sub { color: rgba(255,255,255,.84); font-size: 1.125rem; line-height: 1.7; max-width: 520px; margin-bottom: 2rem; }
+    .hero-photo-actions { display: flex; flex-wrap: wrap; gap: .85rem; margin-bottom: 1.75rem; }
+    .btn-glass { background: rgba(255,255,255,.12); color: #fff; border: 1.5px solid rgba(255,255,255,.32); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+    .btn-glass:hover { background: rgba(255,255,255,.2); border-color: rgba(255,255,255,.55); transform: translateY(-1px); }
+    .hero-photo-trust { display: inline-flex; align-items: center; gap: .6rem; color: rgba(255,255,255,.74); font-size: .875rem; }
+    .hero-photo-trust .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 8px var(--brand); flex-shrink: 0; }
+
+    /* ── Méga-menu ── */
+    .nav-mega { position: static; }
+    .nav-mega-panel {
+      position: fixed; top: 76px; left: 50%; transform: translateX(-50%) translateY(-8px);
+      width: min(1120px, calc(100vw - 3rem));
+      background: var(--bg-dark-2); border: 1px solid rgba(255,255,255,.09); border-radius: var(--r-lg);
+      padding: 1.75rem 2rem; box-shadow: 0 24px 60px rgba(0,0,0,.5);
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem 2rem;
+      opacity: 0; visibility: hidden;
+      transition: opacity var(--t), transform var(--t), visibility var(--t);
+    }
+    .nav-mega-panel::before { content: ''; position: absolute; top: -26px; left: 0; right: 0; height: 26px; }
+    .nav-mega:hover .nav-mega-panel, .nav-mega:focus-within .nav-mega-panel { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .nav-mega-col h5 { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--brand); margin: 0 0 .55rem .75rem; }
+    .nav-mega-col ul { list-style: none; }
+    .nav-mega-col li a { display: block; padding: .5rem .75rem; border-radius: 7px; color: rgba(255,255,255,.78); font-weight: 500; font-size: .9375rem; }
+    .nav-mega-col li a:hover { background: rgba(255,255,255,.07); color: #fff; }
+    .nav-mega-col li a small { display: block; font-weight: 400; font-size: .72rem; color: rgba(255,255,255,.4); margin-top: 1px; }
+    .mobile-nav h5 { font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--brand); margin: 1.1rem 0 .1rem; }
+
     /* ── Responsive ── */
     @media (max-width: 1024px) {
       .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
@@ -714,21 +746,48 @@
     </a>
     <nav aria-label="Navigation principale">
       <ul class="nav-links" role="list">
-        <li><a href="#" onclick="showPage('home', this)" class="nav-page">Accueil</a></li>
-        <li><a href="#" onclick="showPage('apropos', this)" class="nav-page">Qui sommes-nous</a></li>
-        <li><a href="#" onclick="showPage('installateurs', this)" class="nav-page">Installateurs</a></li>
+        <li class="nav-dropdown nav-mega">
+          <a href="#" onclick="return false;" aria-haspopup="true">Rénovation énergétique
+            <svg class="caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </a>
+          <div class="nav-mega-panel" role="menu">
+            <div class="nav-mega-col">
+              <h5>Isolation</h5>
+              <ul>
+                <li><a href="#" onclick="showPage('combles')">Isolation des combles</a></li>
+                <li><a href="#" onclick="showPage('murs')">Isolation des murs</a></li>
+                <li><a href="#" onclick="showPage('fenetres')">Fenêtres &amp; menuiseries</a></li>
+                <li><a href="#" onclick="showPage('sols')">Isolation des sols</a></li>
+              </ul>
+            </div>
+            <div class="nav-mega-col">
+              <h5>Chauffage</h5>
+              <ul>
+                <li><a href="#" onclick="showPage('pac')">Pompe à chaleur</a></li>
+                <li><a href="#" onclick="showPage('cet')">Chauffe-eau thermodynamique</a></li>
+                <li><a href="#" onclick="showPage('depannage')">Dépannage PAC</a></li>
+              </ul>
+            </div>
+            <div class="nav-mega-col">
+              <h5>Rénovation globale</h5>
+              <ul>
+                <li><a href="#" onclick="showPage('bilan')">Bilan énergétique</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
         <li class="nav-dropdown">
-          <a href="#" onclick="return false;" aria-haspopup="true">Conseils &amp; Aides
+          <a href="#" onclick="return false;" aria-haspopup="true">Aides
             <svg class="caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
           </a>
           <ul class="nav-dropdown-menu" role="menu">
             <li><a href="#" onclick="showPage('aides', this)">Aides financières<small>MaPrimeRénov', CEE, Éco-PTZ, TVA</small></a></li>
             <li><a href="#" onclick="showPage('adapt', this)">Ma Prime Adapt'<small>Adapter son logement</small></a></li>
-            <li><a href="#" onclick="showPage('conseils', this)">Conseils chauffage<small>Bien choisir sa pompe à chaleur</small></a></li>
-            <li><a href="#" onclick="showPage('depannage', this)">Dépannage &amp; entretien<small>Entretien obligatoire, pannes</small></a></li>
             <li><a href="#" onclick="showPage('home'); setTimeout(()=>document.getElementById('section-cee').scrollIntoView({behavior:'smooth'}),100); return false;">Les CEE expliqués<small>Comprendre les certificats</small></a></li>
           </ul>
         </li>
+        <li><a href="#" onclick="showPage('installateurs', this)" class="nav-page">Installateurs</a></li>
+        <li><a href="#" onclick="showPage('apropos', this)" class="nav-page">Qui sommes-nous</a></li>
         <li><a href="#" onclick="showPage('news', this)" class="nav-news">Actualités</a></li>
       </ul>
     </nav>
@@ -742,17 +801,25 @@
 </header>
 
 <div class="mobile-nav" id="mobileNav" role="navigation" aria-label="Menu mobile">
-  <a href="#" onclick="closeMobileNav(); showPage('home')">Accueil</a>
-  <a href="#" onclick="closeMobileNav(); showPage('apropos')">Qui sommes-nous</a>
-  <a href="#" onclick="closeMobileNav(); showPage('installateurs')">Installateurs</a>
-  <a href="#" onclick="closeMobileNav(); showPage('home'); setTimeout(()=>document.getElementById('section-cee').scrollIntoView({behavior:'smooth'}),100)">Les CEE</a>
+  <h5>Rénovation énergétique</h5>
+  <a href="#" onclick="closeMobileNav(); showPage('combles')">Isolation des combles</a>
+  <a href="#" onclick="closeMobileNav(); showPage('murs')">Isolation des murs</a>
+  <a href="#" onclick="closeMobileNav(); showPage('fenetres')">Fenêtres &amp; menuiseries</a>
+  <a href="#" onclick="closeMobileNav(); showPage('sols')">Isolation des sols</a>
+  <a href="#" onclick="closeMobileNav(); showPage('pac')">Pompe à chaleur</a>
+  <a href="#" onclick="closeMobileNav(); showPage('cet')">Chauffe-eau thermodynamique</a>
+  <a href="#" onclick="closeMobileNav(); showPage('depannage')">Dépannage PAC</a>
+  <a href="#" onclick="closeMobileNav(); showPage('bilan')">Bilan énergétique</a>
+  <h5>Aides</h5>
   <a href="#" onclick="closeMobileNav(); showPage('aides')">Aides financières</a>
   <a href="#" onclick="closeMobileNav(); showPage('adapt')">Ma Prime Adapt'</a>
-  <a href="#" onclick="closeMobileNav(); showPage('conseils')">Conseils chauffage</a>
-  <a href="#" onclick="closeMobileNav(); showPage('depannage')">Dépannage &amp; entretien</a>
+  <a href="#" onclick="closeMobileNav(); showPage('home'); setTimeout(()=>document.getElementById('section-cee').scrollIntoView({behavior:'smooth'}),100)">Les CEE expliqués</a>
+  <h5>Nexium</h5>
+  <a href="#" onclick="closeMobileNav(); showPage('installateurs')">Installateurs</a>
+  <a href="#" onclick="closeMobileNav(); showPage('apropos')">Qui sommes-nous</a>
   <a href="#" onclick="closeMobileNav(); showPage('news')">Actualités</a>
   <div class="mobile-ctas">
-    <a href="#contact" class="btn btn-spark btn-full" onclick="closeMobileNav(); setFormTab('owner')">Estimer mes économies</a>
+    <a href="#contact" class="btn btn-spark btn-full" onclick="closeMobileNav(); setFormTab('owner')">Estimer mon projet</a>
     <a href="#" class="btn btn-ghost btn-full" onclick="closeMobileNav(); showPage('installateurs')">Espace installateurs</a>
   </div>
 </div>
@@ -761,44 +828,20 @@
 <!-- ════════════════════════════════════ PAGE: ACCUEIL ════════════════════════════════════ -->
 <div id="page-home" class="page active">
 
-  <!-- HERO -->
-  <section class="hero" aria-labelledby="hero-heading">
-    <div class="hero-inner">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <span class="dot"></span>
-          Spécialiste de l'électrification des usages · Réseau RGE
-        </div>
-        <h1 class="display" id="hero-heading">
-          Divisez par 3 votre<br>facture de chauffage.<br><span class="hl">Sans avancer la paperasse.</span>
-        </h1>
-        <p class="hero-sub">
-          Nexium sélectionne un installateur RGE qualifié près de chez vous, monte votre dossier MaPrimeRénov' et maximise vos primes CEE. Vous remplacez votre chaudière par une pompe à chaleur, on s'occupe de tout le reste.
-        </p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-spark btn-lg" onclick="setFormTab('owner')">
-            Estimer mes économies
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="#" class="btn btn-ghost btn-lg" onclick="showPage('installateurs'); return false;">Espace installateurs</a>
-        </div>
-        <p class="hero-trust">Éligibilité vérifiée en 48&nbsp;h · Dossiers d'aides pris en charge à 100&nbsp;%</p>
+  <!-- HERO PHOTO -->
+  <section class="hero-photo" aria-labelledby="hero-heading" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=1920&amp;q=75');">
+    <div class="hero-photo-overlay"></div>
+    <div class="hero-photo-inner">
+      <h1 class="display" id="hero-heading">Votre maison,<br>mieux électrifiée.</h1>
+      <p class="hero-photo-sub">Pompe à chaleur, solaire, aides… Nexium vous accompagne pour rendre votre logement plus économe et plus confortable, avec des installateurs RGE certifiés.</p>
+      <div class="hero-photo-actions">
+        <a href="#contact" class="btn btn-spark btn-lg" onclick="setFormTab('owner')">
+          Estimer mon projet
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#" class="btn btn-glass btn-lg" onclick="showPage('aides'); return false;">Découvrir mes aides</a>
       </div>
-
-      <div class="hero-stats" role="region" aria-label="Chiffres clés">
-        <div class="stat-card featured">
-          <div class="stat-value"><span class="unit">jusqu'à </span>70<span class="unit">&nbsp;%</span></div>
-          <div class="stat-label">d'aides sur le coût total de la pompe à chaleur<br><small style="color:rgba(255,255,255,.38)">MaPrimeRénov' + prime CEE cumulées</small></div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">3 200<span class="unit">&nbsp;€</span></div>
-          <div class="stat-label">d'économies annuelles moyennes sur une maison chauffée au fioul</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">+240</div>
-          <div class="stat-label">installateurs RGE partenaires en France métropolitaine</div>
-        </div>
-      </div>
+      <p class="hero-photo-trust"><span class="dot"></span> Installateurs RGE certifiés · Dossiers d'aides pris en charge à 100&nbsp;% · Alsace &amp; Île-de-France</p>
     </div>
   </section>
 
@@ -1337,6 +1380,200 @@
 </div><!-- /page-apropos -->
 
 
+<!-- ════════════════════════════════════ PAGE: ISOLATION DES COMBLES ════════════════════════════════════ -->
+<div id="page-combles" class="page">
+  <div class="page-hero"><div class="container">
+    <div class="crumb"><a onclick="showPage('home')">Accueil</a> · Rénovation énergétique · Isolation</div>
+    <h1 class="display">Isolation des combles</h1>
+    <p>Le premier poste d'économies. Jusqu'à 30 % de la chaleur d'un logement s'échappe par le toit — l'isoler est le geste au meilleur rapport gain / prix, et Nexium prend en charge les aides.</p>
+  </div></div>
+  <section class="content-section alt">
+    <div class="content-head"><span class="eyebrow">Pourquoi commencer par là</span><h2>Le geste le plus rentable de la rénovation</h2></div>
+    <div class="info-grid">
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></div><h3>Jusqu'à 30 % de pertes en moins</h3><p>Le toit est la première source de déperdition. Isoler les combles stoppe la fuite de chaleur là où elle est la plus forte.</p></div>
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2"/></svg></div><h3>Confort été comme hiver</h3><p>Une maison plus chaude l'hiver, plus fraîche l'été, sans forcer sur le chauffage ni la climatisation.</p></div>
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h3>Le meilleur rapport gain / prix</h3><p>Chantier rapide, souvent le moins cher au m², et éligible aux aides : un retour sur investissement parmi les plus courts.</p></div>
+    </div>
+  </section>
+  <section class="content-section paper">
+    <div class="content-head"><span class="eyebrow">Les techniques</span><h2>Combles perdus ou aménagés ?</h2></div>
+    <div class="prose">
+      <p><strong>Combles perdus</strong> (non habitables) : isolation par soufflage de laine sur le plancher. Rapide, économique, très performant.</p>
+      <p><strong>Combles aménagés</strong> (pièce de vie) : panneaux ou rouleaux posés entre et sous les chevrons. Nos installateurs RGE choisissent la technique et l'épaisseur adaptées à votre toiture.</p>
+    </div>
+    <div class="note-box">Éligible à <strong>MaPrimeRénov' et aux CEE</strong>. Nexium monte l'intégralité des dossiers et sélectionne un artisan RGE près de chez vous — vous ne remplissez aucun formulaire.</div>
+  </section>
+  <section class="content-section alt">
+    <div class="content-head"><span class="eyebrow">Questions fréquentes</span><h2>Vos questions</h2></div>
+    <div class="faq">
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Faut-il un artisan RGE ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Oui, pour bénéficier des aides, l'installateur doit être certifié RGE. C'est exactement le type de partenaire que Nexium sélectionne pour vous.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Combien de temps dure le chantier ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Pour des combles perdus, le soufflage se réalise généralement en une demi-journée à une journée.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Quelles aides puis-je obtenir ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>MaPrimeRénov' et prime CEE selon vos revenus. Nexium calcule le cumul optimal et prend en charge les dossiers.</p></div></div>
+    </div>
+  </section>
+  <div class="cta-banner"><div class="container"><h2>Isolez vos combles avec Nexium</h2><p>On vérifie votre éligibilité, on chiffre votre projet et on sélectionne l'artisan RGE — dossiers d'aides inclus.</p><a href="#contact" class="btn btn-spark btn-lg" onclick="setFormTab('owner')">Estimer mon projet</a></div></div>
+</div><!-- /page-combles -->
+
+
+<!-- ════════════════════════════════════ PAGE: ISOLATION DES MURS ════════════════════════════════════ -->
+<div id="page-murs" class="page">
+  <div class="page-hero"><div class="container">
+    <div class="crumb"><a onclick="showPage('home')">Accueil</a> · Rénovation énergétique · Isolation</div>
+    <h1 class="display">Isolation des murs</h1>
+    <p>20 à 25 % des déperditions passent par les murs. Les isoler transforme durablement le confort et la facture — par l'extérieur ou par l'intérieur.</p>
+  </div></div>
+  <section class="content-section alt">
+    <div class="content-head"><span class="eyebrow">Les bénéfices</span><h2>Des murs isolés, une maison transformée</h2></div>
+    <div class="info-grid">
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l9-5 9 5v13"/><path d="M3 12h18M9 21V12"/></svg></div><h3>20 à 25 % de pertes évitées</h3><p>Après le toit, les murs sont la deuxième source de déperdition d'un logement mal isolé.</p></div>
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/></svg></div><h3>Fini les parois froides</h3><p>Plus de sensation de mur froid ni de condensation : une chaleur homogène dans chaque pièce.</p></div>
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Façade valorisée</h3><p>L'isolation par l'extérieur ravale et protège la façade en même temps : un logement plus beau et mieux coté.</p></div>
+    </div>
+  </section>
+  <section class="content-section paper">
+    <div class="content-head"><span class="eyebrow">Les techniques</span><h2>Par l'extérieur (ITE) ou par l'intérieur (ITI) ?</h2></div>
+    <div class="prose">
+      <p><strong>ITE — Isolation Thermique par l'Extérieur :</strong> la plus performante. Elle supprime les ponts thermiques, ne réduit pas la surface habitable et ravale la façade.</p>
+      <p><strong>ITI — Isolation par l'Intérieur :</strong> plus économique, idéale quand la façade ne peut pas être modifiée. Nexium vous oriente vers la solution adaptée à votre logement.</p>
+    </div>
+    <div class="note-box">Éligible à <strong>MaPrimeRénov' et aux CEE</strong>. Nexium prend en charge les dossiers et sélectionne l'artisan RGE.</div>
+  </section>
+  <div class="cta-banner"><div class="container"><h2>Isolez vos murs avec Nexium</h2><p>Étude, chiffrage, artisan RGE et dossiers d'aides : un seul interlocuteur.</p><a href="#contact" class="btn btn-spark btn-lg" onclick="setFormTab('owner')">Estimer mon projet</a></div></div>
+</div><!-- /page-murs -->
+
+
+<!-- ════════════════════════════════════ PAGE: FENÊTRES ════════════════════════════════════ -->
+<div id="page-fenetres" class="page">
+  <div class="page-hero"><div class="container">
+    <div class="crumb"><a onclick="showPage('home')">Accueil</a> · Rénovation énergétique · Isolation</div>
+    <h1 class="display">Fenêtres &amp; menuiseries</h1>
+    <p>10 à 15 % des pertes de chaleur passent par des fenêtres vétustes. Le double ou triple vitrage change tout — côté thermique, acoustique et sécurité.</p>
+  </div></div>
+  <section class="content-section alt">
+    <div class="content-head"><span class="eyebrow">Les bénéfices</span><h2>Du confort à chaque fenêtre</h2></div>
+    <div class="info-grid">
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M12 3v18M4 12h16"/></svg></div><h3>Fini les courants d'air</h3><p>Des menuiseries étanches suppriment les infiltrations et les déperditions autour des ouvertures.</p></div>
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg></div><h3>Confort acoustique</h3><p>Le double vitrage atténue nettement les bruits extérieurs : un intérieur plus calme.</p></div>
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Sécurité renforcée</h3><p>Vitrages et fermetures récents améliorent aussi la résistance à l'effraction.</p></div>
+    </div>
+  </section>
+  <section class="content-section paper">
+    <div class="content-head"><span class="eyebrow">Le bon choix</span><h2>Double ou triple vitrage ?</h2></div>
+    <div class="prose">
+      <p>Le <strong>double vitrage</strong> couvre l'immense majorité des besoins et offre le meilleur rapport performance / prix. Le <strong>triple vitrage</strong> se justifie surtout en façade très exposée ou pour un objectif de très haute performance.</p>
+    </div>
+    <div class="note-box">Le remplacement de fenêtres est éligible aux aides sous conditions (<strong>MaPrimeRénov', CEE</strong>). Nexium vérifie votre éligibilité et gère les dossiers.</div>
+  </section>
+  <div class="cta-banner"><div class="container"><h2>Changez vos fenêtres avec Nexium</h2><p>Un artisan RGE, un chiffrage clair et les aides prises en charge.</p><a href="#contact" class="btn btn-spark btn-lg" onclick="setFormTab('owner')">Estimer mon projet</a></div></div>
+</div><!-- /page-fenetres -->
+
+
+<!-- ════════════════════════════════════ PAGE: ISOLATION DES SOLS ════════════════════════════════════ -->
+<div id="page-sols" class="page">
+  <div class="page-hero"><div class="container">
+    <div class="crumb"><a onclick="showPage('home')">Accueil</a> · Rénovation énergétique · Isolation</div>
+    <h1 class="display">Isolation des sols</h1>
+    <p>7 à 10 % de la chaleur s'échappe par les planchers bas. Isoler le sol, c'est en finir avec la sensation de froid sous les pieds — souvent sans gros travaux.</p>
+  </div></div>
+  <section class="content-section alt">
+    <div class="content-head"><span class="eyebrow">Les bénéfices</span><h2>Un sol qui ne prend plus le froid</h2></div>
+    <div class="info-grid">
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h18M3 21h18M6 17V9M12 17V9M18 17V9M3 9l9-5 9 5"/></svg></div><h3>Fini le sol froid</h3><p>Plus de plancher glacé le matin : un confort immédiat, surtout au rez-de-chaussée.</p></div>
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-5 3 3 5-6"/></svg></div><h3>Jusqu'à 10 % d'économies</h3><p>Une déperdition en moins qui allège la facture, surtout combinée aux autres postes.</p></div>
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><h3>Chantier peu invasif</h3><p>Souvent réalisable par-dessous (cave, vide sanitaire, garage), sans casser votre sol existant.</p></div>
+    </div>
+  </section>
+  <section class="content-section paper">
+    <div class="content-head"><span class="eyebrow">Aides</span><h2>Un geste éligible aux aides</h2></div>
+    <div class="prose"><p>L'isolation des planchers bas est éligible à <strong>MaPrimeRénov' et aux CEE</strong>. Comme pour tous vos travaux, Nexium sélectionne l'artisan RGE et monte l'intégralité des dossiers.</p></div>
+    <div class="note-box">Le plus souvent, l'isolation des sols se combine avec l'isolation des combles pour un gain de confort maximal.</div>
+  </section>
+  <div class="cta-banner"><div class="container"><h2>Isolez vos sols avec Nexium</h2><p>On chiffre, on trouve l'artisan, on gère les aides.</p><a href="#contact" class="btn btn-spark btn-lg" onclick="setFormTab('owner')">Estimer mon projet</a></div></div>
+</div><!-- /page-sols -->
+
+
+<!-- ════════════════════════════════════ PAGE: POMPE À CHALEUR ════════════════════════════════════ -->
+<div id="page-pac" class="page">
+  <div class="page-hero"><div class="container">
+    <div class="crumb"><a onclick="showPage('home')">Accueil</a> · Rénovation énergétique · Chauffage</div>
+    <h1 class="display">Pompe à chaleur air/eau</h1>
+    <p>Remplacez votre chaudière gaz ou fioul par une PAC : jusqu'à 60 % d'économies de chauffage, et jusqu'à 70 % d'aides. Nexium sélectionne l'installateur RGE et gère tous les dossiers.</p>
+  </div></div>
+  <section class="content-section alt">
+    <div class="content-head"><span class="eyebrow">L'essentiel</span><h2>Le cœur de métier de Nexium</h2></div>
+    <div class="info-grid">
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M19 9l-5 5-3-3-4 4"/></svg></div><h3>Jusqu'à −60 % sur le chauffage</h3><p>La PAC restitue 3 à 4 kWh de chaleur pour 1 kWh d'électricité. En remplacement du fioul ou du gaz, la facture chute nettement.</p></div>
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.8 9A2 2 0 0 0 13 8h-2a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4h-2a2 2 0 0 1-1.8-1"/><path d="M12 6v2m0 8v2"/></svg></div><h3>Jusqu'à 70 % d'aides</h3><p>MaPrimeRénov' et prime CEE cumulées prennent en charge une large part du coût. Nexium optimise le montage.</p></div>
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Installateur RGE QualiPAC</h3><p>Nexium sélectionne des artisans certifiés, assurance décennale incluse. Une pose dans les règles de l'art.</p></div>
+    </div>
+  </section>
+  <section class="content-section paper">
+    <div class="content-head"><span class="eyebrow">Comment ça marche</span><h2>Une énergie gratuite, puisée dans l'air</h2></div>
+    <div class="prose">
+      <p>La pompe à chaleur air/eau capte les calories présentes dans l'air extérieur — gratuites et renouvelables — pour chauffer l'eau de vos radiateurs ou de votre plancher chauffant, et souvent votre eau chaude sanitaire.</p>
+      <p>Sa performance se mesure par le <strong>COP</strong> : un COP de 3 signifie 3 kWh de chaleur pour 1 kWh d'électricité. Un bon dimensionnement, adapté à votre logement, est la clé d'un rendement réel élevé — c'est le rôle de nos installateurs.</p>
+    </div>
+  </section>
+  <section class="content-section alt">
+    <div class="content-head"><span class="eyebrow">Questions fréquentes</span><h2>Vos questions sur la PAC</h2></div>
+    <div class="faq">
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">La PAC fonctionne-t-elle par grand froid ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Oui, les modèles récents fonctionnent jusqu'à −15 à −20 °C. Le rendement baisse par grand froid et un appoint peut prendre le relais. Un bon dimensionnement est déterminant.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Faut-il changer mes radiateurs ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Pas toujours : beaucoup de radiateurs existants restent compatibles. Les émetteurs basse température optimisent le rendement.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Qui gère les aides et la pose ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Nexium, de A à Z : sélection de l'installateur RGE, montage des dossiers MaPrimeRénov'/CEE et valorisation des certificats. Vous n'avez aucune démarche à faire.</p></div></div>
+    </div>
+  </section>
+  <div class="cta-banner"><div class="container"><h2>Passez à la pompe à chaleur</h2><p>Éligibilité en 48 h, installateur RGE près de chez vous, aides prises en charge.</p><a href="#contact" class="btn btn-spark btn-lg" onclick="setFormTab('owner')">Estimer mon projet</a></div></div>
+</div><!-- /page-pac -->
+
+
+<!-- ════════════════════════════════════ PAGE: CHAUFFE-EAU THERMODYNAMIQUE ════════════════════════════════════ -->
+<div id="page-cet" class="page">
+  <div class="page-hero"><div class="container">
+    <div class="crumb"><a onclick="showPage('home')">Accueil</a> · Rénovation énergétique · Chauffage</div>
+    <h1 class="display">Chauffe-eau thermodynamique</h1>
+    <p>L'eau chaude sanitaire en divisant par 3 la consommation électrique d'un cumulus classique. Éligible aux aides, et parfait complément d'une pompe à chaleur ou de panneaux solaires.</p>
+  </div></div>
+  <section class="content-section alt">
+    <div class="content-head"><span class="eyebrow">Les bénéfices</span><h2>De l'eau chaude, beaucoup moins chère</h2></div>
+    <div class="info-grid">
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-4-7-13-7-13S5 11 5 15a7 7 0 0 0 7 7z"/></svg></div><h3>3× moins d'électricité</h3><p>Il capte les calories de l'air pour chauffer l'eau : jusqu'à 70 % d'économies par rapport à un ballon électrique classique.</p></div>
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.8 9A2 2 0 0 0 13 8h-2a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4h-2a2 2 0 0 1-1.8-1"/><path d="M12 6v2m0 8v2"/></svg></div><h3>Éligible aux aides</h3><p>MaPrimeRénov' et prime CEE réduisent l'investissement. Nexium prend en charge les dossiers.</p></div>
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2"/></svg></div><h3>Idéal avec le solaire</h3><p>Alimenté par vos panneaux photovoltaïques, votre eau chaude devient quasiment gratuite en journée.</p></div>
+    </div>
+  </section>
+  <section class="content-section paper">
+    <div class="content-head"><span class="eyebrow">Le principe</span><h2>Une mini pompe à chaleur sur votre ballon</h2></div>
+    <div class="prose"><p>Le chauffe-eau thermodynamique intègre une petite pompe à chaleur qui puise les calories de l'air (ambiant, extérieur ou extrait) pour chauffer l'eau du ballon. Il remplace idéalement un vieux cumulus électrique énergivore.</p></div>
+    <div class="note-box">Nexium sélectionne un installateur RGE et gère l'intégralité des aides — vous ne remplissez aucun dossier.</div>
+  </section>
+  <div class="cta-banner"><div class="container"><h2>Passez au chauffe-eau thermodynamique</h2><p>Chiffrage clair, artisan RGE, aides incluses.</p><a href="#contact" class="btn btn-spark btn-lg" onclick="setFormTab('owner')">Estimer mon projet</a></div></div>
+</div><!-- /page-cet -->
+
+
+<!-- ════════════════════════════════════ PAGE: BILAN ÉNERGÉTIQUE ════════════════════════════════════ -->
+<div id="page-bilan" class="page">
+  <div class="page-hero"><div class="container">
+    <div class="crumb"><a onclick="showPage('home')">Accueil</a> · Rénovation énergétique · Rénovation globale</div>
+    <h1 class="display">Bilan énergétique</h1>
+    <p>Le point de départ de toute rénovation réussie. On identifie les travaux prioritaires et le bon ordre pour maximiser vos gains et vos aides — avant de dépenser le moindre euro.</p>
+  </div></div>
+  <section class="content-section alt">
+    <div class="content-head"><span class="eyebrow">Pourquoi un bilan</span><h2>Rénover juste, pas au hasard</h2></div>
+    <div class="info-grid">
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div><h3>Une vision claire</h3><p>On mesure l'état réel de votre logement : déperditions, chauffage, isolation. Vous savez enfin où part l'énergie.</p></div>
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></svg></div><h3>Les bons travaux, dans le bon ordre</h3><p>Isolation avant chauffage, priorités selon le budget : on bâtit un plan cohérent plutôt qu'un empilement de devis.</p></div>
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="4"/></svg></div><h3>Des aides optimisées</h3><p>Un bon diagnostic conditionne certaines aides et ouvre la voie à la rénovation d'ampleur, plus fortement subventionnée.</p></div>
+    </div>
+  </section>
+  <section class="content-section paper">
+    <div class="content-head"><span class="eyebrow">Notre accompagnement</span><h2>Nexium orchestre votre rénovation</h2></div>
+    <div class="prose"><p>Au-delà d'un simple diagnostic, Nexium coordonne l'ensemble : évaluation, plan de travaux hiérarchisé, sélection des artisans RGE et montage des dossiers d'aides. Un seul interlocuteur, du premier bilan à la dernière prime.</p></div>
+    <div class="note-box">Vous envisagez une rénovation globale (plusieurs postes à la fois) ? C'est souvent la voie la plus aidée. Parlons de votre projet : <a href="mailto:info@nexiumfr.com">info@nexiumfr.com</a></div>
+  </section>
+  <div class="cta-banner"><div class="container"><h2>Commencez par un bilan</h2><p>On fait le point sur votre logement et on trace le meilleur plan de rénovation.</p><a href="#contact" class="btn btn-spark btn-lg" onclick="setFormTab('owner')">Estimer mon projet</a></div></div>
+</div><!-- /page-bilan -->
+
+
 <!-- ════════════════════════════════════ PAGE: AIDES FINANCIÈRES ════════════════════════════════════ -->
 <div id="page-aides" class="page">
   <div class="page-hero">
@@ -1604,12 +1841,13 @@
       </div>
 
       <div class="footer-col">
-        <h4>Conseils &amp; Aides</h4>
+        <h4>Rénovation énergétique</h4>
         <ul>
+          <li><a href="#" onclick="showPage('pac')">Pompe à chaleur</a></li>
+          <li><a href="#" onclick="showPage('combles')">Isolation</a></li>
+          <li><a href="#" onclick="showPage('cet')">Chauffe-eau thermodynamique</a></li>
+          <li><a href="#" onclick="showPage('bilan')">Bilan énergétique</a></li>
           <li><a href="#" onclick="showPage('aides')">Aides financières</a></li>
-          <li><a href="#" onclick="showPage('adapt')">Ma Prime Adapt'</a></li>
-          <li><a href="#" onclick="showPage('conseils')">Conseils chauffage</a></li>
-          <li><a href="#" onclick="showPage('depannage')">Dépannage &amp; entretien</a></li>
           <li><a href="#" onclick="showPage('news')">Actualités</a></li>
         </ul>
       </div>
