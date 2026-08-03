@@ -781,7 +781,8 @@
             <svg class="caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
           </a>
           <ul class="nav-dropdown-menu" role="menu">
-            <li><a href="#" onclick="showPage('aides', this)">Aides financières<small>MaPrimeRénov', CEE, Éco-PTZ, TVA</small></a></li>
+            <li><a href="#" onclick="showPage('aides', this)">Aides financières<small>MaPrimeRénov', CEE, Éco-PTZ</small></a></li>
+            <li><a href="#" onclick="showPage('tva', this)">TVA réduite<small>5,5 % sur vos travaux</small></a></li>
             <li><a href="#" onclick="showPage('adapt', this)">Ma Prime Adapt'<small>Adapter son logement</small></a></li>
             <li><a href="#" onclick="showPage('home'); setTimeout(()=>document.getElementById('section-cee').scrollIntoView({behavior:'smooth'}),100); return false;">Les CEE expliqués<small>Comprendre les certificats</small></a></li>
           </ul>
@@ -812,6 +813,7 @@
   <a href="#" onclick="closeMobileNav(); showPage('bilan')">Bilan énergétique</a>
   <h5>Aides</h5>
   <a href="#" onclick="closeMobileNav(); showPage('aides')">Aides financières</a>
+  <a href="#" onclick="closeMobileNav(); showPage('tva')">TVA réduite</a>
   <a href="#" onclick="closeMobileNav(); showPage('adapt')">Ma Prime Adapt'</a>
   <a href="#" onclick="closeMobileNav(); showPage('home'); setTimeout(()=>document.getElementById('section-cee').scrollIntoView({behavior:'smooth'}),100)">Les CEE expliqués</a>
   <h5>Nexium</h5>
@@ -1633,6 +1635,61 @@
 
   <div class="cta-banner"><div class="container"><h2>Découvrez vos aides en 48 h</h2><p>Dites-nous où vous en êtes : on calcule vos aides et votre reste à charge, sans engagement.</p><a href="#contact" class="btn btn-spark btn-lg" onclick="setFormTab('owner')">Estimer mes économies</a></div></div>
 </div><!-- /page-aides -->
+
+
+<!-- ════════════════════════════════════ PAGE: TVA RÉDUITE ════════════════════════════════════ -->
+<div id="page-tva" class="page">
+  <div class="page-hero"><div class="container">
+    <div class="crumb"><a onclick="showPage('home')">Accueil</a> · Aides · TVA réduite</div>
+    <h1 class="display">La TVA réduite à 5,5 %</h1>
+    <p>Sur l'essentiel des travaux de rénovation énergétique, la TVA passe de 20 % à 5,5 %. Une économie automatique, appliquée directement par votre installateur, et cumulable avec toutes les autres aides.</p>
+  </div></div>
+
+  <section class="content-section alt">
+    <div class="content-head"><span class="eyebrow">Les taux</span><h2>Trois taux selon la nature des travaux</h2><p>Le taux dépend du type d'équipement et de sa performance.</p></div>
+    <div class="aid-table-wrap">
+      <table class="aid-table">
+        <thead><tr><th>Taux</th><th>Concerne</th><th>Exemples</th></tr></thead>
+        <tbody>
+          <tr><td class="amt">5,5 %</td><td>Travaux d'amélioration énergétique performants</td><td>Isolation (combles, murs, toiture), pompe à chaleur air/eau, chauffe-eau thermodynamique ou solaire, chaudière performante, chauffage au bois, régulation, et travaux « induits » directement liés.</td></tr>
+          <tr><td class="amt">10 %</td><td>Équipements moins performants</td><td>Certains matériels comme les radiateurs à inertie.</td></tr>
+          <tr><td class="amt">20 %</td><td>Non éligibles au taux réduit</td><td>PAC air/air, panneaux photovoltaïques, VMC double flux (sauf cas particuliers).</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note-box">Point clé : <strong>seule la fourniture et la pose par l'artisan</strong> bénéficient du taux réduit. Le matériel que vous achetez vous-même reste à 20 %.</div>
+  </section>
+
+  <section class="content-section paper">
+    <div class="content-head"><span class="eyebrow">Éligibilité</span><h2>Qui peut en bénéficier ?</h2><p>La TVA réduite s'applique <strong>sans condition de revenus</strong>.</p></div>
+    <ul class="checklist">
+      <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><strong>Un logement achevé depuis plus de 2 ans</strong> — résidence principale ou secondaire.</span></li>
+      <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><strong>Tous les occupants</strong> : propriétaires occupants, bailleurs, locataires, occupants à titre gratuit, SCI et syndics de copropriété.</span></li>
+      <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Des travaux réalisés par un <strong>professionnel RGE</strong> — exactement le type d'artisan que Nexium sélectionne pour vous.</span></li>
+    </ul>
+  </section>
+
+  <section class="content-section alt">
+    <div class="content-head"><span class="eyebrow">En pratique</span><h2>Une économie sans démarche pour vous</h2></div>
+    <div class="prose">
+      <p>La TVA réduite est <strong>appliquée directement par l'artisan</strong> sur votre devis et votre facture : vous ne faites aucune avance et aucune demande de remboursement.</p>
+      <p>Une simple <strong>attestation (Cerfa)</strong> doit être remise à l'installateur avant la facturation. Chez Nexium, <strong>nous préparons cette attestation avec vous</strong>, comme le reste des dossiers.</p>
+    </div>
+    <div class="note-box">La TVA à 5,5 % est <strong>cumulable avec toutes les aides</strong> à la rénovation énergétique : MaPrimeRénov', prime CEE et Éco-PTZ.</div>
+  </section>
+
+  <section class="content-section paper">
+    <div class="content-head"><span class="eyebrow">Questions fréquentes</span><h2>Vos questions sur la TVA réduite</h2></div>
+    <div class="faq">
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Dois-je faire une démarche pour l'obtenir ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Non. L'artisan applique directement le taux réduit sur le devis et la facture. Il vous suffit de signer l'attestation que Nexium prépare avec vous.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Ma résidence secondaire est-elle éligible ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Oui. La TVA réduite s'applique aux résidences principales comme secondaires, dès lors que le logement a plus de 2 ans.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Est-ce cumulable avec MaPrimeRénov' et les CEE ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Oui, totalement. La TVA à 5,5 % vient s'ajouter à MaPrimeRénov', à la prime CEE et à l'Éco-PTZ pour réduire encore votre reste à charge.</p></div></div>
+    </div>
+    <p class="disclaimer">Informations indicatives pour 2026, susceptibles d'évoluer. Sources : <a href="https://www.economie.gouv.fr" target="_blank" rel="noopener">economie.gouv.fr</a>, <a href="https://www.service-public.gouv.fr" target="_blank" rel="noopener">service-public.gouv.fr</a>.</p>
+  </section>
+
+  <div class="cta-banner"><div class="container"><h2>Profitez de la TVA à 5,5 %</h2><p>Avec Nexium, la TVA réduite et toutes vos aides sont prises en charge, du devis à la facture.</p><a href="#contact" class="btn btn-spark btn-lg" onclick="setFormTab('owner')">Estimer mon projet</a></div></div>
+</div><!-- /page-tva -->
 
 
 <!-- ════════════════════════════════════ PAGE: MA PRIME ADAPT' ════════════════════════════════════ -->
