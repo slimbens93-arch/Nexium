@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nexium — Électrification des usages &amp; pompes à chaleur (réseau RGE)</title>
-  <meta name="description" content="Nexium, spécialiste de l'électrification des usages dans l'habitat : pose de pompes à chaleur par des installateurs RGE, montage des dossiers d'aides (MaPrimeRénov', CEE, Ma Prime Adapt') et valorisation des certificats d'économies d'énergie.">
+  <meta name="description" content="Nexium, spécialiste de l'électrification des usages dans l'habitat : pose de pompes à chaleur par des installateurs RGE, montage des dossiers d'aides (MaPrimeRénov', prime énergie, Ma Prime Adapt') et valorisation des primes énergie.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
@@ -365,7 +365,7 @@
     .installer-card h3 { font-size: 1.0625rem; margin-bottom: .625rem; }
     .installer-card p { font-size: .9rem; color: var(--stone-500); line-height: 1.65; }
 
-    /* ── CEE / Électrification ── */
+    /* ── prime énergie / Électrification ── */
     .cee-section { background: var(--bg-dark); padding: 6rem 1.5rem; position: relative; overflow: hidden; }
     .cee-section::before {
       content: ''; position: absolute; inset: 0;
@@ -781,10 +781,10 @@
             <svg class="caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
           </a>
           <ul class="nav-dropdown-menu" role="menu">
-            <li><a href="#" onclick="showPage('aides', this)">Aides financières<small>MaPrimeRénov', CEE, Éco-PTZ</small></a></li>
+            <li><a href="#" onclick="showPage('aides', this)">Aides financières<small>MaPrimeRénov', prime énergie, Éco-PTZ</small></a></li>
             <li><a href="#" onclick="showPage('tva', this)">TVA réduite<small>5,5 % sur vos travaux</small></a></li>
             <li><a href="#" onclick="showPage('adapt', this)">Ma Prime Adapt'<small>Adapter son logement</small></a></li>
-            <li><a href="#" onclick="showPage('home'); setTimeout(()=>document.getElementById('section-cee').scrollIntoView({behavior:'smooth'}),100); return false;">Les CEE expliqués<small>Comprendre les certificats</small></a></li>
+            <li><a href="#" onclick="showPage('primeenergie', this)">La prime énergie<small>Comprendre le dispositif</small></a></li>
           </ul>
         </li>
         <li><a href="#" onclick="showPage('installateurs', this)" class="nav-page">Installateurs</a></li>
@@ -815,7 +815,7 @@
   <a href="#" onclick="closeMobileNav(); showPage('aides')">Aides financières</a>
   <a href="#" onclick="closeMobileNav(); showPage('tva')">TVA réduite</a>
   <a href="#" onclick="closeMobileNav(); showPage('adapt')">Ma Prime Adapt'</a>
-  <a href="#" onclick="closeMobileNav(); showPage('home'); setTimeout(()=>document.getElementById('section-cee').scrollIntoView({behavior:'smooth'}),100)">Les CEE expliqués</a>
+  <a href="#" onclick="closeMobileNav(); showPage('primeenergie')">La prime énergie</a>
   <h5>Nexium</h5>
   <a href="#" onclick="closeMobileNav(); showPage('installateurs')">Installateurs</a>
   <a href="#" onclick="closeMobileNav(); showPage('apropos')">Qui sommes-nous</a>
@@ -900,7 +900,7 @@
                 <div class="sbar-value">jusqu'à 65&nbsp;% du coût de l'équipement</div>
               </div>
               <div>
-                <div class="sbar-label"><span>Prime CEE</span></div>
+                <div class="sbar-label"><span>Prime énergie</span></div>
                 <div class="sbar-track"><div class="sbar-fill light" data-width="42"></div></div>
                 <div class="sbar-value">déduite directement du devis</div>
               </div>
@@ -931,7 +931,7 @@
               </div>
               <div class="benefit-text">
                 <h4>Aides maximisées, reste à charge minimisé</h4>
-                <p>Nos experts instruisent MaPrimeRénov', CEE et Éco-PTZ simultanément pour optimiser le cumul d'aides applicable à votre situation et votre niveau de revenus.</p>
+                <p>Nos experts instruisent MaPrimeRénov', prime énergie et Éco-PTZ simultanément pour optimiser le cumul d'aides applicable à votre situation et votre niveau de revenus.</p>
               </div>
             </li>
             <li class="benefit-item fade-up fade-up-delay-3">
@@ -944,50 +944,6 @@
               </div>
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CEE EXPLAINER -->
-  <section class="cee-section" id="section-cee" aria-labelledby="cee-heading">
-    <div class="cee-inner">
-      <div class="cee-content fade-up">
-        <span class="eyebrow eyebrow--light">Les CEE expliqués</span>
-        <h2 id="cee-heading">Les Certificats d'Économies d'Énergie : de quoi s'agit-il ?</h2>
-        <p>
-          Les fournisseurs d'énergie (EDF, Engie, TotalEnergies…) ont l'obligation légale de financer des travaux d'économies d'énergie chez les particuliers. Chaque pompe à chaleur installée génère un volume de certificats, valorisable sur un marché dédié.
-        </p>
-        <p>
-          Nexium récupère ces CEE pour le compte de ses installateurs partenaires, les agrège et les revend en volume aux obligés. Résultat : une prime systématiquement plus élevée, reversée en déduction directe du devis du client final.
-        </p>
-        <a href="#contact" class="btn btn-ghost mt-3" onclick="setFormTab('owner')">
-          Calculer ma prime CEE
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-
-      <div class="cee-cards fade-up fade-up-delay-1">
-        <div class="cee-card">
-          <div class="cee-num" aria-hidden="true">01</div>
-          <div>
-            <h4>Obligation légale des fournisseurs</h4>
-            <p>Les obligés du dispositif doivent prouver qu'ils ont financé des économies d'énergie, ou racheter des CEE sur le marché pour s'acquitter de leur quota.</p>
-          </div>
-        </div>
-        <div class="cee-card">
-          <div class="cee-num" aria-hidden="true">02</div>
-          <div>
-            <h4>Génération par l'opération PAC</h4>
-            <p>Chaque installation réalisée par un installateur RGE génère un volume de CEE calculé selon les fiches standardisées (fiche BAR-TH-171 pour les PAC air/eau).</p>
-          </div>
-        </div>
-        <div class="cee-card">
-          <div class="cee-num" aria-hidden="true">03</div>
-          <div>
-            <h4>Valorisation et redistribution</h4>
-            <p>Nexium vend les certificats agrégés aux obligés, puis reverse la prime au propriétaire sous forme de remise sur devis, réduisant directement son reste à charge.</p>
-          </div>
         </div>
       </div>
     </div>
@@ -1167,7 +1123,7 @@
     <div class="container">
       <span class="eyebrow eyebrow--light">Veille Nexium</span>
       <h1 class="display">L'électrification des usages,<br>décryptée chaque jour</h1>
-      <p>Pompes à chaleur, certificats d'économies d'énergie, MaPrimeRénov', tarifs de l'électricité : notre veille quotidienne sur tout ce qui fait bouger la rénovation énergétique résidentielle.</p>
+      <p>Pompes à chaleur, primes énergie, MaPrimeRénov', tarifs de l'électricité : notre veille quotidienne sur tout ce qui fait bouger la rénovation énergétique résidentielle.</p>
       <div class="news-meta-row">
         <span class="news-update"><span class="live-dot"></span><span id="news-update-time"></span></span>
         <span class="news-new-count" id="news-new-count" hidden></span>
@@ -1178,7 +1134,7 @@
   <div class="news-filters-bar">
     <div class="news-filters" role="group" aria-label="Filtres par catégorie">
       <button class="filter-pill active" onclick="filterNews('all', this)" aria-pressed="true">Tous</button>
-      <button class="filter-pill" onclick="filterNews('cee', this)" aria-pressed="false">CEE &amp; aides</button>
+      <button class="filter-pill" onclick="filterNews('cee', this)" aria-pressed="false">Prime énergie</button>
       <button class="filter-pill" onclick="filterNews('pac', this)" aria-pressed="false">Pompes à chaleur</button>
       <button class="filter-pill" onclick="filterNews('elec', this)" aria-pressed="false">Électrification</button>
       <button class="filter-pill" onclick="filterNews('reg', this)" aria-pressed="false">Réglementation</button>
@@ -1200,7 +1156,7 @@
     <div class="container">
       <div class="crumb"><a onclick="showPage('home')">Accueil</a> · Installateurs</div>
       <h1 class="display">Votre savoir-faire mérite mieux que de la paperasse.</h1>
-      <p>Vous posez des pompes à chaleur dans les règles de l'art. Nexium s'occupe des chantiers, des dossiers d'aides et de la valorisation de vos CEE — pour que vous restiez là où vous êtes le meilleur : sur le terrain.</p>
+      <p>Vous posez des pompes à chaleur dans les règles de l'art. Nexium s'occupe des chantiers, des dossiers d'aides et de la valorisation de vos prime énergie — pour que vous restiez là où vous êtes le meilleur : sur le terrain.</p>
       <div style="margin-top:2rem">
         <a href="#contact" class="btn btn-spark btn-lg" onclick="setFormTab('installer')">
           Devenir installateur partenaire
@@ -1227,15 +1183,15 @@
       </li>
       <li class="benefit-item">
         <div class="benefit-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="m9 15 2 2 4-4"/></svg></div>
-        <div class="benefit-text"><h4>Zéro administratif</h4><p>Nous montons l'intégralité des dossiers MaPrimeRénov' et CEE (fiches BAR-TH-171 et 172), de la première pièce à la validation finale. Vous n'avez plus à vous battre avec les justificatifs ni avec les délais.</p></div>
+        <div class="benefit-text"><h4>Zéro administratif</h4><p>Nous montons l'intégralité des dossiers MaPrimeRénov' et prime énergie (fiches BAR-TH-171 et 172), de la première pièce à la validation finale. Vous n'avez plus à vous battre avec les justificatifs ni avec les délais.</p></div>
       </li>
       <li class="benefit-item">
         <div class="benefit-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
-        <div class="benefit-text"><h4>Vos CEE valorisés au meilleur prix</h4><p>En tant que délégataire, nous transformons vos certificats d'économies d'énergie en revenu réel, sans intermédiaire qui rogne au passage.</p></div>
+        <div class="benefit-text"><h4>Vos prime énergie valorisés au meilleur prix</h4><p>En tant que délégataire, nous transformons vos primes énergie en revenu réel, sans intermédiaire qui rogne au passage.</p></div>
       </li>
       <li class="benefit-item">
         <div class="benefit-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-        <div class="benefit-text"><h4>Un paiement rapide</h4><p>Avance de trésorerie sur les primes CEE et règlement sous 15 jours après réception des factures. Fini l'attente ANAH à 3 mois.</p></div>
+        <div class="benefit-text"><h4>Un paiement rapide</h4><p>Avance de trésorerie sur les primes énergie et règlement sous 15 jours après réception des factures. Fini l'attente ANAH à 3 mois.</p></div>
       </li>
       <li class="benefit-item">
         <div class="benefit-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M5.5 21a7 7 0 0 1 13 0"/></svg></div>
@@ -1251,7 +1207,7 @@
   <!-- 4 STEPS MODEL (déplacé depuis l'accueil) -->
   <section class="steps" id="section-model" aria-labelledby="steps-heading">
     <div class="container">
-      <div class="content-head"><span class="eyebrow">Notre modèle</span><h2 id="steps-heading">Un circuit court, de l'apport à la valorisation</h2><p>Nexium orchestre toute la chaîne : de l'identification du prospect jusqu'à l'encaissement des CEE, sans fuite de valeur pour l'installateur.</p></div>
+      <div class="content-head"><span class="eyebrow">Notre modèle</span><h2 id="steps-heading">Un circuit court, de l'apport à la valorisation</h2><p>Nexium orchestre toute la chaîne : de l'identification du prospect jusqu'à l'encaissement des primes énergie, sans fuite de valeur pour l'installateur.</p></div>
 
       <div class="steps-grid">
         <div class="steps-line" aria-hidden="true"></div>
@@ -1273,15 +1229,15 @@
         <div class="step fade-up fade-up-delay-2">
           <div class="step-icon" aria-hidden="true">3</div>
           <span class="step-tag">Dossiers d'aides</span>
-          <h3>Instruction MaPrimeRénov' + CEE</h3>
-          <p>Nos experts réglementaires montent et déposent l'intégralité des dossiers : MaPrimeRénov', CEE, Éco-PTZ. Zéro démarche administrative pour l'installateur.</p>
+          <h3>Instruction MaPrimeRénov' + prime énergie</h3>
+          <p>Nos experts réglementaires montent et déposent l'intégralité des dossiers : MaPrimeRénov', prime énergie, Éco-PTZ. Zéro démarche administrative pour l'installateur.</p>
         </div>
 
         <div class="step fade-up fade-up-delay-3">
           <div class="step-icon" aria-hidden="true">4</div>
-          <span class="step-tag">Valorisation CEE</span>
+          <span class="step-tag">Valorisation prime énergie</span>
           <h3>Optimisation sur le marché</h3>
-          <p>Nexium agrège et valorise les CEE sur le marché de gré à gré. La prime est reversée directement à votre client pour réduire son reste à charge.</p>
+          <p>Nexium agrège et valorise les primes énergie sur le marché de gré à gré. La prime est reversée directement à votre client pour réduire son reste à charge.</p>
         </div>
       </div>
     </div>
@@ -1309,7 +1265,7 @@
     </div>
     <ul class="checklist" style="margin-top:2.5rem">
       <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><strong>Un interlocuteur unique</strong> — un seul contact, du premier conseil au versement des aides.</span></li>
-      <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><strong>La transparence</strong> — des CEE valorisés sans intermédiaire qui rogne, un reste à charge clair.</span></li>
+      <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><strong>La transparence</strong> — des primes énergie valorisés sans intermédiaire qui rogne, un reste à charge clair.</span></li>
       <li><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><strong>L'ancrage local</strong> — une connaissance fine de l'Alsace et de l'Île-de-France, de leurs particuliers et de leurs artisans.</span></li>
     </ul>
   </section>
@@ -1325,12 +1281,12 @@
       <div class="info-card">
         <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="m9 15 2 2 4-4"/></svg></div>
         <h3>Les dossiers d'aides, de A à Z</h3>
-        <p>MaPrimeRénov', CEE, Éco-PTZ, Ma Prime Adapt' : nos experts montent et suivent chaque dossier, sans la moindre démarche pour vous.</p>
+        <p>MaPrimeRénov', prime énergie, Éco-PTZ, Ma Prime Adapt' : nos experts montent et suivent chaque dossier, sans la moindre démarche pour vous.</p>
       </div>
       <div class="info-card">
         <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
-        <h3>La valorisation des CEE</h3>
-        <p>En tant que délégataire, nous transformons les certificats d'économies d'énergie en revenu réel, au meilleur prix du marché.</p>
+        <h3>La valorisation des primes énergie</h3>
+        <p>En tant que délégataire, nous transformons les primes énergie en revenu réel, au meilleur prix du marché.</p>
       </div>
       <div class="info-card">
         <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
@@ -1403,14 +1359,14 @@
       <p><strong>Combles perdus</strong> (non habitables) : isolation par soufflage de laine sur le plancher. Rapide, économique, très performant.</p>
       <p><strong>Combles aménagés</strong> (pièce de vie) : panneaux ou rouleaux posés entre et sous les chevrons. Nos installateurs RGE choisissent la technique et l'épaisseur adaptées à votre toiture.</p>
     </div>
-    <div class="note-box">Éligible à <strong>MaPrimeRénov' et aux CEE</strong>. Nexium monte l'intégralité des dossiers et sélectionne un artisan RGE près de chez vous — vous ne remplissez aucun formulaire.</div>
+    <div class="note-box">Éligible à <strong>MaPrimeRénov' et à la prime énergie</strong>. Nexium monte l'intégralité des dossiers et sélectionne un artisan RGE près de chez vous — vous ne remplissez aucun formulaire.</div>
   </section>
   <section class="content-section alt">
     <div class="content-head"><span class="eyebrow">Questions fréquentes</span><h2>Vos questions</h2></div>
     <div class="faq">
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Faut-il un artisan RGE ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Oui, pour bénéficier des aides, l'installateur doit être certifié RGE. C'est exactement le type de partenaire que Nexium sélectionne pour vous.</p></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Combien de temps dure le chantier ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Pour des combles perdus, le soufflage se réalise généralement en une demi-journée à une journée.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Quelles aides puis-je obtenir ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>MaPrimeRénov' et prime CEE selon vos revenus. Nexium calcule le cumul optimal et prend en charge les dossiers.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Quelles aides puis-je obtenir ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>MaPrimeRénov' et prime énergie selon vos revenus. Nexium calcule le cumul optimal et prend en charge les dossiers.</p></div></div>
     </div>
   </section>
   <div class="cta-banner"><div class="container"><h2>Isolez vos combles avec Nexium</h2><p>On vérifie votre éligibilité, on chiffre votre projet et on sélectionne l'artisan RGE — dossiers d'aides inclus.</p><a href="#contact" class="btn btn-spark btn-lg" onclick="setFormTab('owner')">Estimer mon projet</a></div></div>
@@ -1438,7 +1394,7 @@
       <p><strong>ITE — Isolation Thermique par l'Extérieur :</strong> la plus performante. Elle supprime les ponts thermiques, ne réduit pas la surface habitable et ravale la façade.</p>
       <p><strong>ITI — Isolation par l'Intérieur :</strong> plus économique, idéale quand la façade ne peut pas être modifiée. Nexium vous oriente vers la solution adaptée à votre logement.</p>
     </div>
-    <div class="note-box">Éligible à <strong>MaPrimeRénov' et aux CEE</strong>. Nexium prend en charge les dossiers et sélectionne l'artisan RGE.</div>
+    <div class="note-box">Éligible à <strong>MaPrimeRénov' et à la prime énergie</strong>. Nexium prend en charge les dossiers et sélectionne l'artisan RGE.</div>
   </section>
   <div class="cta-banner"><div class="container"><h2>Isolez vos murs avec Nexium</h2><p>Étude, chiffrage, artisan RGE et dossiers d'aides : un seul interlocuteur.</p><a href="#contact" class="btn btn-spark btn-lg" onclick="setFormTab('owner')">Estimer mon projet</a></div></div>
 </div><!-- /page-murs -->
@@ -1464,7 +1420,7 @@
     <div class="prose">
       <p>Le <strong>double vitrage</strong> couvre l'immense majorité des besoins et offre le meilleur rapport performance / prix. Le <strong>triple vitrage</strong> se justifie surtout en façade très exposée ou pour un objectif de très haute performance.</p>
     </div>
-    <div class="note-box">Le remplacement de fenêtres est éligible aux aides sous conditions (<strong>MaPrimeRénov', CEE</strong>). Nexium vérifie votre éligibilité et gère les dossiers.</div>
+    <div class="note-box">Le remplacement de fenêtres est éligible aux aides sous conditions (<strong>MaPrimeRénov', prime énergie</strong>). Nexium vérifie votre éligibilité et gère les dossiers.</div>
   </section>
   <div class="cta-banner"><div class="container"><h2>Changez vos fenêtres avec Nexium</h2><p>Un artisan RGE, un chiffrage clair et les aides prises en charge.</p><a href="#contact" class="btn btn-spark btn-lg" onclick="setFormTab('owner')">Estimer mon projet</a></div></div>
 </div><!-- /page-fenetres -->
@@ -1487,7 +1443,7 @@
   </section>
   <section class="content-section paper">
     <div class="content-head"><span class="eyebrow">Aides</span><h2>Un geste éligible aux aides</h2></div>
-    <div class="prose"><p>L'isolation des planchers bas est éligible à <strong>MaPrimeRénov' et aux CEE</strong>. Comme pour tous vos travaux, Nexium sélectionne l'artisan RGE et monte l'intégralité des dossiers.</p></div>
+    <div class="prose"><p>L'isolation des planchers bas est éligible à <strong>MaPrimeRénov' et à la prime énergie</strong>. Comme pour tous vos travaux, Nexium sélectionne l'artisan RGE et monte l'intégralité des dossiers.</p></div>
     <div class="note-box">Le plus souvent, l'isolation des sols se combine avec l'isolation des combles pour un gain de confort maximal.</div>
   </section>
   <div class="cta-banner"><div class="container"><h2>Isolez vos sols avec Nexium</h2><p>On chiffre, on trouve l'artisan, on gère les aides.</p><a href="#contact" class="btn btn-spark btn-lg" onclick="setFormTab('owner')">Estimer mon projet</a></div></div>
@@ -1505,7 +1461,7 @@
     <div class="content-head"><span class="eyebrow">L'essentiel</span><h2>Le cœur de métier de Nexium</h2></div>
     <div class="info-grid">
       <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M19 9l-5 5-3-3-4 4"/></svg></div><h3>Jusqu'à −60 % sur le chauffage</h3><p>La PAC restitue 3 à 4 kWh de chaleur pour 1 kWh d'électricité. En remplacement du fioul ou du gaz, la facture chute nettement.</p></div>
-      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.8 9A2 2 0 0 0 13 8h-2a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4h-2a2 2 0 0 1-1.8-1"/><path d="M12 6v2m0 8v2"/></svg></div><h3>Jusqu'à 70 % d'aides</h3><p>MaPrimeRénov' et prime CEE cumulées prennent en charge une large part du coût. Nexium optimise le montage.</p></div>
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.8 9A2 2 0 0 0 13 8h-2a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4h-2a2 2 0 0 1-1.8-1"/><path d="M12 6v2m0 8v2"/></svg></div><h3>Jusqu'à 70 % d'aides</h3><p>MaPrimeRénov' et prime énergie cumulées prennent en charge une large part du coût. Nexium optimise le montage.</p></div>
       <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Installateur RGE QualiPAC</h3><p>Nexium sélectionne des artisans certifiés, assurance décennale incluse. Une pose dans les règles de l'art.</p></div>
     </div>
   </section>
@@ -1521,7 +1477,7 @@
     <div class="faq">
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">La PAC fonctionne-t-elle par grand froid ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Oui, les modèles récents fonctionnent jusqu'à −15 à −20 °C. Le rendement baisse par grand froid et un appoint peut prendre le relais. Un bon dimensionnement est déterminant.</p></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Faut-il changer mes radiateurs ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Pas toujours : beaucoup de radiateurs existants restent compatibles. Les émetteurs basse température optimisent le rendement.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Qui gère les aides et la pose ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Nexium, de A à Z : sélection de l'installateur RGE, montage des dossiers MaPrimeRénov'/CEE et valorisation des certificats. Vous n'avez aucune démarche à faire.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Qui gère les aides et la pose ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Nexium, de A à Z : sélection de l'installateur RGE, montage des dossiers MaPrimeRénov'/prime énergie et valorisation des certificats. Vous n'avez aucune démarche à faire.</p></div></div>
     </div>
   </section>
   <div class="cta-banner"><div class="container"><h2>Passez à la pompe à chaleur</h2><p>Éligibilité en 48 h, installateur RGE près de chez vous, aides prises en charge.</p><a href="#contact" class="btn btn-spark btn-lg" onclick="setFormTab('owner')">Estimer mon projet</a></div></div>
@@ -1539,7 +1495,7 @@
     <div class="content-head"><span class="eyebrow">Les bénéfices</span><h2>De l'eau chaude, beaucoup moins chère</h2></div>
     <div class="info-grid">
       <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-4-7-13-7-13S5 11 5 15a7 7 0 0 0 7 7z"/></svg></div><h3>3× moins d'électricité</h3><p>Il capte les calories de l'air pour chauffer l'eau : jusqu'à 70 % d'économies par rapport à un ballon électrique classique.</p></div>
-      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.8 9A2 2 0 0 0 13 8h-2a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4h-2a2 2 0 0 1-1.8-1"/><path d="M12 6v2m0 8v2"/></svg></div><h3>Éligible aux aides</h3><p>MaPrimeRénov' et prime CEE réduisent l'investissement. Nexium prend en charge les dossiers.</p></div>
+      <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.8 9A2 2 0 0 0 13 8h-2a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4h-2a2 2 0 0 1-1.8-1"/><path d="M12 6v2m0 8v2"/></svg></div><h3>Éligible aux aides</h3><p>MaPrimeRénov' et prime énergie réduisent l'investissement. Nexium prend en charge les dossiers.</p></div>
       <div class="info-card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2"/></svg></div><h3>Idéal avec le solaire</h3><p>Alimenté par vos panneaux photovoltaïques, votre eau chaude devient quasiment gratuite en journée.</p></div>
     </div>
   </section>
@@ -1582,7 +1538,7 @@
     <div class="container">
       <div class="crumb"><a onclick="showPage('home')">Accueil</a> · Conseils &amp; Aides · Aides financières</div>
       <h1 class="display">Aides financières 2026 : jusqu'à 70 % de votre pompe à chaleur financée</h1>
-      <p>MaPrimeRénov', prime CEE, Éco-PTZ, TVA à 5,5 %… Nexium identifie toutes les aides auxquelles vous avez droit, les cumule au mieux et monte les dossiers à votre place.</p>
+      <p>MaPrimeRénov', prime énergie, Éco-PTZ, TVA à 5,5 %… Nexium identifie toutes les aides auxquelles vous avez droit, les cumule au mieux et monte les dossiers à votre place.</p>
     </div>
   </div>
 
@@ -1590,7 +1546,7 @@
     <div class="content-head"><span class="eyebrow">Les dispositifs</span><h2>4 aides cumulables pour votre PAC</h2><p>En les combinant, le reste à charge fond. Nexium calcule le montage optimal selon votre situation.</p></div>
     <div class="aid-grid">
       <div class="aid-card"><span class="pill">État · ANAH</span><div class="amount">3 000 – 5 000 €</div><h3>MaPrimeRénov'</h3><p>Aide de l'État versée par l'ANAH selon vos revenus : jusqu'à 5 000 € pour une PAC air/eau (ménages très modestes). Plafond de travaux pris en compte : 12 000 €.</p></div>
-      <div class="aid-card"><span class="pill">Fournisseurs</span><div class="amount">3 000 – 5 000 €</div><h3>Prime CEE / Coup de pouce</h3><p>Financée par les fournisseurs d'énergie. Nexium agrège et valorise les certificats en volume pour obtenir une prime plus élevée, déduite directement de votre devis.</p></div>
+      <div class="aid-card"><span class="pill">Fournisseurs</span><div class="amount">3 000 – 5 000 €</div><h3>Prime énergie / Coup de pouce</h3><p>Financée par les fournisseurs d'énergie. Nexium agrège et valorise les certificats en volume pour obtenir une prime plus élevée, déduite directement de votre devis.</p></div>
       <div class="aid-card"><span class="pill">0 % d'intérêt</span><div class="amount">jusqu'à 50 000 €</div><h3>Éco-PTZ</h3><p>Prêt à taux zéro remboursable sur 20 ans pour financer le reste à charge, sans condition de ressources et cumulable avec les autres aides.</p></div>
       <div class="aid-card"><span class="pill">Automatique</span><div class="amount">5,5 %<small> de TVA</small></div><h3>TVA réduite</h3><p>Taux réduit à 5,5 % appliqué directement sur l'équipement et la pose par votre installateur RGE, au lieu de 20 %.</p></div>
     </div>
@@ -1626,9 +1582,9 @@
     <div class="content-head"><span class="eyebrow">Questions fréquentes</span><h2>Vos questions sur les aides</h2></div>
     <div class="faq">
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Suis-je éligible aux aides ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>L'aide concerne les résidences principales de plus de 15 ans, avec une PAC posée par un installateur RGE (Nexium s'en charge). Le montant dépend de vos revenus selon le barème. Nous vérifions votre éligibilité gratuitement sous 48 h.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Dois-je avancer l'argent ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>La prime CEE est déduite directement de votre devis. MaPrimeRénov' est versée après les travaux. L'Éco-PTZ (0 %) permet de financer le reste à charge sans avance. Nous optimisons le montage pour limiter ce que vous sortez de votre poche.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Puis-je cumuler MaPrimeRénov' et la prime CEE ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Oui. MaPrimeRénov', la prime CEE, l'Éco-PTZ et la TVA à 5,5 % sont cumulables, dans la limite des plafonds de cumul indiqués plus haut.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Combien de temps pour obtenir les aides ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Nexium dépose et suit l'intégralité des dossiers. La prime CEE apparaît dès le devis ; MaPrimeRénov' est généralement versée quelques semaines après la fin des travaux et le dépôt des justificatifs.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Dois-je avancer l'argent ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>La prime énergie est déduite directement de votre devis. MaPrimeRénov' est versée après les travaux. L'Éco-PTZ (0 %) permet de financer le reste à charge sans avance. Nous optimisons le montage pour limiter ce que vous sortez de votre poche.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Puis-je cumuler MaPrimeRénov' et la prime énergie ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Oui. MaPrimeRénov', la prime énergie, l'Éco-PTZ et la TVA à 5,5 % sont cumulables, dans la limite des plafonds de cumul indiqués plus haut.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Combien de temps pour obtenir les aides ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Nexium dépose et suit l'intégralité des dossiers. La prime énergie apparaît dès le devis ; MaPrimeRénov' est généralement versée quelques semaines après la fin des travaux et le dépôt des justificatifs.</p></div></div>
     </div>
     <p class="disclaimer">Montants et barèmes indicatifs pour 2026, susceptibles d'évoluer et dépendant de votre situation. Sources : <a href="https://www.economie.gouv.fr" target="_blank" rel="noopener">economie.gouv.fr</a>, <a href="https://france-renov.gouv.fr" target="_blank" rel="noopener">france-renov.gouv.fr</a>.</p>
   </section>
@@ -1675,7 +1631,7 @@
       <p>La TVA réduite est <strong>appliquée directement par l'artisan</strong> sur votre devis et votre facture : vous ne faites aucune avance et aucune demande de remboursement.</p>
       <p>Une simple <strong>attestation (Cerfa)</strong> doit être remise à l'installateur avant la facturation. Chez Nexium, <strong>nous préparons cette attestation avec vous</strong>, comme le reste des dossiers.</p>
     </div>
-    <div class="note-box">La TVA à 5,5 % est <strong>cumulable avec toutes les aides</strong> à la rénovation énergétique : MaPrimeRénov', prime CEE et Éco-PTZ.</div>
+    <div class="note-box">La TVA à 5,5 % est <strong>cumulable avec toutes les aides</strong> à la rénovation énergétique : MaPrimeRénov', prime énergie et Éco-PTZ.</div>
   </section>
 
   <section class="content-section paper">
@@ -1683,13 +1639,39 @@
     <div class="faq">
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Dois-je faire une démarche pour l'obtenir ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Non. L'artisan applique directement le taux réduit sur le devis et la facture. Il vous suffit de signer l'attestation que Nexium prépare avec vous.</p></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Ma résidence secondaire est-elle éligible ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Oui. La TVA réduite s'applique aux résidences principales comme secondaires, dès lors que le logement a plus de 2 ans.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Est-ce cumulable avec MaPrimeRénov' et les CEE ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Oui, totalement. La TVA à 5,5 % vient s'ajouter à MaPrimeRénov', à la prime CEE et à l'Éco-PTZ pour réduire encore votre reste à charge.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Est-ce cumulable avec MaPrimeRénov' et les primes énergie ?<svg class="fic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><p>Oui, totalement. La TVA à 5,5 % vient s'ajouter à MaPrimeRénov', à la prime énergie et à l'Éco-PTZ pour réduire encore votre reste à charge.</p></div></div>
     </div>
     <p class="disclaimer">Informations indicatives pour 2026, susceptibles d'évoluer. Sources : <a href="https://www.economie.gouv.fr" target="_blank" rel="noopener">economie.gouv.fr</a>, <a href="https://www.service-public.gouv.fr" target="_blank" rel="noopener">service-public.gouv.fr</a>.</p>
   </section>
 
   <div class="cta-banner"><div class="container"><h2>Profitez de la TVA à 5,5 %</h2><p>Avec Nexium, la TVA réduite et toutes vos aides sont prises en charge, du devis à la facture.</p><a href="#contact" class="btn btn-spark btn-lg" onclick="setFormTab('owner')">Estimer mon projet</a></div></div>
 </div><!-- /page-tva -->
+
+
+<!-- ════════════════════════════════════ PAGE: PRIME ÉNERGIE ════════════════════════════════════ -->
+<div id="page-primeenergie" class="page">
+  <div class="page-hero"><div class="container">
+    <div class="crumb"><a onclick="showPage('home')">Accueil</a> · Aides · La prime énergie</div>
+    <h1 class="display">La prime énergie</h1>
+    <p>Financée par les fournisseurs d'énergie, la prime énergie réduit directement le montant de vos travaux. Nexium la récupère, la valorise en volume et la déduit de votre devis — au meilleur montant.</p>
+  </div></div>
+  <section class="content-section alt">
+    <div class="content-head"><span class="eyebrow">De quoi s'agit-il ?</span><h2>Une prime financée par les fournisseurs d'énergie</h2></div>
+    <div class="prose">
+      <p>Les fournisseurs d'énergie (EDF, Engie, TotalEnergies…) ont l'<strong>obligation légale</strong> de financer des travaux d'économies d'énergie chez les particuliers. Chaque pompe à chaleur installée génère une prime énergie, valorisable sur un marché dédié.</p>
+      <p>Nexium récupère ces primes pour le compte de ses installateurs partenaires, les agrège et les revend en volume aux obligés. Résultat : un <strong>montant systématiquement plus élevé</strong>, reversé en déduction directe du devis du client final.</p>
+    </div>
+  </section>
+  <section class="content-section paper">
+    <div class="content-head"><span class="eyebrow">Comment ça marche</span><h2>De l'obligation à votre remise sur devis</h2></div>
+    <div class="info-grid">
+      <div class="info-card"><div style="font-family:'Sora',sans-serif;font-size:1.75rem;font-weight:800;color:var(--green-deep);line-height:1;margin-bottom:.7rem;">01</div><h3>Obligation légale des fournisseurs</h3><p>Les obligés du dispositif doivent prouver qu'ils ont financé des économies d'énergie, ou racheter des primes énergie sur le marché pour s'acquitter de leur quota.</p></div>
+      <div class="info-card"><div style="font-family:'Sora',sans-serif;font-size:1.75rem;font-weight:800;color:var(--green-deep);line-height:1;margin-bottom:.7rem;">02</div><h3>Génération par l'opération PAC</h3><p>Chaque installation réalisée par un installateur RGE génère un volume de prime énergie calculé selon les fiches standardisées (fiche BAR-TH-171 pour les PAC air/eau).</p></div>
+      <div class="info-card"><div style="font-family:'Sora',sans-serif;font-size:1.75rem;font-weight:800;color:var(--green-deep);line-height:1;margin-bottom:.7rem;">03</div><h3>Valorisation et redistribution</h3><p>Nexium agrège les primes, les valorise auprès des obligés, puis reverse le montant au propriétaire sous forme de remise sur devis — réduisant directement son reste à charge.</p></div>
+    </div>
+  </section>
+  <div class="cta-banner"><div class="container"><h2>Calculez votre prime énergie</h2><p>On estime le montant de votre prime et on la déduit directement de votre devis.</p><a href="#contact" class="btn btn-spark btn-lg" onclick="setFormTab('owner')">Estimer mon projet</a></div></div>
+</div><!-- /page-primeenergie -->
 
 
 <!-- ════════════════════════════════════ PAGE: MA PRIME ADAPT' ════════════════════════════════════ -->
@@ -1875,7 +1857,7 @@
             <span class="brand-sub">Électrification</span>
           </span>
         </a>
-        <p>Nexium accompagne l'électrification des usages dans l'habitat résidentiel : pose de pompes à chaleur via un réseau d'installateurs RGE, montage des dossiers d'aides (MaPrimeRénov', CEE, Ma Prime Adapt') et valorisation des certificats.</p>
+        <p>Nexium accompagne l'électrification des usages dans l'habitat résidentiel : pose de pompes à chaleur via un réseau d'installateurs RGE, montage des dossiers d'aides (MaPrimeRénov', prime énergie, Ma Prime Adapt') et valorisation des certificats.</p>
         <div class="footer-contact"><a href="mailto:info@nexiumfr.com">info@nexiumfr.com</a></div>
       </div>
 
@@ -1884,7 +1866,7 @@
         <ul>
           <li><a href="#contact" onclick="setFormTab('owner')">Demande d'information</a></li>
           <li><a href="#" onclick="showPage('aides')">Aides financières</a></li>
-          <li><a href="#" onclick="showPage('home');setTimeout(()=>document.getElementById('section-cee').scrollIntoView({behavior:'smooth'}),100)">Comprendre les CEE</a></li>
+          <li><a href="#" onclick="showPage('primeenergie')">Comprendre la prime énergie</a></li>
         </ul>
       </div>
 
@@ -2096,7 +2078,7 @@
               icon: '<path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 7v6M21 7h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' }
   };
   const CATS = {
-    cee:    { label: 'CEE & aides',     tag: 'tag-cee' },
+    cee:    { label: 'Prime énergie',   tag: 'tag-cee' },
     pac:    { label: 'Pompes à chaleur', tag: 'tag-pac' },
     elec:   { label: 'Électrification',  tag: 'tag-elec' },
     reg:    { label: 'Réglementation',   tag: 'tag-reg' },
@@ -2106,9 +2088,9 @@
   /* Article pool — headlines dated to 2026, anchored to "today" so they stay fresh.
      A daily rotation surfaces a different lead story every 24 h. */
   const POOL = [
-    { cat:'cee',    read:'4 min', title:'CEE : la 6ᵉ période rehausse de 9 % le forfait de la fiche BAR-TH-171 pour les PAC air/eau',
-      excerpt:'Publié au Journal officiel, l\'arrêté du printemps 2026 revalorise le forfait CEE des pompes à chaleur air/eau en résidentiel existant. Une bonne nouvelle pour les installateurs RGE et leurs clients.' },
-    { cat:'marche', read:'5 min', title:'Prix des CEE : le cours du MWh cumac se stabilise autour de 9,2 € après un hiver tendu',
+    { cat:'cee',    read:'4 min', title:'Prime énergie : la 6ᵉ période rehausse de 9 % le forfait de la fiche BAR-TH-171 pour les PAC air/eau',
+      excerpt:'Publié au Journal officiel, l\'arrêté du printemps 2026 revalorise le forfait de prime énergie des pompes à chaleur air/eau en résidentiel existant. Une bonne nouvelle pour les installateurs RGE et leurs clients.' },
+    { cat:'marche', read:'5 min', title:'Prix des primes énergie : le cours du MWh cumac se stabilise autour de 9,2 € après un hiver tendu',
       excerpt:'Après la volatilité de l\'hiver 2025-2026, le marché de gré à gré des certificats retrouve un palier. Analyse des facteurs d\'offre et de demande pour le second semestre.' },
     { cat:'pac',    read:'5 min', title:'Le parc français de PAC air/eau dépasse 1,4 million d\'unités installées',
       excerpt:'Selon les dernières données Uniclima, la France a franchi un nouveau cap en 2025, porté par les aides publiques et l\'interdiction progressive des chaudières fioul.' },
@@ -2118,7 +2100,7 @@
       excerpt:'Le bilan RTE-ADEME 2026 montre une bascule continue du gaz et du fioul vers les solutions électriques performantes. Les PAC tirent la dynamique, le fioul recule sous 9 % du parc.' },
     { cat:'reg',    read:'5 min', title:'Fin des chaudières fioul : le régime dérogatoire de remplacement d\'urgence précisé',
       excerpt:'L\'installation de nouvelles chaudières fioul est interdite depuis 2026. L\'administration clarifie les rares cas de remplacement d\'urgence et leurs conditions strictes.' },
-    { cat:'cee',    read:'9 min', title:'Cumul MaPrimeRénov\' + CEE + Éco-PTZ : le guide pratique des aides 2026 pour une PAC',
+    { cat:'cee',    read:'9 min', title:'Cumul MaPrimeRénov\' + prime énergie + Éco-PTZ : le guide pratique des aides 2026 pour une PAC',
       excerpt:'Quelles aides peut-on réellement cumuler pour une pompe à chaleur en résidence principale ? Tableau récapitulatif, conditions de ressources et plafonds mis à jour pour 2026.' },
     { cat:'pac',    read:'8 min', title:'COP en conditions réelles : l\'étude 2026 mesure 3,1 de moyenne sur 1 500 installations',
       excerpt:'Une vaste campagne de mesure sur le terrain confirme l\'écart entre COP nominal constructeur et performance réelle en saison de chauffe. Les enseignements pour bien dimensionner.' },
@@ -2128,10 +2110,10 @@
       excerpt:'Qualit\'EnR publie ses statistiques annuelles : la tension sur la main-d\'œuvre qualifiée reste vive dans les métropoles, malgré une forte progression des certifications.' },
     { cat:'reg',    read:'5 min', title:'DPE et passoires thermiques : le calendrier d\'interdiction locative jusqu\'en 2028',
       excerpt:'Les logements classés F sont concernés à partir de 2028. Rappel du calendrier progressif et de l\'effet d\'entraînement attendu sur la demande de rénovation du chauffage.' },
-    { cat:'elec',   read:'5 min', title:'Chauffe-eau thermodynamique : un marché en hausse de 28 %, dopé par les CEE',
-      excerpt:'Le CET bénéficie lui aussi des fiches CEE et de MaPrimeRénov\'. Analyse du marché et complémentarité avec la PAC pour l\'eau chaude sanitaire en logement collectif.' },
-    { cat:'cee',    read:'6 min', title:'Contrôles CEE renforcés : ce que les installateurs doivent documenter en 2026',
-      excerpt:'Le pôle national des CEE durcit ses exigences de preuve. Photos horodatées, attestations sur l\'honneur, fiches techniques : la check-list pour sécuriser chaque dossier.' },
+    { cat:'elec',   read:'5 min', title:'Chauffe-eau thermodynamique : un marché en hausse de 28 %, dopé par les primes énergie',
+      excerpt:'Le CET bénéficie lui aussi de la prime énergie et de MaPrimeRénov\'. Analyse du marché et complémentarité avec la PAC pour l\'eau chaude sanitaire en logement collectif.' },
+    { cat:'cee',    read:'6 min', title:'Contrôles renforcés sur la prime énergie : ce que les installateurs doivent documenter en 2026',
+      excerpt:'L'administration durcit ses exigences de preuve. Photos horodatées, attestations sur l\'honneur, fiches techniques : la check-list pour sécuriser chaque dossier.' },
     { cat:'pac',    read:'5 min', title:'PAC et réseau électrique : le pilotage tarifaire heures creuses se généralise',
       excerpt:'Les nouvelles offres effacement permettent de chauffer aux heures les moins chères et de soulager le réseau. Un levier d\'économies supplémentaire pour les propriétaires équipés.' },
     { cat:'marche', read:'6 min', title:'Réseaux d\'apporteurs d\'affaires : comment se structure la pose de PAC en 2026',
