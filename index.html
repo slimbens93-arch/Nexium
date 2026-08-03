@@ -673,6 +673,20 @@
     .nav-mega-col li a small { display: block; font-weight: 400; font-size: .72rem; color: rgba(255,255,255,.4); margin-top: 1px; }
     .mobile-nav h5 { font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--brand); margin: 1.1rem 0 .1rem; }
 
+    /* ── Section "Comment ça marche" ── */
+    .how-section { background: var(--paper); padding: 6rem 1.5rem; }
+    .how-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .how-content h2 { font-size: clamp(1.9rem, 4vw, 3rem); margin-bottom: 2.5rem; }
+    .how-steps { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2.25rem; }
+    .how-steps li { border-left: 3px solid var(--green-deep); padding: .15rem 0 .15rem 1.25rem; }
+    .how-steps li h3 { font-size: 1.0625rem; margin-bottom: .3rem; color: var(--ink); }
+    .how-steps li p { font-size: .9375rem; color: var(--stone-500); line-height: 1.6; }
+    .how-closing { font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(1.4rem,2.5vw,1.85rem); letter-spacing: -.01em; margin-bottom: 1.75rem; color: var(--ink); }
+    .how-closing span { color: var(--green-deep); }
+    .how-media { border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--shadow-md); }
+    .how-media img { width: 100%; height: 100%; max-height: 480px; object-fit: cover; display: block; }
+    @media (max-width: 900px) { .how-inner { grid-template-columns: 1fr; gap: 2.5rem; } .how-media { max-width: 540px; } }
+
     /* ── Responsive ── */
     @media (max-width: 1024px) {
       .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
@@ -945,6 +959,37 @@
             </li>
           </ul>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMENT ÇA MARCHE -->
+  <section class="how-section" aria-labelledby="how-heading">
+    <div class="how-inner">
+      <div class="how-content">
+        <h2 class="display" id="how-heading">Comment ça marche ?</h2>
+        <ol class="how-steps">
+          <li class="fade-up">
+            <h3>Vous estimez votre projet</h3>
+            <p>En 2 minutes, dites-nous ce que vous souhaitez améliorer. On vérifie votre éligibilité aux aides.</p>
+          </li>
+          <li class="fade-up fade-up-delay-1">
+            <h3>Votre rénovation simplifiée</h3>
+            <p>Travaux, aides, financement, artisan RGE : Nexium coordonne les meilleures solutions pour un maximum de confort.</p>
+          </li>
+          <li class="fade-up fade-up-delay-2">
+            <h3>On s'occupe de tout</h3>
+            <p>De la première pièce du dossier jusqu'à la prime versée, vous gardez un seul interlocuteur.</p>
+          </li>
+        </ol>
+        <p class="how-closing">Et votre maison devient <span>plus performante.</span></p>
+        <a href="#contact" class="btn btn-primary btn-lg" onclick="setFormTab('owner')">
+          J'estime mon projet
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="how-media fade-up">
+        <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="Maison rénovée accompagnée par Nexium" loading="lazy">
       </div>
     </div>
   </section>
