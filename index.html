@@ -186,6 +186,10 @@
       display: none;
       position: fixed;
       top: 76px; left: 0; right: 0;
+      max-height: calc(100dvh - 76px);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
       background: var(--bg-dark-2);
       padding: 1rem 1.5rem 2rem;
       z-index: 199;
@@ -1982,11 +1986,14 @@
     const open = menu.classList.toggle('open');
     btn.classList.toggle('open', open);
     btn.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+    if (open) menu.scrollTop = 0;
   };
   window.closeMobileNav = function() {
     document.getElementById('mobileNav').classList.remove('open');
     document.getElementById('hamburger').classList.remove('open');
     document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
   };
 
   /* ── Form tabs ── */
