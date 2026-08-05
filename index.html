@@ -204,7 +204,7 @@
       font-weight: 500; font-size: 1rem;
     }
     .mobile-nav a:last-of-type { border-bottom: none; }
-    .mobile-ctas { display: flex; flex-direction: column; gap: .75rem; margin-top: 1.25rem; }
+    .mobile-ctas { display: flex; flex-direction: column; gap: .75rem; padding-bottom: 1.25rem; border-bottom: 1px solid rgba(255,255,255,.09); }
 
     /* ── Pages ── */
     .page { display: none; }
@@ -820,6 +820,10 @@
 </header>
 
 <div class="mobile-nav" id="mobileNav" role="navigation" aria-label="Menu mobile">
+  <div class="mobile-ctas">
+    <a href="#contact" class="btn btn-spark btn-full" onclick="closeMobileNav(); setFormTab('owner')">Estimer mon projet</a>
+    <a href="#" class="btn btn-ghost btn-full" onclick="closeMobileNav(); showPage('installateurs')">Espace installateurs</a>
+  </div>
   <h5>Rénovation énergétique</h5>
   <a href="#" onclick="closeMobileNav(); showPage('combles')">Isolation des combles</a>
   <a href="#" onclick="closeMobileNav(); showPage('murs')">Isolation des murs</a>
@@ -838,10 +842,6 @@
   <a href="#" onclick="closeMobileNav(); showPage('installateurs')">Installateurs</a>
   <a href="#" onclick="closeMobileNav(); showPage('apropos')">Qui sommes-nous</a>
   <a href="#" onclick="closeMobileNav(); showPage('news')">Actualités</a>
-  <div class="mobile-ctas">
-    <a href="#contact" class="btn btn-spark btn-full" onclick="closeMobileNav(); setFormTab('owner')">Estimer mon projet</a>
-    <a href="#" class="btn btn-ghost btn-full" onclick="closeMobileNav(); showPage('installateurs')">Espace installateurs</a>
-  </div>
 </div>
 
 
@@ -920,7 +920,7 @@
               <div>
                 <div class="sbar-label"><span>Prime énergie</span></div>
                 <div class="sbar-track"><div class="sbar-fill light" data-width="42"></div></div>
-                <div class="sbar-value">déduite directement du devis</div>
+                <div class="sbar-value">de 3 000 à 5 000&nbsp;€, déduits directement du devis</div>
               </div>
             </div>
           </div>
