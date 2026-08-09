@@ -678,6 +678,21 @@
     .nav-mega-col li a small { display: block; font-weight: 400; font-size: .72rem; color: rgba(255,255,255,.4); margin-top: 1px; }
     .mobile-nav h5 { font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--brand); margin: 1.1rem 0 .1rem; }
 
+    /* ── Bande labels & certifications ── */
+    .labels-band { background: var(--paper); padding: 3.5rem 1.5rem 3rem; border-bottom: 1px solid var(--stone-100); }
+    .labels-inner { max-width: 1080px; margin: 0 auto; display: grid; gap: 2.25rem; }
+    .labels-group { text-align: center; }
+    .labels-title { font-size: .74rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--stone-500); margin-bottom: 1.15rem; }
+    .labels-row { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
+    .label-badge { display: inline-flex; align-items: center; gap: .65rem; background: var(--white); border: 1px solid var(--stone-200); border-radius: var(--r); padding: .65rem 1.05rem; transition: border-color var(--t), box-shadow var(--t), transform var(--t); }
+    .label-badge:hover { border-color: var(--green-100); box-shadow: var(--shadow); transform: translateY(-2px); }
+    .lb-mark { width: 34px; height: 34px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border-radius: 8px; background: var(--green-50); color: var(--green-deep); font-family: 'Sora', sans-serif; font-weight: 800; font-size: .68rem; letter-spacing: -.02em; }
+    .lb-text { text-align: left; line-height: 1.22; }
+    .lb-name { display: block; font-size: .875rem; font-weight: 700; color: var(--ink); }
+    .lb-sub { display: block; font-size: .69rem; color: var(--stone-500); margin-top: 2px; }
+    .labels-note { max-width: 700px; margin: 1.9rem auto 0; text-align: center; font-size: .78rem; color: var(--stone-400); line-height: 1.55; }
+    @media (max-width: 600px) { .label-badge { padding: .55rem .85rem; } .lb-name { font-size: .82rem; } }
+
     /* ── Section "Comment ça marche" ── */
     .how-section { background: var(--paper); padding: 6rem 1.5rem; }
     .how-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 3.5rem; align-items: center; }
@@ -863,6 +878,59 @@
         <a href="#" class="btn btn-glass btn-lg" onclick="showPage('aides'); return false;">Découvrir mes aides</a>
       </div>
       <p class="hero-photo-trust"><span class="dot"></span> Installateurs RGE certifiés · Dossiers d'aides pris en charge à 100&nbsp;% · Alsace &amp; Île-de-France</p>
+    </div>
+  </section>
+
+  <!-- BANDE LABELS & CERTIFICATIONS -->
+  <section class="labels-band" aria-labelledby="labels-heading">
+    <h2 id="labels-heading" class="sr-only">Labels, certifications et aides mobilisées par Nexium</h2>
+    <div class="labels-inner">
+
+      <div class="labels-group fade-up">
+        <p class="labels-title">Nos installateurs partenaires sont certifiés</p>
+        <ul class="labels-row" role="list">
+          <li class="label-badge">
+            <span class="lb-mark" aria-hidden="true">RGE</span>
+            <span class="lb-text"><span class="lb-name">RGE</span><span class="lb-sub">Reconnu Garant de l'Environnement</span></span>
+          </li>
+          <li class="label-badge">
+            <span class="lb-mark" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.2"/><path d="M12 5v2M12 17v2"/></svg></span>
+            <span class="lb-text"><span class="lb-name">QualiPAC</span><span class="lb-sub">Pompes à chaleur</span></span>
+          </li>
+          <li class="label-badge">
+            <span class="lb-mark" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l9-5 9 5v13"/><path d="M3 12h18M9 21v-6h6v6"/></svg></span>
+            <span class="lb-text"><span class="lb-name">Qualibat</span><span class="lb-sub">Qualification bâtiment</span></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="labels-group fade-up fade-up-delay-1">
+        <p class="labels-title">Les aides que nous mobilisons pour vous</p>
+        <ul class="labels-row" role="list">
+          <li class="label-badge">
+            <span class="lb-mark" aria-hidden="true">MPR</span>
+            <span class="lb-text"><span class="lb-name">MaPrimeRénov'</span><span class="lb-sub">Aide de l'État (ANAH)</span></span>
+          </li>
+          <li class="label-badge">
+            <span class="lb-mark" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg></span>
+            <span class="lb-text"><span class="lb-name">Prime énergie</span><span class="lb-sub">Financée par les fournisseurs</span></span>
+          </li>
+          <li class="label-badge">
+            <span class="lb-mark" aria-hidden="true">0 %</span>
+            <span class="lb-text"><span class="lb-name">Éco-PTZ</span><span class="lb-sub">Prêt à taux zéro</span></span>
+          </li>
+          <li class="label-badge">
+            <span class="lb-mark" aria-hidden="true">MPA</span>
+            <span class="lb-text"><span class="lb-name">Ma Prime Adapt'</span><span class="lb-sub">Adaptation du logement</span></span>
+          </li>
+          <li class="label-badge">
+            <span class="lb-mark" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+            <span class="lb-text"><span class="lb-name">Aides régionales</span><span class="lb-sub">Grand Est &amp; Île-de-France</span></span>
+          </li>
+        </ul>
+      </div>
+
+      <p class="labels-note">Nexium est apporteur d'affaires et délégataire : les qualifications RGE, QualiPAC et Qualibat sont détenues par les installateurs partenaires de notre réseau, qui réalisent les travaux.</p>
     </div>
   </section>
 
